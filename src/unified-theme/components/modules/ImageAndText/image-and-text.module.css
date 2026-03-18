@@ -1,13 +1,14 @@
 .hs-elevate-image-and-text {
   display: flex;
   flex-direction: column;
-  align-items: var(--hsElevate--imageAndText__alignItems, center);
+  align-items: stretch;
   justify-content: space-between;
   -moz-column-gap: var(--hsElevate--spacing--80, 80px);
   column-gap: var(--hsElevate--spacing--80, 80px);
 
   @media (width >= 767px) {
     flex-direction: row;
+    align-items: var(--hsElevate--imageAndText__alignItems, center);
   }
 }
 
