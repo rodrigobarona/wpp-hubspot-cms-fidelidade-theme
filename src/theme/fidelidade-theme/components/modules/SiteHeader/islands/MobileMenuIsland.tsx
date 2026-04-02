@@ -1,5 +1,6 @@
-import styles from '../mobile-menu.module.css';
-import cx, { staticWithModule } from '../../../utils/classnames.js';
+import '../mobile-menu-inner.css';
+import '../../../styles/tailwind.css';
+import { cn } from '../../../utils/cn.js';
 import { createComponent } from '../../../utils/create-component.js';
 import MenuComponent from '../../../MenuComponent/index.js';
 import { useEffect, useState } from 'react';
@@ -9,8 +10,6 @@ import { getLinkFieldHref, getLinkFieldRel, getLinkFieldTarget } from '../../../
 import { MobileMenuIslandProps } from '../types.js';
 import MobileSiteHeaderLanguageSwitcher from '../../../LanguageSwitcherComponent/MobileSiteHeaderLanguageSwitcherComponent.js';
 import { CSSPropertiesMap } from '../../../types/components.js';
-
-const swm = staticWithModule(styles);
 
 // Functions to generate CSS variables
 
@@ -222,19 +221,38 @@ export default function MobileMenuIsland(props: MobileMenuIslandProps) {
   };
 
   const cssVarsMap = {
+    '--hsFidelidade--mobileMenu__zIndex': '1000',
     ...generateColorCssVars({ menuTextColor, menuTextHoverColor, menuBackgroundColor, menuAccentColor }),
     ...generateSizeCssVars({ headerHeight, mobileButtonContainerHeight, headerMobileLanguageSwitcherHeight }),
   };
 
-  const menuContainerClassNames = cx(swm('hs-fidelidade-site-header__menu-container'), {
-    [styles['hs-fidelidade-site-header__menu-container--is-sliding']]: isMenuSliding,
-    [styles['hs-fidelidade-site-header__menu-container--is-hidden']]: !showMenu,
-  });
+  const menuContainerClassNames = cn(
+    'hs-fidelidade-site-header__menu-container',
+    'absolute z-[var(--hsFidelidade--mobileMenu__zIndex)] top-full mt-0 flex h-[calc(100dvh-var(--hsFidelidade--mobileMenu__height))] w-full flex-col items-stretch justify-start bg-white transition-all duration-300 ease-in-out',
+    showMenu && !isMenuSliding && 'left-full',
+    isMenuSliding && 'left-0',
+    !showMenu && 'hidden',
+  );
 
-  const hamburgerMenuClassNames = cx(swm('hs-fidelidade-site-header__hamburger-menu'), { [styles['hs-fidelidade-site-header__hamburger-menu--active']]: showMenu });
+  const hamburgerMenuClassNames = cn(
+    'hs-fidelidade-site-header__hamburger-menu',
+    'flex h-[25px] w-[30px] cursor-pointer flex-col justify-around',
+    '[&>div]:h-1 [&>div]:w-full [&>div]:transition-all [&>div]:duration-300 [&>div]:ease-in-out [&>div]:[background-color:var(--hsFidelidade--mobileMenu__textColor)]',
+    showMenu && [
+      '[&>div:nth-child(1)]:[transform:rotate(45deg)_translate(7px,5px)]',
+      '[&>div:nth-child(2)]:opacity-0',
+      '[&>div:nth-child(3)]:[transform:rotate(-45deg)_translate(6px,-5px)]',
+    ],
+  );
+
+  const mobileButtonContainerClassNames = cn(
+    'hs-fidelidade-site-header__mobile-button-container',
+    'z-[calc(var(--hsFidelidade--mobileMenu__zIndex)+20)] block w-full p-hs-24 mt-0 mb-[var(--hsFidelidade--mobileMenuLanguageSwitcher__height)] [background-color:var(--hsFidelidade--mobileMenu__backgroundColor)] min-[460px]:hidden',
+    '[&_.hs-fidelidade-site-header__mobile-button]:h-full [&_.hs-fidelidade-site-header__mobile-button]:w-full [&_.hs-fidelidade-site-header__mobile-button]:justify-center',
+  );
 
   return (
-    <MobileMenu style={cssVarsMap} className={swm('hs-fidelidade-site-header__mobile-menu')}>
+    <MobileMenu style={cssVarsMap} className="hs-fidelidade-site-header__mobile-menu">
       <HamburgerMenu className={hamburgerMenuClassNames} tab-index="1" onClick={handleOpenCloseMenu}>
         <div></div>
         <div></div>
@@ -253,7 +271,7 @@ export default function MobileMenuIsland(props: MobileMenuIslandProps) {
           additionalClassArray={['hs-fidelidade-site-header__menu']}
         />
         {showButton && (
-          <MobileSlideoutButtonContainer className={swm('hs-fidelidade-site-header__mobile-button-container')}>
+          <MobileSlideoutButtonContainer className={mobileButtonContainerClassNames}>
             <Button
               href={getLinkFieldHref(buttonLink)}
               buttonStyle={buttonStyleVariant}
@@ -263,7 +281,7 @@ export default function MobileMenuIsland(props: MobileMenuIslandProps) {
               showIcon={showIcon}
               iconFieldPath="groupButton.buttonContentIcon"
               iconPosition={iconPosition}
-              additionalClassArray={[swm('hs-fidelidade-site-header__mobile-button')]}
+              additionalClassArray={['hs-fidelidade-site-header__mobile-button']}
               moduleName={moduleName}
               textFieldPath="groupButton.buttonContentText"
             >

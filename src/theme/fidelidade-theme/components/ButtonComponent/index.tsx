@@ -1,18 +1,16 @@
 import { ReactNode } from 'react';
 import { ButtonStyleType, StandardSizeType, ElementPositionType } from '../types/fields.js';
-import styles from './button.module.css';
-import cx, { staticWithModule } from '../utils/classnames.js';
+import { cn } from '../utils/cn.js';
 import { Icon } from '@hubspot/cms-components';
 import { CSSPropertiesMap } from '../types/components.js';
 import { getDataHSToken } from '../utils/inline-editing.js';
+import '../styles/tailwind.css';
 
 export const BUTTON_SIZE_PADDING_MAP: Record<StandardSizeType, string> = {
   small: 'var(--hsFidelidade--spacing--12, 12px) var(--hsFidelidade--spacing--20, 20px)',
   medium: 'var(--hsFidelidade--spacing--16, 16px) var(--hsFidelidade--spacing--24, 24px)',
   large: 'var(--hsFidelidade--spacing--20, 20px) var(--hsFidelidade--spacing--32, 32px)',
 };
-
-const swm = staticWithModule(styles);
 
 // Types
 
@@ -78,22 +76,27 @@ export const Button = (props: ButtonProps) => {
 
   const buttonClassName = getButtonClassName(buttonStyle);
   const additionalClasses = additionalClassArray ? additionalClassArray.join(' ') : '';
-  const iconClasses = cx(swm('hs-fidelidade-button__icon'), {
-    [styles['hs-fidelidade-button__icon--left']]: iconPosition === 'left',
-    [styles['hs-fidelidade-button__icon--right']]: iconPosition === 'right',
-  });
+  const iconClasses = cn(
+    'block h-5 shrink-0 fill-current',
+    iconPosition === 'left' && 'order-0 mr-4',
+    iconPosition === 'right' && 'order-[3] ml-4',
+  );
 
   return (
     <a
       style={cssVarsMap}
-      className={cx(swm('hs-fidelidade-button'), buttonClassName, additionalClasses)}
+      className={cn(
+        'inline-flex min-w-[150px] items-center justify-center whitespace-normal p-[var(--hsFidelidade--button__padding)] text-center hover:cursor-pointer',
+        buttonClassName,
+        additionalClasses,
+      )}
       target={target}
       href={href}
       rel={rel}
       aria-label={ariaLabel}
       data-hs-token={getDataHSToken(moduleName, textFieldPath)}
     >
-      {iconFieldPath && showIcon && <Icon className={cx(iconClasses)} purpose="DECORATIVE" fieldPath={iconFieldPath} />}
+      {iconFieldPath && showIcon && <Icon className={iconClasses} purpose="DECORATIVE" fieldPath={iconFieldPath} />}
       {children || <DefaultContent />}
     </a>
   );

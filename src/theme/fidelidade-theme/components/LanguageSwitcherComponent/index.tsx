@@ -3,8 +3,7 @@
  * import { dummyTranslations, dummyTranslationsAsObject } from './dummyData.js';
  */
 
-import styles from './language-switcher.module.css';
-import cx, { staticWithModule } from '../utils/classnames.js';
+import { cn } from '../utils/cn.js';
 import { createComponent } from '../utils/create-component.js';
 import { shouldDisplayLanguageSwitcher, getLanguageDisplayName, createTranslationsArrayAsObject } from './utils.jsx';
 import LanguageOptions from './LanguageOptions.jsx';
@@ -15,8 +14,7 @@ import { useIsInEditor } from '../hooks/useIsInEditor.js';
 import GlobeIcon from './assets/Globe.js';
 import useDocumentLang from '../hooks/useDocumentLang.js';
 import { CSSPropertiesMap } from '../types/components.js';
-
-const swm = staticWithModule(styles);
+import '../styles/tailwind.css';
 
 // Functions to generate CSS variables
 
@@ -85,33 +83,52 @@ const LanguageSwitcherIsland = (props: LanguageSwitcherProps) => {
 
   const cssVarsMap = { ...generateColorCssVars({ textColor, menuBackgroundColor }) };
 
-  const overlayClasses = cx(swm('hs-fidelidade-language-switcher__overlay'), { [styles['hs-fidelidade-language-switcher__overlay--open']]: isOpen });
-
-  const sidePanelClasses = cx(swm('hs-fidelidade-language-switcher__side-panel'), { [styles['hs-fidelidade-language-switcher__side-panel--open']]: isOpen });
-
   return (
-    <LanguageSwitcherNav style={cssVarsMap} onClick={handleContainerClick} className={swm('hs-fidelidade-language-switcher')}>
+    <LanguageSwitcherNav style={cssVarsMap} onClick={handleContainerClick} className="relative inline-block">
       <LanguageSwitcherButton
         role="button"
         aria-expanded={isOpen}
         aria-label={currentPageLanguageDisplayName}
         onClick={handleLanguageSwitcherClick}
-        className={swm('hs-fidelidade-language-switcher__button')}
+        className={cn(
+          'flex cursor-pointer items-center gap-hs-8 bg-transparent py-hs-8 px-hs-12 text-hs-h5 text-[var(--hsFidelidade--languageSwitcher__textColor)]',
+          '[&_svg]:h-5 [&_svg_path]:fill-current',
+        )}
       >
         {langSwitcherIcon}
         <span className="hs-fidelidade-language-switcher__current-language">{currentPageLanguageDisplayName}</span>
       </LanguageSwitcherButton>
-      {isOpen && <Overlay onClick={closeSidePanel} className={overlayClasses} />}
+      {isOpen && (
+        <Overlay
+          onClick={closeSidePanel}
+          className="fixed inset-0 z-[999] h-full w-full bg-black/30 opacity-100 transition-[opacity,visibility] duration-300 ease-in-out visible"
+        />
+      )}
       {!isInEditor && (
-        <SidePanel className={sidePanelClasses}>
-          <PanelHeader className={swm('hs-fidelidade-language-switcher__side-panel-header')}>
-            <PanelTitle className={swm('hs-fidelidade-language-switcher__side-panel-title')}>{languageSwitcherSelectText}</PanelTitle>
-            <CloseButton onClick={closeSidePanel} aria-label="Close language selector" className={swm('hs-fidelidade-language-switcher__side-panel-close-button')}>
+        <SidePanel
+          className={cn(
+            'fixed right-0 top-0 z-[1000] h-screen w-[min(100%,400px)] translate-x-full overflow-y-auto bg-[var(--hsFidelidade--languageSwitcher__backgroundColor)] shadow-[-4px_0_12px_rgba(0,0,0,0.1)] transition-transform duration-300 ease-in-out',
+            isOpen && 'translate-x-0',
+          )}
+        >
+          <PanelHeader
+            className={cn(
+              'sticky top-0 z-[1] flex items-center justify-between border-b border-[var(--hsFidelidade--languageSwitcher__textColor)] bg-[var(--hsFidelidade--languageSwitcher__backgroundColor)] py-hs-24 px-hs-24',
+            )}
+          >
+            <PanelTitle className="m-0 font-semibold text-[length:var(--hsFidelidade--heading--h4__fontSize,24px)] text-[var(--hsFidelidade--languageSwitcher__textColor)]">
+              {languageSwitcherSelectText}
+            </PanelTitle>
+            <CloseButton
+              onClick={closeSidePanel}
+              aria-label="Close language selector"
+              className="cursor-pointer border-0 bg-transparent p-hs-8 text-[var(--hsFidelidade--languageSwitcher__textColor)]"
+            >
               ✕
             </CloseButton>
           </PanelHeader>
 
-          <PanelContent className={swm('hs-fidelidade-language-switcher__side-panel-options-container')}>
+          <PanelContent className="p-hs-24">
             <LanguageOptions
               translations={translations}
               menuBackgroundColorHover={menuBackgroundColorHover}

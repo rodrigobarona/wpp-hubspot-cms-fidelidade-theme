@@ -3,16 +3,14 @@ import { AlignmentFieldType, TextFieldType } from '@hubspot/cms-components/field
 import { StandardSizeType } from '../../types/fields.js';
 import { getLinkFieldHref, getLinkFieldRel, getLinkFieldTarget } from '../../utils/content-fields.js';
 import { getAlignmentFieldCss } from '../../utils/style-fields.js';
-import styles from './button.module.css';
 import { Button } from '../../ButtonComponent/index.js';
 import buttonIconSvg from './assets/button.svg';
 import { ButtonContentType } from '../../fieldLibrary/ButtonContent/types.js';
 import { ButtonStyleFieldLibraryType } from '../../fieldLibrary/ButtonStyle/types.js';
-import cx, { staticWithModule } from '../../utils/classnames.js';
+import { cn } from '../../utils/cn.js';
 import { createComponent } from '../../utils/create-component.js';
 import { CSSPropertiesMap } from '../../types/components.js';
-
-const swm = staticWithModule(styles);
+import '../../styles/tailwind.css';
 
 // Types
 enum LinkType {
@@ -108,11 +106,16 @@ export const Component = (props: ButtonProps) => {
     ...generateAlignmentCssVars(alignment),
   };
 
-  const layoutClass = renderedWithGrids ? 'hs-fidelidade-button-wrapper--grids' : 'hs-fidelidade-button-wrapper--bootstrap';
-
   return (
-    <ButtonWrapper className={cx(swm('hs-fidelidade-button-wrapper'), styles[layoutClass])} style={cssVarsMap}>
-      <ButtonContainer className={swm('hs-fidelidade-button-container')}>
+    <ButtonWrapper className={cn(!renderedWithGrids && '@container')} style={cssVarsMap}>
+      <ButtonContainer
+        className={cn(
+          'flex justify-[var(--hsFidelidade--buttons__alignment,flex-start)] gap-[var(--hsFidelidade--buttons__gap)]',
+          renderedWithGrids
+            ? 'flex-row items-center max-md:flex-col max-md:items-[var(--hsFidelidade--buttons__alignment,flex-start)]'
+            : 'flex-col items-[var(--hsFidelidade--buttons__alignment,flex-start)] @[401px]:flex-row @[401px]:items-center',
+        )}
+      >
         {groupButtons.map((button, index) => (
           <Button
             key={index}

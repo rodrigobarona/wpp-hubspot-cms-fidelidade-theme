@@ -7,19 +7,17 @@ import { getAlignmentFieldCss } from '../../utils/style-fields.js';
 import { getLinkFieldHref, getLinkFieldRel, getLinkFieldTarget } from '../../utils/content-fields.js';
 import { Card } from '../../CardComponent/index.js';
 import HeadingComponent from '../../HeadingComponent/index.js';
-import styles from './card.module.css';
 import { RichTextContentFieldLibraryType } from '../../fieldLibrary/RichTextContent/types.js';
 import { Button } from '../../ButtonComponent/index.js';
 import { ButtonContentType } from '../../fieldLibrary/ButtonContent/types.js';
 import { HeadingStyleFieldLibraryType } from '../../fieldLibrary/HeadingStyle/types.js';
 import { HeadingAndTextFieldLibraryType } from '../../fieldLibrary/HeadingAndText/types.js';
 import { CardStyleFieldLibraryType } from '../../fieldLibrary/CardStyle/types.js';
-import cx, { staticWithModule } from '../../utils/classnames.js';
+import { cn } from '../../utils/cn.js';
 import { createComponent } from '../../utils/create-component.js';
 import { CSSPropertiesMap } from '../../types/components.js';
 import { getDataHSToken } from '../../utils/inline-editing.js';
-
-const swm = staticWithModule(styles);
+import '../../styles/tailwind.css';
 
 // Types
 
@@ -161,10 +159,17 @@ export const Component = (props: CardProps) => {
     ...generateAlignmentCssVars(alignment),
   };
 
-  const layoutClass = renderedWithGrids ? 'hs-fidelidade-card-container--grids' : 'hs-fidelidade-card-container--bootstrap';
+  const isRowLayout = cardOrientation === 'row';
 
   return (
-    <CardContainer className={cx(swm('hs-fidelidade-card-container'), styles[layoutClass])} style={cssVarsMap}>
+    <CardContainer
+      className={cn(
+        'grid justify-center gap-hs-24 [grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))]',
+        !renderedWithGrids && '@container @[600px]:[grid-template-columns:repeat(auto-fit,minmax(250px,1fr))]',
+        renderedWithGrids && 'min-[600px]:[grid-template-columns:repeat(auto-fit,minmax(250px,1fr))]',
+      )}
+      style={cssVarsMap}
+    >
       {groupCards.map((card, index) => {
         const {
           groupButton: {
@@ -182,25 +187,48 @@ export const Component = (props: CardProps) => {
         const hasValidIconName = card?.groupIcon?.icon?.name;
         const isIconVisible = isIcon && hasValidIconName;
 
-        const cardClasses = cx('hs-fidelidade-card-container__card', styles[`hs-fidelidade-card-container__card--${cardOrientation}`], {
-          [styles['hs-fidelidade-card-container__card--no-button']]: !showButton,
-        });
+        const cardClasses = cn(
+          'hs-fidelidade-card-container__card',
+          isRowLayout && 'hs-fidelidade-card-container__card--row',
+          !showButton && 'hs-fidelidade-card-container__card--no-button',
+        );
 
-        const imageWrapperClasses = cx(swm('hs-fidelidade-card-container__image-wrapper'), {
-          [styles['hs-fidelidade-card-container__image-wrapper--use-background']]: cardImageUsesBackground,
-        });
+        const imageWrapperClasses = cn(
+          'mb-hs-24 flex h-auto max-w-full overflow-hidden self-[var(--hsFidelidade--card__alignment)] justify-[var(--hsFidelidade--card__alignment)]',
+          '[&_img]:h-auto [&_img]:max-w-[min(250px,100%)] [&_img]:min-w-20 [&_img]:object-contain [&_img]:object-center',
+          isRowLayout &&
+            'min-[1000px]:mb-0 min-[1000px]:max-w-[40%] min-[1000px]:flex-[0_0_auto] min-[1000px]:justify-center min-[1000px]:self-center min-[1000px]:me-hs-24',
+          cardImageUsesBackground && 'rounded-hs-lg bg-[var(--hsFidelidade--cardIcon__backgroundColor)]',
+        );
+
+        const iconWrapperClasses = cn(
+          'mb-hs-24 flex h-[72px] w-[72px] items-center self-[var(--hsFidelidade--card__alignment)] justify-[var(--hsFidelidade--card__alignment)]',
+          isRowLayout &&
+            'min-[1000px]:mb-0 min-[1000px]:justify-center min-[1000px]:self-center min-[1000px]:me-hs-24',
+        );
+
+        const iconClasses = cn(
+          'h-[72px] w-[72px] p-hs-16',
+          'rounded-[var(--hsFidelidade--cardIcon__borderRadius)] bg-[var(--hsFidelidade--cardIcon__backgroundColor)] fill-[var(--hsFidelidade--cardIcon__fillColor)]',
+        );
+
+        const contentClasses = cn(
+          'flex flex-col self-[var(--hsFidelidade--card__alignment)] last:mb-0',
+          isRowLayout && 'min-[1000px]:flex-1 min-[1000px]:self-center',
+        );
+
+        const bodyClasses = cn('text-[var(--hsFidelidade--card__textAlignment)]', !showButton && '[&_*:last-child]:mb-0');
 
         return (
           <Card additionalClassArray={[cardClasses]} key={index} cardStyleVariant={cardStyleVariant} cardOrientation={cardOrientation}>
             {isIconVisible && (
-              <IconWrapper className={swm('hs-fidelidade-card-container__icon-wrapper')}>
-                <Icon className={swm('hs-fidelidade-card-container__icon')} purpose="DECORATIVE" fieldPath={`groupCards[${index}].groupIcon.icon`} />
+              <IconWrapper className={iconWrapperClasses}>
+                <Icon className={iconClasses} purpose="DECORATIVE" fieldPath={`groupCards[${index}].groupIcon.icon`} />
               </IconWrapper>
             )}
             {isImageVisible && (
-              <ImageWrapper className={cx(imageWrapperClasses)}>
+              <ImageWrapper className={imageWrapperClasses}>
                 <Image
-                  className={swm('hs-fidelidade-card-container__image')}
                   src={card.groupImage.image.src}
                   alt={card.groupImage.image.alt}
                   width={card.groupImage.image.width}
@@ -210,7 +238,7 @@ export const Component = (props: CardProps) => {
                 />
               </ImageWrapper>
             )}
-            <CardContent className={swm('hs-fidelidade-card-container__content')}>
+            <CardContent className={contentClasses}>
               {card.groupContent.headingAndTextHeading && (
                 <HeadingComponent
                   headingLevel={card.groupContent.headingAndTextHeadingLevel}
@@ -224,11 +252,11 @@ export const Component = (props: CardProps) => {
               )}
               <RichText
                 fieldPath={`groupCards[${index}].groupContent.richTextContentHTML`}
-                className={swm('hs-fidelidade-card-container__body')}
+                className={bodyClasses}
                 data-hs-token={getDataHSToken(moduleName, `groupCards[${index}].groupContent.richTextContentHTML`)}
               />
               {showButton && (
-                <ButtonWrapper className={swm('hs-fidelidade-card-container__button-wrapper')}>
+                <ButtonWrapper className="self-[var(--hsFidelidade--card__alignment)]">
                   <Button
                     buttonSize={buttonStyleSize}
                     buttonStyle={buttonStyleVariant}

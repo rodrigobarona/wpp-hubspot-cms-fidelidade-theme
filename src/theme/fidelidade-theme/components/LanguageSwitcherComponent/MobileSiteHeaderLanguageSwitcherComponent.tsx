@@ -1,6 +1,5 @@
 // For testing purposes / local development swap out translations with dummyTranslations
-import styles from './mobile-site-header-language-switcher.module.css';
-import cx, { staticWithModule } from '../utils/classnames.js';
+import { cn } from '../utils/cn.js';
 import { createComponent } from '../utils/create-component.js';
 import { useState, useRef, useMemo } from 'react';
 import { getLanguageDisplayName, shouldDisplayLanguageSwitcher, createTranslationsArrayAsObject } from './utils.js';
@@ -10,8 +9,7 @@ import { useLanguageVariants, Icon } from '@hubspot/cms-components';
 import GlobeIcon from './assets/Globe.js';
 import { useDocumentLang } from '../hooks/useDocumentLang.js';
 import { CSSPropertiesMap } from '../types/components.js';
-
-const swm = staticWithModule(styles);
+import '../styles/tailwind.css';
 
 // Functions to generate CSS variables
 
@@ -72,35 +70,47 @@ const MobileSiteHeaderLanguageSwitcher = (props: LanguageSwitcherProps) => {
     setIsOpen(!isOpen);
   };
 
-  const overlayClassNames = cx(swm('hs-fidelidade-site-header__language-switcher-overlay'), {
-    [styles['hs-fidelidade-site-header__language-switcher-overlay--open']]: isOpen,
-  });
-
-  const languageSwitcherContainerClassNames = cx(swm('hs-fidelidade-site-header__language-switcher-container'), {
-    [styles['hs-fidelidade-site-header__language-switcher-container--open']]: isOpen,
-  });
-
   const cssVarsMap = { ...generateColorCssVars({ menuBackgroundColor, menuBackgroundColorHover, textColor, textColorHover }) };
 
   return (
     <>
-      {isOpen && <Overlay onClick={() => setIsOpen(false)} className={overlayClassNames} />}
-      <MobileLanguageSwitcherContainer className={languageSwitcherContainerClassNames} style={cssVarsMap}>
+      {isOpen && (
+        <Overlay
+          onClick={() => setIsOpen(false)}
+          className="fixed left-0 top-0 z-[1025] h-full w-full bg-black/50 opacity-100 transition-[opacity,visibility] duration-300 ease-in-out visible"
+        />
+      )}
+      <MobileLanguageSwitcherContainer
+        className={cn(
+          'absolute bottom-0 left-0 right-0 z-[1030] flex h-full max-h-[75vh] w-full translate-y-[calc(100%-56px)] flex-col border-t border-[var(--hsFidelidade--languageSwitcher__hover--backgroundColor)] bg-[var(--hsFidelidade--languageSwitcher__backgroundColor)] transition-transform duration-300 ease-in-out',
+          isOpen && 'translate-y-0',
+        )}
+        style={cssVarsMap}
+      >
         <LanguageSwitcherButton
           ref={buttonRef}
           onClick={toggleLanguageOptions}
           aria-expanded={isOpen}
           aria-controls="language-options"
-          className={swm('hs-fidelidade-site-header__language-switcher-button')}
+          className={cn(
+            'flex h-auto w-full flex-shrink-0 cursor-pointer items-center justify-between border-0 bg-transparent py-hs-16 px-hs-40 text-left text-hs-h5 font-semibold text-[var(--hsFidelidade--languageSwitcher__textColor)]',
+          )}
         >
-          <LanguageButtonContent className={swm('hs-fidelidade-site-header__language-switcher-button-content')}>
+          <LanguageButtonContent className="flex items-center gap-hs-12 [&_svg]:h-5 [&_svg_path]:fill-current">
             {langSwitcherIcon}
             <span className="hs-fidelidade-site-header__language-switcher-current-language">{currentPageLanguageDisplayName}</span>
           </LanguageButtonContent>
         </LanguageSwitcherButton>
-        <LanguageOptionsContainer className={swm('hs-fidelidade-site-header__language-switcher-options-container')}>
-          <LanguageLabel className={swm('hs-fidelidade-site-header__language-switcher-select-language-label')}>{languageSwitcherSelectText}</LanguageLabel>
-          <OptionsScrollWrapper className={swm('hs-fidelidade-site-header__language-switcher-options-scroll-wrapper')}>
+        <LanguageOptionsContainer
+          className={cn(
+            'flex flex-1 flex-col overflow-hidden bg-[var(--hsFidelidade--languageSwitcher__backgroundColor)] py-hs-16 px-hs-40 transition-[opacity,visibility] duration-300 ease-in-out',
+            isOpen ? 'visible opacity-100' : 'invisible opacity-0',
+          )}
+        >
+          <LanguageLabel className="mb-hs-12 flex-shrink-0 font-semibold text-hs-h6 text-[var(--hsFidelidade--languageSwitcher__textColor)]">
+            {languageSwitcherSelectText}
+          </LanguageLabel>
+          <OptionsScrollWrapper className="min-h-0 flex-1 overflow-y-auto">
             <LanguageOptions
               translations={translations}
               menuBackgroundColorHover={menuBackgroundColorHover}

@@ -4,17 +4,15 @@ import { BooleanFieldType, IconFieldType, NumberFieldType, TextFieldType } from 
 import { SectionVariantType } from '../../types/fields.js';
 import HeadingComponent from '../../HeadingComponent/index.js';
 import featureListIconSvg from './assets/list.svg';
-import styles from './feature-list.module.css';
 import { SectionStyleFieldLibraryType } from '../../fieldLibrary/SectionStyle/types.js';
 import { HeadingStyleFieldLibraryType } from '../../fieldLibrary/HeadingStyle/types.js';
 import { HeadingAndTextFieldLibraryType } from '../../fieldLibrary/HeadingAndText/types.js';
 import { sectionColorsMap } from '../../utils/section-color-map.js';
-import cx, { staticWithModule } from '../../utils/classnames.js';
+import { cn } from '../../utils/cn.js';
 import { createComponent } from '../../utils/create-component.js';
 import { CSSPropertiesMap } from '../../types/components.js';
 import { getDataHSToken } from '../../utils/inline-editing.js';
-
-const swm = staticWithModule(styles);
+import '../../styles/tailwind.css';
 
 // Types
 
@@ -69,18 +67,46 @@ export const Component = (props: FeatureListProps) => {
     ...generateColorCssVars(sectionStyleVariant),
   };
 
-  const featureListClasses = cx(swm('hs-fidelidade-feature-list'), {
-    [styles[`hs-fidelidade-feature-list--${columns}-columns`]]: columns,
-  });
+  const multiColumn = columns >= 2;
+  const threeColumns = columns === 3;
+
+  const featureListClasses = cn(
+    'flex flex-col flex-wrap gap-y-hs-56',
+    multiColumn && 'min-[479px]:flex-row min-[479px]:gap-x-hs-64',
+  );
+
+  const featureClasses = cn(
+    'flex w-full items-start',
+    multiColumn &&
+      'min-[479px]:w-[calc((100%-var(--hsFidelidade--spacing--64,64px))/2)]',
+    threeColumns && 'min-[768px]:w-[calc((100%-(var(--hsFidelidade--spacing--64,64px)*2))/3)]',
+  );
 
   return (
     <FeatureList className={featureListClasses} style={cssVarsMap}>
       {groupFeatures.map((feature, index) => (
-        <Feature className={swm('hs-fidelidade-feature-list__feature')} key={index}>
+        <Feature className={featureClasses} key={index}>
           {feature?.groupIcon?.showIcon && feature?.groupIcon?.icon?.name && (
-            <Icon className={swm('hs-fidelidade-feature-list__icon')} fieldPath={`groupFeatures[${index}].groupIcon.icon`} purpose="DECORATIVE" />
+            <Icon
+              className={cn(
+                'h-[var(--hsFidelidade--icon--medium__size,24px)] w-[var(--hsFidelidade--icon--medium__size,24px)]',
+                'shrink-0 fill-[var(--hsFidelidade--featureList__accentColor)] me-hs-12',
+              )}
+              fieldPath={`groupFeatures[${index}].groupIcon.icon`}
+              purpose="DECORATIVE"
+            />
           )}
-          <ContentContainer className={swm('hs-fidelidade-feature-list__content-container')}>
+          <ContentContainer
+            className={cn(
+              '[&_h1]:text-[color:var(--hsFidelidade--featureList__textColor)] [&_h2]:text-[color:var(--hsFidelidade--featureList__textColor)]',
+              '[&_h3]:text-[color:var(--hsFidelidade--featureList__textColor)] [&_h4]:text-[color:var(--hsFidelidade--featureList__textColor)]',
+              '[&_h5]:text-[color:var(--hsFidelidade--featureList__textColor)] [&_h6]:text-[color:var(--hsFidelidade--featureList__textColor)]',
+              '[&_h1]:my-[var(--hsFidelidade--text--extraSmall__margin,0_12px)] [&_h2]:my-[var(--hsFidelidade--text--extraSmall__margin,0_12px)]',
+              '[&_h3]:my-[var(--hsFidelidade--text--extraSmall__margin,0_12px)] [&_h4]:my-[var(--hsFidelidade--text--extraSmall__margin,0_12px)]',
+              '[&_h5]:my-[var(--hsFidelidade--text--extraSmall__margin,0_12px)] [&_h6]:my-[var(--hsFidelidade--text--extraSmall__margin,0_12px)]',
+              '[&_p]:text-[color:var(--hsFidelidade--featureList__textColor)]',
+            )}
+          >
             {feature.groupFeatureContent.headingAndTextHeading && (
               <HeadingComponent
                 additionalClassArray={['hs-fidelidade-feature-list__title']}
@@ -93,7 +119,7 @@ export const Component = (props: FeatureListProps) => {
             )}
             {feature.groupFeatureContent.featureDescription && (
               <FeatureParagraph
-                className={swm('hs-fidelidade-feature-list__body')}
+                className="text-hs-body-sm mb-0"
                 data-hs-token={getDataHSToken(moduleName, `groupFeatures[${index}].groupFeatureContent.featureDescription`)}
               >
                 {feature.groupFeatureContent.featureDescription}

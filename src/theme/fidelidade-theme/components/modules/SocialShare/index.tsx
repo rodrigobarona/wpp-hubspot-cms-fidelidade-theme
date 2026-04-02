@@ -5,12 +5,10 @@ import { TextFieldType, AlignmentFieldType } from '@hubspot/cms-components/field
 import { StandardSizeType, ButtonStyleType } from '../../types/fields.js';
 import { getAlignmentFieldCss } from '../../utils/style-fields.js';
 import { ButtonStyleFieldLibraryType } from '../../fieldLibrary/ButtonStyle/types.js';
-import styles from './social-share.module.css';
-import { staticWithModule } from '../../utils/classnames.js';
+import { cn } from '../../utils/cn.js';
 import { createComponent } from '../../utils/create-component.js';
 import { CSSPropertiesMap } from '../../types/components.js';
-
-const swm = staticWithModule(styles);
+import '../../styles/tailwind.css';
 
 // Types
 
@@ -172,6 +170,18 @@ function generateAlignmentCssVars(alignmentField: AlignmentFieldType['default'])
 const SocialShareContainer = createComponent('div');
 const SocialLink = createComponent('a');
 
+const socialShareLinkClassName = cn(
+  'flex items-center justify-center p-[var(--hsFidelidade--socialShareIcon__padding)]',
+  'border border-[length:var(--hsFidelidade--socialShareIcon__borderWidth)] border-[color:var(--hsFidelidade--socialShareIcon__borderColor)]',
+  'rounded-[var(--hsFidelidade--socialShareIcon__shape)] bg-[var(--hsFidelidade--socialShareIcon__backgroundColor)]',
+  '[&_svg]:fill-[var(--hsFidelidade--socialShareIcon__color)]',
+  'hover:border-[color:var(--hsFidelidade--socialShareIcon__hover--borderColor)] hover:border-[length:var(--hsFidelidade--socialShareIcon__hover--borderWidth)]',
+  'hover:bg-[var(--hsFidelidade--socialShareIcon__hover--backgroundColor)] hover:[&_svg]:fill-[var(--hsFidelidade--socialShareIcon__hover--color)]',
+  'active:border-[color:var(--hsFidelidade--socialShareIcon__active--borderColor)] active:border-[length:var(--hsFidelidade--socialShareIcon__active--borderWidth)]',
+  'active:bg-[var(--hsFidelidade--socialShareIcon__active--backgroundColor)] active:[&_svg]:fill-[var(--hsFidelidade--socialShareIcon__active--color)]',
+  'focus:outline focus:outline-2 focus:outline-[#53acff] focus:outline-offset-2',
+);
+
 function getPlatformMetaData(socialLink: string, defaultText: DefaultTextProps) {
   const platformMetaData = {
     twitter: {
@@ -225,19 +235,29 @@ export const Component = (props: SocialShareProps) => {
   }
 
   return (
-    <SocialShareContainer className={swm('hs-fidelidade-social-share')} style={cssVarsMap}>
+    <SocialShareContainer
+      className={cn(
+        'flex flex-wrap items-center justify-[var(--hsFidelidade--socialShare__justifyContent)]',
+        'gap-[var(--hsFidelidade--socialShareIcon__gap)]',
+      )}
+      style={cssVarsMap}
+    >
       {platforms.map(platform => {
         const platformMetaData = getPlatformMetaData(platform, groupDefaultText);
         let iconFieldPath = `groupDefaultIcons.${platformMetaData.name}`;
 
         return (
           <SocialLink
-            className={swm('hs-fidelidade-social-share__link')}
+            className={socialShareLinkClassName}
             key={platform}
             href={`${platformMetaData.base_url}${encodeURIComponent(currentUrl)}`}
             aria-label={platformMetaData.aria_label}
           >
-            <Icon className={swm('hs-fidelidade-social-share__icon')} purpose="DECORATIVE" fieldPath={iconFieldPath} />
+            <Icon
+              className="h-[var(--hsFidelidade--socialShareIcon__size)] w-[var(--hsFidelidade--socialShareIcon__size)]"
+              purpose="DECORATIVE"
+              fieldPath={iconFieldPath}
+            />
           </SocialLink>
         );
       })}

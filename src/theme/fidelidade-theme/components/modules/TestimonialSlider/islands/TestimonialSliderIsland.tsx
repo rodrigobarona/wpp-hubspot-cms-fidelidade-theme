@@ -1,7 +1,7 @@
 import { Splide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
-import styles from '../testimonial-slider.module.css';
-import cx, { staticWithModule } from '../../../utils/classnames.js';
+import '../../../styles/tailwind.css';
+import { cn } from '../../../utils/cn.js';
 import { createComponent } from '../../../utils/create-component.js';
 import { TestimonialLinkProps, TestimonialMetaProps, TestimonialProps, TestimonialSliderProps } from '../types.js';
 import { CardVariantType } from '../../../types/fields.js';
@@ -9,8 +9,6 @@ import { getLinkFieldHref, getLinkFieldRel, getLinkFieldTarget } from '../../../
 import { useEffect, useId, useState } from 'react';
 import { getCardVariantClassName } from '../../../utils/card-variants.js';
 import { CSSPropertiesMap } from '../../../types/components.js';
-
-const swm = staticWithModule(styles);
 
 // Checks if an image path corresponds to one of the default images used on the testimonial slider module in one of our sections/templates
 
@@ -44,7 +42,7 @@ const NavigationArrow = (props: NavigationArrowProps) => {
       height="39"
       viewBox="0 0 24 39"
       fill="none"
-      className={swm('hs-fidelidade-testimonial-slider__navigation-icon')}
+      className="hs-fidelidade-testimonial-slider__navigation-icon !h-[38px] !w-6 !fill-[var(--hsFidelidade--cardIcon__fillColor,#000)]"
     >
       {altText && (
         <title className="hs-fidelidade-testimonial-slider__navigation-icon-title" id={uniqueInstanceId}>
@@ -66,10 +64,20 @@ const NavigationButton = createComponent('button');
 const Navigation = ({ previousAltText, nextAltText }: NavigationProps) => {
   return (
     <div className="splide__arrows hs-fidelidade-testimonial-slider__navigation">
-      <NavigationButton className={cx('splide__arrow', 'splide__arrow--prev', swm('hs-fidelidade-testimonial-slider__prev'))}>
+      <NavigationButton
+        className={cn(
+          'splide__arrow splide__arrow--prev hs-fidelidade-testimonial-slider__prev',
+          '!bg-transparent [fill:var(--hsFidelidade--cardIcon__fillColor)]',
+        )}
+      >
         <NavigationArrow altText={previousAltText} />
       </NavigationButton>
-      <NavigationButton className={cx('splide__arrow', 'splide__arrow--next', swm('hs-fidelidade-testimonial-slider__next'))}>
+      <NavigationButton
+        className={cn(
+          'splide__arrow splide__arrow--next hs-fidelidade-testimonial-slider__next',
+          '!bg-transparent [fill:var(--hsFidelidade--cardIcon__fillColor)]',
+        )}
+      >
         <NavigationArrow altText={nextAltText} />
       </NavigationButton>
     </div>
@@ -88,7 +96,7 @@ const LinkArrow = () => {
       viewBox="0 0 8 15"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={swm('hs-fidelidade-testimonial-slider__link-icon')}
+      className="hs-fidelidade-testimonial-slider__link-icon [fill:var(--hsFidelidade--links__fontColor)]"
     >
       <path d="M7.70625 6.79414C8.09688 7.18477 8.09688 7.81914 7.70625 8.20977L1.70625 14.2098C1.31563 14.6004 0.681251 14.6004 0.290626 14.2098C-0.0999985 13.8191 -0.0999985 13.1848 0.290626 12.7941L5.58438 7.50039L0.293751 2.20664C-0.0968735 1.81602 -0.0968735 1.18164 0.293751 0.791016C0.684376 0.400391 1.31875 0.400391 1.70938 0.791016L7.70938 6.79102L7.70625 6.79414Z" />
     </LinkArrowImage>
@@ -106,7 +114,12 @@ const TestimonialLink = (props: TestimonialLinkProps) => {
   return (
     <>
       {linkText && (
-        <Link className={swm('hs-fidelidade-testimonial-slider__link')} href={linkHref} rel={linkRel} target={linkTarget}>
+        <Link
+          className="hs-fidelidade-testimonial-slider__link flex items-center gap-2 font-hs-body-sm [justify-content:var(--hsFidelidade--testimonial__alignment)]"
+          href={linkHref}
+          rel={linkRel}
+          target={linkTarget}
+        >
           {linkText} <LinkArrow />
         </Link>
       )}
@@ -130,31 +143,36 @@ const TestimonialMeta = (props: TestimonialMetaProps) => {
 
   const isDefaultAuthorImage = authorImage.src && isDefaultTestimonialImage(authorImage.src);
 
-  const authorImageClasses = cx(swm('hs-fidelidade-testimonial-slider__author-image'), {
-    [styles['hs-fidelidade-testimonial-slider__author-image--use-background']]: isDefaultAuthorImage,
-  });
+  const authorImageClasses = cn(
+    'hs-fidelidade-testimonial-slider__author-image h-full w-full object-cover object-center',
+    isDefaultAuthorImage && 'hs-fidelidade-testimonial-slider__author-image--use-background bg-[var(--hsFidelidade--color--accent--3)]',
+  );
 
   return (
     <>
       {(hasAuthorElement || linkText) && (
-        <Footer className={swm('hs-fidelidade-testimonial-slider__footer')}>
+        <Footer className="hs-fidelidade-testimonial-slider__footer my-[var(--hsFidelidade--text--large__margin,0_32px)]">
           {hasAuthorElement && (
-            <AuthorContainer className={swm('hs-fidelidade-testimonial-slider__author-container')}>
+            <AuthorContainer className="hs-fidelidade-testimonial-slider__author-container mb-hs-24 flex flex-row items-center gap-[var(--hsFidelidade--gap--large,20px)] [justify-content:var(--hsFidelidade--testimonial__alignment)]">
               {authorImage.src && (
-                <AuthorImageContainer className={swm('hs-fidelidade-testimonial-slider__author-image-container')}>
+                <AuthorImageContainer className="hs-fidelidade-testimonial-slider__author-image-container flex aspect-square h-20 flex-[0_0_80px] overflow-hidden rounded-full">
                   <AuthorImage
                     data-splide-lazy={authorImage.src}
                     alt={authorImage.alt}
                     width={authorImage.width}
                     height={authorImage.height}
-                    className={cx(authorImageClasses)}
+                    className={authorImageClasses}
                   />
                 </AuthorImageContainer>
               )}
               {(authorName || authorTitle) && (
                 <div>
-                  {authorName && <AuthorName className={swm('hs-fidelidade-testimonial-slider__author-name')}>{authorName}</AuthorName>}
-                  {authorTitle && <AuthorTitle className={swm('hs-fidelidade-testimonial-slider__author-title')}>{authorTitle}</AuthorTitle>}
+                  {authorName && (
+                    <AuthorName className="hs-fidelidade-testimonial-slider__author-name my-[var(--hsFidelidade--text--extraSmall__margin,0_12px)] block font-hs-body-lg leading-none">
+                      {authorName}
+                    </AuthorName>
+                  )}
+                  {authorTitle && <AuthorTitle className="hs-fidelidade-testimonial-slider__author-title block font-hs-body-sm">{authorTitle}</AuthorTitle>}
                 </div>
               )}
             </AuthorContainer>
@@ -191,19 +209,25 @@ const Testimonial = (props: TestimonialProps) => {
 
   const isDefaultImage = image.src && isDefaultTestimonialImage(image.src);
 
-  const testimonialImageClasses = cx(swm('hs-fidelidade-testimonial-slider__image'), {
-    [styles['hs-fidelidade-testimonial-slider__image--use-background']]: isDefaultImage,
-  });
+  const testimonialImageClasses = cn(
+    'hs-fidelidade-testimonial-slider__image h-full w-full object-cover object-center',
+    isDefaultImage && 'hs-fidelidade-testimonial-slider__image--use-background bg-[var(--hsFidelidade--color--accent--3)]',
+  );
 
   return (
-    <SlideContainer style={cssVarsMap} className={swm('hs-fidelidade-testimonial-slider__slide')}>
+    <SlideContainer
+      style={cssVarsMap}
+      className="hs-fidelidade-testimonial-slider__slide mb-hs-32 flex flex-col items-start gap-[var(--hsFidelidade--text--large__margin,0_40px)] border-l-0 py-hs-24 pl-hs-12 pr-hs-12 [overflow-wrap:anywhere] min-[1000px]:mx-hs-40 min-[1000px]:mb-hs-32 min-[1000px]:flex-row min-[1000px]:gap-hs-72 min-[1000px]:px-hs-24 min-[1000px]:py-hs-24"
+    >
       {showImage && image.src && (
-        <ImageContainer className={swm('hs-fidelidade-testimonial-slider__image-container')}>
-          <TestimonialImage className={cx(testimonialImageClasses)} data-splide-lazy={image.src} alt={image.alt} width={image.width} height={image.height} />
+        <ImageContainer className="hs-fidelidade-testimonial-slider__image-container mb-[var(--hsFidelidade--text--large__margin,0_32px)] flex h-[300px] max-w-full flex-[1_0_100%] self-center overflow-hidden rounded-[32px] min-[1000px]:mb-0 min-[1000px]:flex-[1_0_30%] min-[1000px]:self-auto [&_img]:h-full [&_img]:w-full [&_img]:object-cover [&_img]:object-center">
+          <TestimonialImage className={testimonialImageClasses} data-splide-lazy={image.src} alt={image.alt} width={image.width} height={image.height} />
         </ImageContainer>
       )}
-      <ContentContainer className={swm('hs-fidelidade-testimonial-slider__content-container')}>
-        <QuoteText className={swm('hs-fidelidade-testimonial-slider__quote-text')}>{quote}</QuoteText>
+      <ContentContainer className="hs-fidelidade-testimonial-slider__content-container flex flex-col">
+        <QuoteText className="hs-fidelidade-testimonial-slider__quote-text my-[var(--hsFidelidade--text--large__margin,0_40px)] font-hs-body-lg font-medium [text-align:var(--hsFidelidade--testimonial__textAlign)] min-[767px]:font-hs-body-xl">
+          {quote}
+        </QuoteText>
         <TestimonialMeta
           moduleName={moduleName}
           testimonialIndex={testimonialIndex}
@@ -285,10 +309,16 @@ const TestimonialSlider = (props: TestimonialSliderProps) => {
   const hasMultipleTestimonials = groupTestimonial.length > 1;
   const cardVariantClassName = getCardVariantClassName({ cardVariant: cardStyleVariant, fallbackCardVariant: 'card_variant_1' });
 
+  const splideClassName = cn(
+    'px-hs-48',
+    '[&_.splide__pagination__page]:m-[0_6px] [&_.splide__pagination__page]:h-1 [&_.splide__pagination__page]:w-12 [&_.splide__pagination__page]:rounded-[20px] [&_.splide__pagination__page]:border-none [&_.splide__pagination__page]:[background-color:var(--hsFidelidade--cardIcon__fillColor,#000)] [&_.splide__pagination__page]:opacity-30',
+    '[&_.splide__pagination__page.is-active]:opacity-100 [&_.splide__pagination__page.is-active]:[transform:none] [&_.splide__pagination__page.is-active]:[background-color:var(--hsFidelidade--cardIcon__fillColor,#000)]',
+  );
+
   return (
-    <TestimonialSliderContainer style={cssVarsMap} className={cx(swm('hs-fidelidade-testimonial-slider'), cardVariantClassName)}>
+    <TestimonialSliderContainer style={cssVarsMap} className={cn('hs-fidelidade-testimonial-slider', 'border-none py-hs-48', cardVariantClassName)}>
       <Splide
-        className={swm('hs-fidelidade-testimonial-slider__slider')}
+        className={splideClassName}
         hasTrack={false}
         options={{
           lazyLoad: true,

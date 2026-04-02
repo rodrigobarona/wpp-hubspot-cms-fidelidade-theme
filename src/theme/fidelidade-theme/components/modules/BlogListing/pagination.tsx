@@ -1,12 +1,8 @@
-import styles from './pagination.module.css';
-import cx, { staticWithModule } from '../../utils/classnames.js';
+import { cn } from '../../utils/cn.js';
 import { createComponent } from '../../utils/create-component.js';
 import Chevron from './chevron.js';
 import { usePageUrl } from '@hubspot/cms-components';
-
-const swm = staticWithModule(styles);
-
-// Types
+import '../../styles/tailwind.css';
 
 type PaginationProps = {
   currentPageNumber: number;
@@ -18,16 +14,7 @@ type PaginationProps = {
   };
 };
 
-// Helper functions
-
 export function standardizePathName(currentPathName: string) {
-  /*
-   * If the pathname is '/' return an empty string
-   * This is to avoid having a double slash in the basePagePath
-   * This only happens if the blog is setup in the root directory of the website
-   * or exists on a subdomain ex: https://blog.example.com/
-   */
-
   return currentPathName === '/' ? '' : currentPathName;
 }
 
@@ -38,20 +25,9 @@ export function buildPaginationNumbers(currentPageNumber: number, totalPageCount
   let displayPreviousEllipsis = false;
   let displayNextEllipsis = false;
 
-  /*
-   * Threshold allows us to manipulate the array above(standardizedPageNumbers)
-   * to change how many pages we want to display
-   * without needing to change other parts of the function.
-   */
-
   const threshold = Math.abs(standardizedPageNumbers[0]);
 
   if (totalPageCount <= standardizedPageNumbers.length) {
-    /*
-     * If we have less than the length of the standardizedPageNumbers array
-     * Then just display all the pages.
-     */
-
     return {
       pagesToDisplay: Array.from({ length: totalPageCount }, (_, i) => i + 1),
       displayFirstNumber,
@@ -61,12 +37,7 @@ export function buildPaginationNumbers(currentPageNumber: number, totalPageCount
     };
   }
 
-  /* ----------------- */
-  // We now know that we have more than standardizedPageNumbers.length pages
-  /* ----------------- */
-
   if (currentPageNumber <= threshold) {
-    // If current page number is less than the threshold display standardizedPageNumbers.length
     displayLastNumber = true;
     displayNextEllipsis = true;
     return {
@@ -79,7 +50,6 @@ export function buildPaginationNumbers(currentPageNumber: number, totalPageCount
   }
 
   if (currentPageNumber >= totalPageCount - threshold) {
-    // Display the last standardized pages
     displayFirstNumber = true;
     displayPreviousEllipsis = true;
     return {
@@ -91,7 +61,6 @@ export function buildPaginationNumbers(currentPageNumber: number, totalPageCount
     };
   }
 
-  // display standardized pages around the current page
   displayFirstNumber = currentPageNumber !== threshold + 1;
   displayPreviousEllipsis = currentPageNumber !== threshold + 1;
   displayNextEllipsis = currentPageNumber !== totalPageCount - threshold - 1;
@@ -105,11 +74,22 @@ export function buildPaginationNumbers(currentPageNumber: number, totalPageCount
   };
 }
 
-// Components
-
 const PaginationContainer = createComponent('nav');
 const PaginationLink = createComponent('a');
 const NavLink = createComponent('a');
+
+const paginationLinkBase = cn(
+  'hs-fidelidade-blog-listing__pagination-link relative block leading-none no-underline',
+  'text-[var(--hsFidelidade--section--lightSection--1--link__fontColor)]',
+  'hover:text-[var(--hsFidelidade--section--lightSection--1--link__hover--fontColor)]',
+  'hover:no-underline',
+);
+
+const chevronIconClass = cn(
+  'hs-fidelidade-blog-listing__pagination-icon',
+  '[&_path]:fill-[var(--hsFidelidade--section--lightSection--1--link__fontColor)]',
+  'group-hover:[&_path]:fill-[var(--hsFidelidade--section--lightSection--1--link__hover--fontColor)]',
+);
 
 type ScreenReadyOnlyProps = {
   content: string;
@@ -118,12 +98,30 @@ type ScreenReadyOnlyProps = {
 const ScreenReadyOnly = (props: ScreenReadyOnlyProps) => {
   const { content } = props;
 
-  return <span className={styles['hs-fidelidade-blog-listing__screen-ready-only']}>{content}</span>;
+  return <span className="sr-only">{content}</span>;
 };
 
 const Ellipsis = () => {
-  return <a className={cx(styles['hs-fidelidade-blog-listing__ellipsis'], styles['hs-fidelidade-blog-listing__pagination-link'])}>...</a>;
+  return <a className={cn(paginationLinkBase, 'hs-fidelidade-blog-listing__ellipsis pointer-events-none')}>...</a>;
 };
+
+function paginationLinkClass(isActive: boolean) {
+  return cn(
+    paginationLinkBase,
+    isActive &&
+      cn(
+        'hs-fidelidade-blog-listing__pagination-link--active w-11 text-center',
+        'before:absolute before:left-1/2 before:top-1/2 before:h-11 before:w-11 before:-translate-x-1/2 before:-translate-y-1/2',
+        "before:rounded-full before:border-2 before:border-solid before:content-['']",
+        'before:border-[var(--hsFidelidade--section--lightSection--1--link__fontColor)]',
+        'hover:before:border-[var(--hsFidelidade--section--lightSection--1--link__hover--fontColor)]',
+      ),
+  );
+}
+
+function navLinkClass(disabled: boolean) {
+  return cn('hs-fidelidade-blog-listing__nav-link group', disabled && 'pointer-events-none opacity-50');
+}
 
 export default function Pagination(props: PaginationProps) {
   const { currentPageNumber, totalPageCount, nextPageNumber, defaultContent } = props;
@@ -138,49 +136,35 @@ export default function Pagination(props: PaginationProps) {
 
   const { pagesToDisplay, displayFirstNumber, displayLastNumber, displayPreviousEllipsis, displayNextEllipsis } = buildPaginationNumbers(
     currentPageNumber,
-    totalPageCount
+    totalPageCount,
   );
 
-  const previousNavLinkClasses = cx(swm('hs-fidelidade-blog-listing__nav-link'), {
-    [styles['hs-fidelidade-blog-listing__nav-link--disabled']]: !enablePreviousButton,
-  });
-
-  const chevronClasses = swm('hs-fidelidade-blog-listing__pagination-icon');
-
-  const paginationLinkClasses = swm('hs-fidelidade-blog-listing__pagination-link');
-
-  const nextNavLinkClasses = cx(swm('hs-fidelidade-blog-listing__nav-link'), { [styles['hs-fidelidade-blog-listing__nav-link--disabled']]: !enableNextButton });
-
   return (
-    <PaginationContainer className={swm('hs-fidelidade-blog-listing__pagination-container')}>
-      <NavLink className={previousNavLinkClasses} href={previousPageUrl}>
-        <Chevron additionalClassArray={[chevronClasses, 'hs-fidelidade-helper--rotate-180', styles['hs-fidelidade-helper--rotate-180']]} />
+    <PaginationContainer className="hs-fidelidade-blog-listing__pagination-container flex flex-row items-center justify-center gap-hs-24">
+      <NavLink className={navLinkClass(!enablePreviousButton)} href={previousPageUrl}>
+        <Chevron additionalClassArray={[chevronIconClass, 'rotate-180']} />
         <ScreenReadyOnly content={defaultContent.previousPage} />
       </NavLink>
 
       {displayFirstNumber && (
-        <PaginationLink className={paginationLinkClasses} href={`${basePagePath}/1`}>
+        <PaginationLink className={paginationLinkBase} href={`${basePagePath}/1`}>
           1
         </PaginationLink>
       )}
       {displayPreviousEllipsis && <Ellipsis />}
       {pagesToDisplay.map(index => (
-        <PaginationLink
-          className={cx(paginationLinkClasses, { [styles['hs-fidelidade-blog-listing__pagination-link--active']]: currentPageNumber === index })}
-          key={index}
-          href={`${basePagePath}/${index}`}
-        >
+        <PaginationLink className={paginationLinkClass(currentPageNumber === index)} key={index} href={`${basePagePath}/${index}`}>
           {index}
         </PaginationLink>
       ))}
       {displayNextEllipsis && <Ellipsis />}
       {displayLastNumber && (
-        <PaginationLink className={paginationLinkClasses} href={`${basePagePath}/${totalPageCount}`}>
+        <PaginationLink className={paginationLinkBase} href={`${basePagePath}/${totalPageCount}`}>
           {totalPageCount}
         </PaginationLink>
       )}
-      <NavLink className={nextNavLinkClasses} href={nextPageUrl}>
-        <Chevron additionalClassArray={[chevronClasses]} />
+      <NavLink className={navLinkClass(!enableNextButton)} href={nextPageUrl}>
+        <Chevron additionalClassArray={[chevronIconClass]} />
         <ScreenReadyOnly content={defaultContent.nextPage} />
       </NavLink>
     </PaginationContainer>

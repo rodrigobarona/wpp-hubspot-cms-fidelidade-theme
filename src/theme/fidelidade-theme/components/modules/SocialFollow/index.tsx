@@ -6,12 +6,10 @@ import { StandardSizeType, ButtonStyleType } from '../../types/fields.js';
 import { getLinkFieldRel, getLinkFieldTarget } from '../../utils/content-fields.js';
 import { ButtonStyleFieldLibraryType } from '../../fieldLibrary/ButtonStyle/types.js';
 import { getAlignmentFieldCss } from '../../utils/style-fields.js';
-import styles from './social-follow.module.css';
-import { staticWithModule } from '../../utils/classnames.js';
+import { cn } from '../../utils/cn.js';
 import { createComponent } from '../../utils/create-component.js';
 import { CSSPropertiesMap } from '../../types/components.js';
-
-const swm = staticWithModule(styles);
+import '../../styles/tailwind.css';
 
 // Types
 
@@ -193,6 +191,33 @@ function generateButtonStyles(buttonStyleVariant: ButtonStyleType): CSSPropertie
 const SocialFollowContainer = createComponent('div');
 const SocialLink = createComponent('a');
 
+const socialFollowContainerClass = cn(
+  'hs-fidelidade-social-follow flex flex-wrap items-center justify-[var(--hsFidelidade--socialFollow__justifyContent)] gap-[var(--hsFidelidade--socialFollowIcon__gap)]',
+);
+
+const socialLinkClass = cn(
+  'hs-fidelidade-social-follow__link flex items-center justify-center border-solid',
+  'border-[length:var(--hsFidelidade--socialFollowIcon__borderWidth)]',
+  'rounded-[var(--hsFidelidade--socialFollowIcon__shape)]',
+  'border-[color:var(--hsFidelidade--socialFollowIcon__borderColor)]',
+  'bg-[var(--hsFidelidade--socialFollowIcon__backgroundColor)]',
+  'p-[var(--hsFidelidade--socialFollowIcon__padding)]',
+  '[&_svg]:fill-[var(--hsFidelidade--socialFollowIcon__color)]',
+  'hover:border-[length:var(--hsFidelidade--socialFollowIcon__hover--borderWidth)]',
+  'hover:border-[color:var(--hsFidelidade--socialFollowIcon__hover--borderColor)]',
+  'hover:bg-[var(--hsFidelidade--socialFollowIcon__hover--backgroundColor)]',
+  'hover:[&_svg]:fill-[var(--hsFidelidade--socialFollowIcon__hover--color)]',
+  'active:border-[length:var(--hsFidelidade--socialFollowIcon__active--borderWidth)]',
+  'active:border-[color:var(--hsFidelidade--socialFollowIcon__active--borderColor)]',
+  'active:bg-[var(--hsFidelidade--socialFollowIcon__active--backgroundColor)]',
+  'active:[&_svg]:fill-[var(--hsFidelidade--socialFollowIcon__active--color)]',
+  'focus:outline focus:outline-2 focus:outline-[#53acff] focus:outline-offset-2',
+);
+
+const socialIconClass = cn(
+  'hs-fidelidade-social-follow__icon h-[var(--hsFidelidade--socialFollowIcon__size)] w-[var(--hsFidelidade--socialFollowIcon__size)]',
+);
+
 function getSocialIcon(socialLink: string, defaultText: DefaultTextProps) {
   const icons = {
     'x.com': {
@@ -293,7 +318,7 @@ export const Component = (props: SocialFollowProps) => {
   };
 
   return (
-    <SocialFollowContainer className={swm('hs-fidelidade-social-follow')} style={cssVarsMap}>
+    <SocialFollowContainer className={socialFollowContainerClass} style={cssVarsMap}>
       {groupSocialLinks.map((socialLink, index) => {
         const {
           groupLink: { link },
@@ -314,14 +339,14 @@ export const Component = (props: SocialFollowProps) => {
 
         return (
           <SocialLink
-            className={swm('hs-fidelidade-social-follow__link')}
+            className={socialLinkClass}
             key={index}
             rel={getLinkFieldRel(link)}
             target={getLinkFieldTarget(link)}
             href={link.url.href}
             aria-label={socialIcon.aria_label}
           >
-            <Icon className={swm('hs-fidelidade-social-follow__icon')} purpose="DECORATIVE" fieldPath={iconFieldPath} />
+            <Icon className={socialIconClass} purpose="DECORATIVE" fieldPath={iconFieldPath} />
           </SocialLink>
         );
       })}

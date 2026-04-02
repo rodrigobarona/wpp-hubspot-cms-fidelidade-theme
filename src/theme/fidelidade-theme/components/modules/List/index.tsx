@@ -1,17 +1,15 @@
 import { IconFieldType, TextFieldType } from '@hubspot/cms-components/fields';
 import { ModuleMeta } from '../../types/modules.js';
+import '../../styles/tailwind.css';
 import listIconSvg from '../FeatureList/assets/list.svg';
 import { Icon } from '@hubspot/cms-components';
-import styles from './list.module.css';
 import { SectionVariantType } from '../../types/fields.js';
 import { SectionStyleFieldLibraryType } from '../../fieldLibrary/SectionStyle/types.js';
 import { sectionColorsMap } from '../../utils/section-color-map.js';
-import cx, { staticWithModule } from '../../utils/classnames.js';
+import { cn } from '../../utils/cn.js';
 import { createComponent } from '../../utils/create-component.js';
 import { CSSPropertiesMap } from '../../types/components.js';
 import { getDataHSToken } from '../../utils/inline-editing.js';
-
-const swm = staticWithModule(styles);
 
 // Types
 
@@ -61,16 +59,27 @@ export const Component = (props: ListProps) => {
 
   const cssColorVars = { ...generateColorCssVars(sectionStyleVariant) };
 
-  const layoutClass = renderedWithGrids ? 'hs-fidelidade-list-container--grids' : 'hs-fidelidade-list-container--bootstrap';
-
   return (
-    <ListContainer className={cx(swm('hs-fidelidade-list-container'), styles[layoutClass])} style={cssColorVars}>
+    <ListContainer
+      className={cn('pl-0', renderedWithGrids && 'mb-0')}
+      style={cssColorVars}
+    >
       {groupListItems.map((item, index) => {
         return (
-          <ListItem className={swm('hs-fidelidade-list-container__item')} key={`${index} ${item.groupListContent.listItemContent}`}>
+          <ListItem
+            className={cn(
+              'mb-hs-16 flex items-start gap-hs-8 text-[var(--hsFidelidade--list__textColor)]',
+              renderedWithGrids && 'last:mb-0',
+            )}
+            key={`${index} ${item.groupListContent.listItemContent}`}
+          >
             {listIcon.name && (
-              <IconContainer className={swm('hs-fidelidade-list-container__icon-container')}>
-                <Icon className={swm('hs-fidelidade-list-container__icon')} fieldPath="listIcon" purpose="DECORATIVE" />
+              <IconContainer className="rounded-full bg-[var(--hsFidelidade--list__accentColor)]">
+                <Icon
+                  className="block h-7 w-7 shrink-0 basis-7 p-hs-8 fill-[var(--hsFidelidade--list__sectionBackgroundColor)]"
+                  fieldPath="listIcon"
+                  purpose="DECORATIVE"
+                />
               </IconContainer>
             )}
             <ListItemText data-hs-token={getDataHSToken(moduleName, `groupListItems[${index}].groupListContent.listItemContent`)}>

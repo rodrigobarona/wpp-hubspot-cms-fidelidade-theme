@@ -1,4 +1,5 @@
 import { ModuleMeta } from '../../types/modules.js';
+import '../../styles/tailwind.css';
 import { RichText } from '@hubspot/cms-components';
 import HeadingComponent from '../../HeadingComponent/index.js';
 import { Button } from '../../ButtonComponent/index.js';
@@ -6,16 +7,13 @@ import { AlignmentFieldType } from '@hubspot/cms-components/fields';
 import { ElementPositionType, SectionVariantType } from '../../types/fields.js';
 import { getLinkFieldHref, getLinkFieldRel, getLinkFieldTarget } from '../../utils/content-fields.js';
 import { getAlignmentFieldCss } from '../../utils/style-fields.js';
-import styles from './image-and-text.module.css';
 import imageAndTextIconSvg from './assets/image.svg';
 import { sectionColorsMap } from '../../utils/section-color-map.js';
-import { staticWithModule } from '../../utils/classnames.js';
+import { cn } from '../../utils/cn.js';
 import { createComponent } from '../../utils/create-component.js';
 import { CSSPropertiesMap } from '../../types/components.js';
 import { ImageAndTextProps } from './types.js';
 import { getDataHSToken } from '../../utils/inline-editing.js';
-
-const swm = staticWithModule(styles);
 
 // Image and text component
 
@@ -45,6 +43,9 @@ function generateAlignmentCssVars(alignmentField: AlignmentFieldType['default'])
 
   return { '--hsFidelidade--imageAndText__alignItems': alignmentCss.alignItems || 'center' };
 }
+
+const imageAndTextContentTypographyClass =
+  '[&_h1]:text-[var(--hsFidelidade--imageAndText__textColor)] [&_h2]:text-[var(--hsFidelidade--imageAndText__textColor)] [&_h3]:text-[var(--hsFidelidade--imageAndText__textColor)] [&_h4]:text-[var(--hsFidelidade--imageAndText__textColor)] [&_h5]:text-[var(--hsFidelidade--imageAndText__textColor)] [&_h6]:text-[var(--hsFidelidade--imageAndText__textColor)] [&_p]:text-[var(--hsFidelidade--imageAndText__textColor)] [&_li]:text-[var(--hsFidelidade--imageAndText__textColor)] [&_span]:text-[var(--hsFidelidade--imageAndText__textColor)] [&_div]:text-[var(--hsFidelidade--imageAndText__textColor)]';
 
 // Components
 
@@ -77,11 +78,14 @@ export const Component = (props: ImageAndTextProps) => {
   };
 
   return (
-    <ImageAndText className={swm('hs-fidelidade-image-and-text')} style={cssVarsMap}>
+    <ImageAndText
+      className="flex flex-col items-stretch justify-between gap-x-hs-80 md:flex-row md:items-[var(--hsFidelidade--imageAndText__alignItems,center)]"
+      style={cssVarsMap}
+    >
       {image.src && (
-        <ImageContainer className={swm('hs-fidelidade-image-and-text__image-container')}>
+        <ImageContainer className="mb-hs-32 md:order-[var(--hsFidelidade--imageAndText__order,0)] md:mb-0 md:w-[55%]">
           <Image
-            className={swm('hs-fidelidade-image-and-text__image')}
+            className="h-auto w-full"
             src={image.src}
             alt={image.alt}
             width={image.width}
@@ -92,7 +96,7 @@ export const Component = (props: ImageAndTextProps) => {
         </ImageContainer>
       )}
       {hasContent && (
-        <ContentContainer className={swm('hs-fidelidade-image-and-text__content-container')}>
+        <ContentContainer className={cn(imageAndTextContentTypographyClass, 'md:w-[45%]')}>
           {headingAndTextHeading && (
             <HeadingComponent
               additionalClassArray={['hs-fidelidade-image-and-text__title']}

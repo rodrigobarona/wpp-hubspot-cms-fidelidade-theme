@@ -1,10 +1,8 @@
 import { LanguageVariant } from '@hubspot/cms-components';
-import styles from './language-options.module.css';
-import cx, { staticWithModule } from '../utils/classnames.js';
+import '../styles/tailwind.css';
+import { cn } from '../utils/cn.js';
 import { createComponent } from '../utils/create-component.js';
 import { CSSPropertiesMap } from '../types/components.js';
-
-const swm = staticWithModule(styles);
 
 // Types
 
@@ -67,20 +65,21 @@ export const LanguageOptions = ({
   };
 
   return (
-    <LanguageList style={cssVarsMap} role="menu" className={swm('hs-fidelidade-language-switcher__language-list')}>
+    <LanguageList style={cssVarsMap} role="menu" className="m-0 h-auto list-none p-0">
       {translations.map(translation => (
         <LanguageItem
           key={translation.languageCode}
           role="menuitem"
-          className={cx(swm('hs-fidelidade-language-switcher__language-item'), {
-            [styles['hs-fidelidade-language-switcher__language-item--active']]: translation.isActive,
-          })}
+          className={cn(
+            'm-0 rounded-none p-0 last:mb-0',
+            translation.isActive && 'bg-[var(--hsFidelidade--languageSwitcher__hover--backgroundColor,transparent)]',
+          )}
         >
           <LanguageLink
             href={translation.localizedUrl}
             lang={translation.languageCode}
             hrefLang={translation.languageCode}
-            className={swm('hs-fidelidade-language-switcher__language-link')}
+            className="flex items-center gap-hs-12 py-hs-12 px-hs-16 font-semibold [font-size:var(--hsFidelidade--languageSwitcher__fontSize,18px)] text-[var(--hsFidelidade--languageSwitcher__textColor,#1e293b)] no-underline transition-colors duration-200 ease-in-out visited:text-[var(--hsFidelidade--languageSwitcher__textColor,#1e293b)] visited:no-underline hover:bg-[var(--hsFidelidade--languageSwitcher__hover--backgroundColor,#f1f5f9)] hover:text-[var(--hsFidelidade--languageSwitcher__textColor,#1e293b)] hover:no-underline focus:text-[var(--hsFidelidade--languageSwitcher__textColor,#1e293b)] focus:no-underline active:text-[var(--hsFidelidade--languageSwitcher__textColor,#1e293b)] active:no-underline"
           >
             {translation.languageDisplayName.LOCALIZED}
           </LanguageLink>

@@ -1,7 +1,7 @@
 import { ModuleMeta } from '../../types/modules.js';
-import styles from './recent-blog-posts.module.css';
-import cx, { staticWithModule } from '../../utils/classnames.js';
+import { cn } from '../../utils/cn.js';
 import { createComponent } from '../../utils/create-component.js';
+import '../../styles/tailwind.css';
 // TODO: Re-enable when upgrading to Content Hub Pro
 // import { withUrlPath } from '@hubspot/cms-components';
 import cardIconSvg from './assets/card-icon-temp.svg';
@@ -12,8 +12,6 @@ import { HeadingLevelType } from '../../types/fields.js';
 import { CardStyleFieldLibraryType } from '../../fieldLibrary/CardStyle/types.js';
 import { HeadingStyleFieldLibraryType } from '../../fieldLibrary/HeadingStyle/types.js';
 import { PlaceholderEmptyContent } from '../../PlaceholderComponent/PlaceholderEmptyContent.js';
-
-const swm = staticWithModule(styles);
 
 // Types
 
@@ -63,11 +61,36 @@ export const Component = (props: RecentBlogPostsProps) => {
 
   const postsToUse = posts || [];
 
-  const layoutClass = renderedWithGrids ? 'hs-fidelidade-recent-blog-posts--grids' : 'hs-fidelidade-recent-blog-posts--bootstrap';
+  const rootClasses = cn(
+    'hs-fidelidade-recent-blog-posts',
+    renderedWithGrids ? 'hs-fidelidade-recent-blog-posts--grids' : 'hs-fidelidade-recent-blog-posts--bootstrap',
+    !renderedWithGrids && '@container/blog-grid',
+    !renderedWithGrids && [
+      '@768px/blog-grid:[&_.hs-fidelidade-card--blog__card-wrapper]:h-auto',
+      '@768px/blog-grid:[&_.hs-fidelidade-card--blog__card-wrapper]:w-[calc(50%-var(--hsFidelidade--spacing--32,32px))]',
+      '@768px/blog-grid:[&_.hs-fidelidade-card--blog__card-wrapper]:max-w-[calc(50%-var(--hsFidelidade--spacing--32,32px))]',
+      '@1001px/blog-grid:[&_.hs-fidelidade-card--blog__card-wrapper]:h-auto',
+      '@1001px/blog-grid:[&_.hs-fidelidade-card--blog__card-wrapper]:w-[calc(33.333%-var(--hsFidelidade--spacing--32,32px))]',
+      '@1001px/blog-grid:[&_.hs-fidelidade-card--blog__card-wrapper]:max-w-[calc(33.333%-var(--hsFidelidade--spacing--32,32px))]',
+    ],
+    renderedWithGrids && [
+      'md:[&_.hs-fidelidade-card--blog__card-wrapper]:h-auto',
+      'md:[&_.hs-fidelidade-card--blog__card-wrapper]:w-[calc(50%-var(--hsFidelidade--spacing--32,32px))]',
+      'md:[&_.hs-fidelidade-card--blog__card-wrapper]:max-w-[calc(50%-var(--hsFidelidade--spacing--32,32px))]',
+      'min-[1001px]:[&_.hs-fidelidade-card--blog__card-wrapper]:h-auto',
+      'min-[1001px]:[&_.hs-fidelidade-card--blog__card-wrapper]:w-[calc(33.333%-var(--hsFidelidade--spacing--32,32px))]',
+      'min-[1001px]:[&_.hs-fidelidade-card--blog__card-wrapper]:max-w-[calc(33.333%-var(--hsFidelidade--spacing--32,32px))]',
+    ],
+  );
+
+  const blogCardsContainerClasses = cn(
+    'hs-fidelidade-recent-blog-posts__blog-card-container flex flex-row flex-wrap items-stretch justify-center gap-hs-32 mb-hs-48',
+    renderedWithGrids && 'mb-0',
+  );
 
   return (
-    <RecentBlogPosts className={cx(swm('hs-fidelidade-recent-blog-posts'), styles[layoutClass])}>
-      <BlogCardsContainer className={swm('hs-fidelidade-recent-blog-posts__blog-card-container')}>
+    <RecentBlogPosts className={rootClasses}>
+      <BlogCardsContainer className={blogCardsContainerClasses}>
         {postsToUse.length === 0 && isInEditor ? (
           <PlaceholderEmptyContent title={placeholderTitle} description={placeholderDescription} icon={cardIconSvg} />
         ) : (
@@ -82,7 +105,7 @@ export const Component = (props: RecentBlogPostsProps) => {
               headingStyleVariant={headingStyleVariant}
               cardStyleVariant={cardStyleVariant}
               gatedContentIds={gatedContentIds.map(id => id.toString())}
-              additionalClassArray={[swm('hs-fidelidade-recent-blog-posts__blog-card')]}
+              additionalClassArray={['hs-fidelidade-recent-blog-posts__blog-card']}
             />
           ))
         )}

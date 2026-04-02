@@ -1,3 +1,4 @@
+import '../../styles/tailwind.css';
 import { ModuleMeta } from '../../types/modules.js';
 import { Island } from '@hubspot/cms-components';
 // @ts-expect-error -- ?island not typed

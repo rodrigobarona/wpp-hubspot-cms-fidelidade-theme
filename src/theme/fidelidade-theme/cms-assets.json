@@ -1,0 +1,9 @@
+{
+  "label": "Fidelidade Theme",
+  "buildConfig": {
+    "healthchecks": {
+      "enabled": true,
+      "strict": true
+    }
+  }
+}

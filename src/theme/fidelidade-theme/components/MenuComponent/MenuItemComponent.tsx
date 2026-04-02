@@ -1,10 +1,10 @@
 import { CSSProperties } from 'react';
-import styles from './menu-item.module.css';
-import cx from '../utils/classnames.js';
+import { cn } from '../utils/cn.js';
 import { createComponent } from '../utils/create-component.js';
 import ArrowComponent from './ArrowComponent.js';
 import { A11yControllerType, MenuDataType, KeyboardEventCallback, visibleMenuItemsControllerType, maxMenuDepth } from './types.js';
 import { LinkStyleType } from '../types/fields.js';
+import '../styles/tailwind.css';
 
 interface MenuItemComponentProps {
   menuData: MenuDataType;
@@ -72,6 +72,12 @@ const MenuItemLink = createComponent('a');
 const MenuItemSpan = createComponent('span');
 const MenuArrow = createComponent('span');
 const Submenu = createComponent('ul');
+
+const menuItemFlyoutClass = cn(
+  'p-0 border-white border-solid border-r-[10px] border-b-[10px] border-l-[10px]',
+  'first:rounded-tl-[10px] first:rounded-tr-[10px] first:border-t-[10px]',
+  'last:rounded-bl-[10px] last:rounded-br-[10px]',
+);
 
 export const MenuItemComponent = (props: MenuItemComponentProps) => {
   const {
@@ -154,9 +160,7 @@ export const MenuItemComponent = (props: MenuItemComponentProps) => {
   }
 
   function getMenuItemClasses() {
-    const baseClasses = cx(getMenuItemClass(), styles.menuItem, { [styles['menuItem--flyout']]: flyouts && currentLevel > 1 });
-
-    return baseClasses;
+    return cn(getMenuItemClass(), flyouts && currentLevel > 1 && menuItemFlyoutClass);
   }
 
   function getSubmenuClasses() {
@@ -164,11 +168,14 @@ export const MenuItemComponent = (props: MenuItemComponentProps) => {
     const flyoutClass = flyouts ? 'hs-fidelidade-menu__flyout-submenu' : '';
     const mobileClass = isMobileMenu ? 'hs-fidelidade-menu__flyout-submenu--mobile' : '';
 
-    const moduleClasses = cx(styles.submenu, {
-      [styles['submenu--flyout']]: flyouts,
-      [styles['submenu--flyout-depth-1']]: flyouts && currentLevel === 1,
-      [styles['submenu--flyout-depth-gt-1']]: flyouts && currentLevel > 1,
-    });
+    const moduleClasses = cn(
+      'z-[calc(var(--hsFidelidade--menu__submenu--zIndex,100)+10)] p-0',
+      flyouts && 'absolute right-[var(--hsFidelidade--flyoutSubMenu__right,auto)] bottom-[var(--hsFidelidade--flyoutSubMenu__bottom,auto)]',
+      flyouts && currentLevel === 1 && 'top-[var(--hsFidelidade--firstFlyoutMenu__top,100%)] left-[var(--hsFidelidade--firstFlyoutMenu__left,0)]',
+      flyouts &&
+        currentLevel > 1 &&
+        'top-[var(--hsFidelidade--flyoutSubMenu__top,calc(-1*var(--hsFidelidade--spacing--12,12px)))] left-[var(--hsFidelidade--flyoutSubMenu__left,calc(100%+var(--hsFidelidade--spacing--12,12px)))]',
+    );
 
     return `${baseClass} ${flyoutClass} ${mobileClass} ${moduleClasses}`;
   }
@@ -240,12 +247,14 @@ export const MenuItemComponent = (props: MenuItemComponentProps) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <MenuItemLinkContainer className={cx('hs-fidelidade-menu__menu-item-link-container', styles.menuItemLinkContainer)}>
+      <MenuItemLinkContainer
+        className={cn('hs-fidelidade-menu__menu-item-link-container flex items-center justify-between')}
+      >
         {/* If the menu item has a URL, render a link. Otherwise, render a span. */}
         {hasUrl ? (
           <MenuItemLink
             {...sharedMenuItemLinkProps}
-            className={cx(sharedMenuItemLinkProps.className, styles.menuItemLink)}
+            className={cn(sharedMenuItemLinkProps.className, 'block p-hs-8 flex-grow')}
             onClick={e => handleAnchorClick(e)}
             href={menuData.url}
             {...linkAttributes}
@@ -255,14 +264,19 @@ export const MenuItemComponent = (props: MenuItemComponentProps) => {
         ) : (
           <MenuItemSpan
             {...sharedMenuItemLinkProps}
-            className={cx(sharedMenuItemLinkProps.className, styles.menuItemLink)}
+            className={cn(sharedMenuItemLinkProps.className, 'block p-hs-8 flex-grow')}
             onClick={() => isMobileMenu && menuData.children.length > 0 && handleTriggeredMenuItem(idString)}
           >
             {menuData.label}
           </MenuItemSpan>
         )}
         {showNestedMenuIcon && (
-          <MenuArrow className={cx('hs-fidelidade-menu__arrow', styles.menuArrow)} onClick={() => handleTriggeredMenuItem(idString)}>
+          <MenuArrow
+            className={cn(
+              'hs-fidelidade-menu__arrow block h-full cursor-pointer text-hs-body-lg leading-none ms-hs-8 max-[768px]:pe-hs-16',
+            )}
+            onClick={() => handleTriggeredMenuItem(idString)}
+          >
             <ArrowComponent />
           </MenuArrow>
         )}

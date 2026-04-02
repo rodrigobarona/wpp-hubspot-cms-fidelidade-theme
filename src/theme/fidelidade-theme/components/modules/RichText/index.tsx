@@ -1,15 +1,16 @@
 import { ModuleMeta } from '../../types/modules.js';
-import styles from './rich-text.module.css';
+import '../../styles/tailwind.css';
 import { RichText } from '@hubspot/cms-components';
 import { SectionVariantType } from '../../types/fields.js';
 import richTextIconSvg from './assets/rich-text.svg';
 import { SectionStyleFieldLibraryType } from '../../fieldLibrary/SectionStyle/types.js';
 import { sectionColorsMap } from '../../utils/section-color-map.js';
 import { CSSPropertiesMap } from '../../types/components.js';
-import cx, { staticWithModule } from '../../utils/classnames.js';
+import { cn } from '../../utils/cn.js';
 import { getDataHSToken } from '../../utils/inline-editing.js';
 
-const swm = staticWithModule(styles);
+const richTextBaseClass =
+  '[&_h1]:text-[var(--hsFidelidade--richText__textColor)] [&_h2]:text-[var(--hsFidelidade--richText__textColor)] [&_h3]:text-[var(--hsFidelidade--richText__textColor)] [&_h4]:text-[var(--hsFidelidade--richText__textColor)] [&_h5]:text-[var(--hsFidelidade--richText__textColor)] [&_h6]:text-[var(--hsFidelidade--richText__textColor)] [&_p]:text-[var(--hsFidelidade--richText__textColor)] [&_li]:text-[var(--hsFidelidade--richText__textColor)] [&_span]:text-[var(--hsFidelidade--richText__textColor)] [&_div]:text-[var(--hsFidelidade--richText__textColor)] [&_a:not(.hs-fidelidade-button)]:text-[var(--hsFidelidade--richText__linkColor)] [&_a:not(.hs-fidelidade-button)]:[-webkit-text-decoration:var(--hsFidelidade--richText__textDecoration)] [&_a:not(.hs-fidelidade-button)]:[text-decoration:var(--hsFidelidade--richText__textDecoration)] [&_a:not(.hs-fidelidade-button)]:[-webkit-text-decoration-color:var(--hsFidelidade--richText__textDecorationColor)] [&_a:not(.hs-fidelidade-button)]:[text-decoration-color:var(--hsFidelidade--richText__textDecorationColor)] [&_a:not(.hs-fidelidade-button):hover]:text-[var(--hsFidelidade--richText__linkHoverColor)] [&_a:not(.hs-fidelidade-button):hover]:[-webkit-text-decoration:var(--hsFidelidade--richText__linkHoverTextDecoration)] [&_a:not(.hs-fidelidade-button):hover]:[text-decoration:var(--hsFidelidade--richText__linkHoverTextDecoration)] [&_a:not(.hs-fidelidade-button):hover]:[-webkit-text-decoration-color:var(--hsFidelidade--richText__linkHoverTextDecorationColor)] [&_a:not(.hs-fidelidade-button):hover]:[text-decoration-color:var(--hsFidelidade--richText__linkHoverTextDecorationColor)] [&_a:not(.hs-fidelidade-button):focus]:text-[var(--hsFidelidade--richText__linkHoverColor)] [&_a:not(.hs-fidelidade-button):focus]:[-webkit-text-decoration:var(--hsFidelidade--richText__linkHoverTextDecoration)] [&_a:not(.hs-fidelidade-button):focus]:[text-decoration:var(--hsFidelidade--richText__linkHoverTextDecoration)] [&_a:not(.hs-fidelidade-button):focus]:[-webkit-text-decoration-color:var(--hsFidelidade--richText__linkHoverTextDecorationColor)] [&_a:not(.hs-fidelidade-button):focus]:[text-decoration-color:var(--hsFidelidade--richText__linkHoverTextDecorationColor)]';
 
 type RichTextProps = {
   moduleName?: string;
@@ -46,12 +47,10 @@ export const Component = (props: RichTextProps) => {
 
   const cssVarsMap = { ...generateColorCssVars(sectionStyleVariant) };
 
-  const layoutClass = renderedWithGrids ? 'hs-fidelidade-rich-text--grids' : 'hs-fidelidade-rich-text--bootstrap';
-
   return (
     <RichText
       fieldPath="richTextContentHTML"
-      className={cx(swm('hs-fidelidade-rich-text'), styles[layoutClass])}
+      className={cn(richTextBaseClass, renderedWithGrids && '[&>*:last-child]:mb-0')}
       style={cssVarsMap}
       data-hs-token={getDataHSToken(moduleName, 'richTextContentHTML')}
     />

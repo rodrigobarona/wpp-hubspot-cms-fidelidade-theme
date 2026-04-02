@@ -1,11 +1,12 @@
 // import { dummyTranslations } from '../../LanguageSwitcherComponent/dummyData.js';
+import './site-header-main-nav.css';
+import '../../styles/tailwind.css';
 import { ModuleMeta } from '../../types/modules.js';
 // @ts-expect-error -- ?island not typed
 import MenuComponent from '../../MenuComponent/index.js?island';
 import SiteHeaderSVG from './assets/Header.svg';
 import { Button } from '../../ButtonComponent/index.js';
-import styles from './site-header.module.css';
-import cx, { staticWithModule } from '../../utils/classnames.js';
+import { cn } from '../../utils/cn.js';
 import { createComponent } from '../../utils/create-component.js';
 // @ts-expect-error -- ?island not typed
 import MobileMenuIsland from './islands/MobileMenuIsland.js?island';
@@ -19,8 +20,6 @@ import { PlaceholderEmptyContent } from '../../PlaceholderComponent/PlaceholderE
 // @ts-expect-error -- ?island not typed
 import LanguageSwitcherIsland from '../../LanguageSwitcherComponent/index.js?island';
 import { CSSPropertiesMap } from '../../types/components.js';
-
-const swm = staticWithModule(styles);
 
 // Functions to generate CSS variables
 
@@ -108,14 +107,18 @@ export const Component = (props: MenuModulePropTypes) => {
 
   const cssVarsMap = { ...generateColorCssVars({ menuTextColor, menuTextHoverColor, menuBackgroundColor, menuAccentColor }) };
 
-  const siteHeaderClassNames = cx(swm('hs-fidelidade-site-header'), { [styles['hs-fidelidade-site-header--has-language-switcher']]: showLanguageSwitcher });
+  const siteHeaderClassNames = cn(
+    'hs-fidelidade-site-header',
+    'relative z-10 h-auto w-full py-hs-24 px-hs-48 [background-color:var(--hsFidelidade--siteHeader__menuBackgroundColor)] max-[1100px]:px-hs-32',
+    showLanguageSwitcher && 'hs-fidelidade-site-header--has-language-switcher max-[1215px]:px-hs-32',
+  );
 
   return (
     <SiteHeader className={siteHeaderClassNames} style={cssVarsMap}>
       <SharedIslandState value={[]}>
         {/* Controls back button when mobile nav is open */}
-        <SiteHeaderContainer className={swm('hs-fidelidade-site-header__header-container')}>
-          <LogoButtonContainer className={swm('hs-fidelidade-site-header__logo-container')}>
+        <SiteHeaderContainer className="hs-fidelidade-site-header__header-container flex w-full max-w-content-wide flex-row flex-nowrap items-center justify-start gap-hs-24 mx-auto">
+          <LogoButtonContainer className="hs-fidelidade-site-header__logo-container mr-auto flex-[0_1_auto] min-[769px]:flex-[0_0_auto]">
             <Island
               module={MobileLogoBackButton}
               logoField={logoToUse}
@@ -130,7 +133,7 @@ export const Component = (props: MenuModulePropTypes) => {
           {navDataArray.length === 0 && isEditorMode ? (
             <PlaceholderEmptyContent title={placeholderTitle} description={placeholderDescription} />
           ) : (
-            <MainNav className={swm('hs-fidelidade-site-header__main-nav')}>
+            <MainNav className="hs-fidelidade-site-header__main-nav">
               <Island
                 module={MenuComponent}
                 menuDataArray={navDataArray}
@@ -145,7 +148,7 @@ export const Component = (props: MenuModulePropTypes) => {
             </MainNav>
           )}
           {showLanguageSwitcher && (
-            <LanguageSwitcherContainer className={swm('hs-fidelidade-site-header__language-switcher-container')}>
+            <LanguageSwitcherContainer className="hs-fidelidade-site-header__language-switcher-container max-[1215px]:hidden">
               <Island
                 module={LanguageSwitcherIsland}
                 menuBackgroundColor={menuBackgroundColor}
@@ -159,7 +162,7 @@ export const Component = (props: MenuModulePropTypes) => {
           )}
 
           {showButton && (
-            <ButtonContainer className={swm('hs-fidelidade-site-header__button-container')}>
+            <ButtonContainer className="hs-fidelidade-site-header__button-container hidden min-[460px]:ml-auto min-[460px]:block min-[460px]:flex-[0_1_auto] min-[769px]:flex-none">
               <Button
                 href={getLinkFieldHref(buttonLink)}
                 buttonStyle={buttonStyleVariant}
@@ -178,7 +181,13 @@ export const Component = (props: MenuModulePropTypes) => {
             </ButtonContainer>
           )}
 
-          <MobileMenuContainer className={swm('hs-fidelidade-site-header__mobile-menu-container')}>
+          <MobileMenuContainer
+            className={cn(
+              'hs-fidelidade-site-header__mobile-menu-container',
+              'hidden',
+              showLanguageSwitcher ? 'max-[1215px]:block' : 'max-[1100px]:block',
+            )}
+          >
             <Island
               module={MobileMenuIsland}
               moduleName={moduleName}

@@ -1,0 +1,83 @@
+/* Descendant styles for mobile slide-out menu (HubSpot menu class names). */
+
+.hs-fidelidade-site-header__menu-container > nav {
+  overflow: auto;
+  background-color: var(--hsFidelidade--mobileMenu__backgroundColor);
+}
+
+.hs-fidelidade-site-header__menu-container ul {
+  height: calc(
+    100vh - var(--hsFidelidade--mobileMenu__height) - var(--hsFidelidade--mobileMenuButtonContainer__height) -
+      var(--hsFidelidade--mobileMenuLanguageSwitcher__height)
+  );
+  width: 100%;
+  background-color: var(--hsFidelidade--mobileMenu__backgroundColor);
+}
+
+.hs-fidelidade-site-header__menu-container .hs-fidelidade-menu--mobile,
+.hs-fidelidade-site-header__menu-container .hs-fidelidade-menu__flyout-submenu--mobile {
+  padding: 10px 32px;
+}
+
+.hs-fidelidade-site-header__menu-container .hs-fidelidade-menu {
+  margin-bottom: 0;
+  flex: 0 0 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0;
+}
+
+.hs-fidelidade-site-header__menu-container .hs-fidelidade-menu::after {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: var(--hsFidelidade--mobileMenu__accentColor);
+  content: '';
+}
+
+.hs-fidelidade-site-header__menu-container .hs-fidelidade-menu li {
+  position: initial;
+  width: 100%;
+  color: var(--hsFidelidade--mobileMenu__textColor);
+}
+
+.hs-fidelidade-site-header__menu-container .hs-fidelidade-menu li a,
+.hs-fidelidade-site-header__menu-container .hs-fidelidade-menu li .hs-fidelidade-menu__menu-item-span {
+  color: var(--hsFidelidade--mobileMenu__textColor);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.hs-fidelidade-site-header__menu-container .hs-fidelidade-menu li a:hover,
+.hs-fidelidade-site-header__menu-container .hs-fidelidade-menu li .hs-fidelidade-menu__menu-item-span:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.hs-fidelidade-site-header__menu-container .hs-fidelidade-menu li .hs-fidelidade-menu__arrow-path {
+  fill: var(--hsFidelidade--mobileMenu__textColor);
+}
+
+.hs-fidelidade-site-header__menu-container .hs-fidelidade-menu .hs-fidelidade-menu__menu-item-link-container:hover {
+  background-color: var(--hsFidelidade--mobileMenu__accentColor);
+}
+
+.hs-fidelidade-site-header__menu-container .hs-fidelidade-menu li[data-hs-fidelidade-menuitem-depth='1'] ul {
+  position: absolute;
+  z-index: calc(var(--hsFidelidade--mobileMenu__zIndex) + 10);
+  top: 0;
+  left: 100%;
+  width: 100%;
+  margin-bottom: 0;
+  background-color: var(--hsFidelidade--mobileMenu__backgroundColor);
+  transition: left 0.3s ease;
+}
+
+.hs-fidelidade-site-header__menu-container
+  .hs-fidelidade-menu
+  .hs-fidelidade-menu--has-children.hs-fidelidade-menu__menu-item--triggered
+  > ul {
+  left: 0;
+}

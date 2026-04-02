@@ -1,6 +1,6 @@
+import type { CSSProperties } from 'react';
 import { Card } from '../CardComponent/index.js';
-import styles from './blog-card.module.css';
-import cx, { staticWithModule } from '../utils/classnames.js';
+import { cn } from '../utils/cn.js';
 import { createComponent } from '../utils/create-component.js';
 import { TagComponent } from '../TagComponent/index.js';
 import HeadingComponent from '../HeadingComponent/index.js';
@@ -8,10 +8,8 @@ import SanitizedContent from '../SanitizeHTML/index.js';
 import { CardVariantType, HeadingLevelType } from '../types/fields.js';
 import { HeadingStyleVariant } from '../fieldLibrary/HeadingStyle/types.js';
 import { CSSPropertiesMap } from '../types/components.js';
-
-const swm = staticWithModule(styles);
-
-// Types
+import gatedLockIconUrl from '../modules/BlogListing/assets/gated-lock-icon.svg';
+import '../styles/tailwind.css';
 
 interface BlogCardComponentProps {
   post: {
@@ -31,8 +29,6 @@ interface BlogCardComponentProps {
   additionalClassArray?: string[];
 }
 
-// Components
-
 interface TagListProps {
   tags: string[];
 }
@@ -45,7 +41,7 @@ const TagList = ({ tags }: TagListProps) => {
   }
 
   return (
-    <CardTagContainer className={swm('hs-fidelidade-card--blog__tag-container')}>
+    <CardTagContainer className="mb-hs-24 flex flex-row flex-wrap items-center justify-start gap-hs-8">
       {tags.map((tag: string, index: number) => (
         <TagComponent key={index}>
           <SanitizedContent content={tag} />
@@ -54,8 +50,6 @@ const TagList = ({ tags }: TagListProps) => {
     </CardTagContainer>
   );
 };
-
-// Functions to generate CSS variables
 
 function generateColorCssVars(cardStyleVariant: string): CSSPropertiesMap {
   const iconColorsMap = {
@@ -83,6 +77,17 @@ function generateColorCssVars(cardStyleVariant: string): CSSPropertiesMap {
   };
 }
 
+const gateIconMaskStyle: CSSProperties = {
+  WebkitMaskImage: `url(${gatedLockIconUrl})`,
+  maskImage: `url(${gatedLockIconUrl})`,
+  WebkitMaskPosition: 'center',
+  maskPosition: 'center',
+  WebkitMaskRepeat: 'no-repeat',
+  maskRepeat: 'no-repeat',
+  WebkitMaskSize: 'contain',
+  maskSize: 'contain',
+};
+
 const CardWrapper = createComponent('div');
 const ImageContainer = createComponent('div');
 const Image = createComponent('img');
@@ -99,13 +104,19 @@ function BlogCardComponent(props: BlogCardComponentProps) {
   const cssVarsMap = { ...generateColorCssVars(cardStyleVariant) };
 
   return (
-    <CardWrapper style={cssVarsMap} className={cx(swm('hs-fidelidade-card--blog__card-wrapper'), additionalClasses)}>
-      <Card key={post.id} cardOrientation="column" cardStyleVariant={cardStyleVariant} additionalClassArray={[swm('hs-fidelidade-card--blog')]}>
-        <CardLink className={swm('hs-fidelidade-card--blog__link')} href={post.absoluteUrl}>
-          <ImageContainer className={swm('hs-fidelidade-card--blog__image-container')}>
+    <CardWrapper
+      style={cssVarsMap}
+      className={cn(
+        'flex h-full w-full flex-col [&_.hs-fidelidade-card--blog]:overflow-hidden [&_.hs-fidelidade-card--blog]:p-0',
+        additionalClasses,
+      )}
+    >
+      <Card key={post.id} cardOrientation="column" cardStyleVariant={cardStyleVariant} additionalClassArray={['hs-fidelidade-card--blog']}>
+        <CardLink className="block h-full w-full no-underline hover:no-underline" href={post.absoluteUrl}>
+          <ImageContainer className="relative aspect-[1.41] w-full max-w-full overflow-hidden bg-[var(--hsFidelidade--blogCardIcon__backgroundColor)]">
             {post.featuredImage && (
               <Image
-                className={swm('hs-fidelidade-card--blog__image')}
+                className="relative h-full w-full object-cover"
                 src={post.featuredImage}
                 alt={post.featuredImageAltText || ''}
                 width={post.featuredImageWidth}
@@ -113,17 +124,22 @@ function BlogCardComponent(props: BlogCardComponentProps) {
               />
             )}
           </ImageContainer>
-          <CardContentContainer className={swm('hs-fidelidade-card--blog__content-container')}>
+          <CardContentContainer className="p-hs-32">
             <TagList tags={post?.topicNames || []} />
             <CardHeadingContainer>
               <HeadingComponent
                 heading={post.title}
                 headingLevel={headingAndTextHeadingLevel}
                 headingStyleVariant={headingStyleVariant}
-                additionalClassArray={[swm('hs-fidelidade-card--blog__heading')]}
+                additionalClassArray={['hs-fidelidade-card--blog__heading inline mb-0 text-[var(--hsFidelidade--blogCard__textColor)] no-underline']}
               />
               {gatedContentIds.includes(post.id) && (
-                <GateIconImage className={swm('hs-fidelidade-card--blog__gate-icon')} aria-label="Gated content" role="presentation" />
+                <GateIconImage
+                  className="ms-hs-8 inline-block h-5 w-5 bg-[var(--hsFidelidade--blogCard__textColor)]"
+                  style={gateIconMaskStyle}
+                  aria-label="Gated content"
+                  role="presentation"
+                />
               )}
             </CardHeadingContainer>
           </CardContentContainer>

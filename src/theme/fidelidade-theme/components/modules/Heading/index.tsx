@@ -3,16 +3,14 @@ import { TextAlignmentFieldType } from '@hubspot/cms-components/fields';
 import headingIconSvg from './assets/heading.svg';
 import HeadingComponent from '../../HeadingComponent/index.js';
 import { SectionVariantType } from '../../types/fields.js';
-import styles from './heading.module.css';
 import { SectionStyleFieldLibraryType } from '../../fieldLibrary/SectionStyle/types.js';
 import { HeadingStyleFieldLibraryType } from '../../fieldLibrary/HeadingStyle/types.js';
 import { HeadingAndTextFieldLibraryType } from '../../fieldLibrary/HeadingAndText/types.js';
 import { sectionColorsMap } from '../../utils/section-color-map.js';
-import cx, { staticWithModule } from '../../utils/classnames.js';
+import { cn } from '../../utils/cn.js';
 import { createComponent } from '../../utils/create-component.js';
 import { CSSPropertiesMap } from '../../types/components.js';
-
-const swm = staticWithModule(styles);
+import '../../styles/tailwind.css';
 
 // Types
 
@@ -40,6 +38,9 @@ function generateColorCssVars(sectionVariantField: SectionVariantType): CSSPrope
 
 // Components
 
+const headingTextColor =
+  '[&_h1]:text-[var(--hsFidelidade--heading__textColor)] [&_h2]:text-[var(--hsFidelidade--heading__textColor)] [&_h3]:text-[var(--hsFidelidade--heading__textColor)] [&_h4]:text-[var(--hsFidelidade--heading__textColor)] [&_h5]:text-[var(--hsFidelidade--heading__textColor)] [&_h6]:text-[var(--hsFidelidade--heading__textColor)]';
+
 const HeadingContainer = createComponent('div');
 
 export const Component = (props: HeadingProps) => {
@@ -53,10 +54,15 @@ export const Component = (props: HeadingProps) => {
 
   const cssVarsMap = { ...generateColorCssVars(sectionStyleVariant) };
 
-  const layoutClass = renderedWithGrids ? 'hs-fidelidade-heading-container--grids' : 'hs-fidelidade-heading-container--bootstrap';
-
   return (
-    <HeadingContainer className={cx(swm('hs-fidelidade-heading-container'), styles[layoutClass])} style={cssVarsMap}>
+    <HeadingContainer
+      className={cn(
+        headingTextColor,
+        renderedWithGrids &&
+          '[&_h1]:mb-0 [&_h2]:mb-0 [&_h3]:mb-0 [&_h4]:mb-0 [&_h5]:mb-0 [&_h6]:mb-0',
+      )}
+      style={cssVarsMap}
+    >
       <HeadingComponent
         additionalClassArray={['hs-fidelidade-heading-container__heading']}
         headingLevel={headingAndTextHeadingLevel}

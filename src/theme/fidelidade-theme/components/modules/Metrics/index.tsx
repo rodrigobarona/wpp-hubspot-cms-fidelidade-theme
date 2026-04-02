@@ -1,8 +1,7 @@
 import { ModuleMeta } from '../../types/modules.js';
 import { TextFieldType } from '@hubspot/cms-components/fields';
 import { SectionVariantType } from '../../types/fields.js';
-import styles from './metrics.module.css';
-import cx, { staticWithModule } from '../../utils/classnames.js';
+import { cn } from '../../utils/cn.js';
 import { createComponent } from '../../utils/create-component.js';
 import chartIconSvg from './assets/chart.svg';
 import { SectionStyleFieldLibraryType } from '../../fieldLibrary/SectionStyle/types.js';
@@ -10,8 +9,7 @@ import { HeadingStyleFieldLibraryType, HeadingStyleVariant } from '../../fieldLi
 import { sectionColorsMap } from '../../utils/section-color-map.js';
 import { CSSPropertiesMap } from '../../types/components.js';
 import { getDataHSToken } from '../../utils/inline-editing.js';
-
-const swm = staticWithModule(styles);
+import '../../styles/tailwind.css';
 
 type GroupStyle = SectionStyleFieldLibraryType & HeadingStyleFieldLibraryType;
 
@@ -27,10 +25,6 @@ type MetricProps = {
   };
 };
 
-// Metrics component
-
-// Functions to pull in corresponding CSS variables on component based on field values
-
 function generateColorCssVars(sectionVariantField: SectionVariantType): CSSPropertiesMap {
   return {
     '--hsFidelidade--metrics__textColor': sectionColorsMap[sectionVariantField].textColor,
@@ -38,7 +32,6 @@ function generateColorCssVars(sectionVariantField: SectionVariantType): CSSPrope
   };
 }
 
-// Based on the heading style a user selects for the metric number, we set a maximum font size and a minimum font size which is used for a font-size clamp on the MetricNumber component
 function generateMetricCssVars(headingStyleAs: HeadingStyleVariant): CSSPropertiesMap {
   const metricCssVarsMap = {
     display_1: 'var(--hsFidelidade--display1__fontSize)',
@@ -57,17 +50,33 @@ function generateMetricCssVars(headingStyleAs: HeadingStyleVariant): CSSProperti
   };
 }
 
-// Components
-const MetricsWrapper = createComponent('div');
+function getMetricsContainerClassName(metricCount: number, renderedWithGrids: boolean): string {
+  const base = 'hs-fidelidade-metrics-container grid min-w-0 grid-cols-1 gap-hs-32';
 
-// Helper function to get CSS class modifier based on metric count
-function getMetricCountClass(metricCount: number): string {
-  if ([2, 3, 4].includes(metricCount)) {
-    return `hs-fidelidade-metrics__container--count-${metricCount}`;
+  if (![2, 3, 4].includes(metricCount)) {
+    return base;
   }
-  return '';
+
+  if (renderedWithGrids) {
+    if (metricCount === 2) {
+      return cn(base, 'min-[700px]:grid-cols-2 min-[700px]:gap-hs-24');
+    }
+    if (metricCount === 3) {
+      return cn(base, 'min-[900px]:grid-cols-3 min-[900px]:gap-hs-24');
+    }
+    return cn(base, 'min-[700px]:grid-cols-2 min-[700px]:gap-hs-24 min-[950px]:grid-cols-4 min-[950px]:gap-hs-16');
+  }
+
+  if (metricCount === 2) {
+    return cn(base, '@[700px]:grid-cols-2 @[700px]:gap-hs-24');
+  }
+  if (metricCount === 3) {
+    return cn(base, '@[900px]:grid-cols-3 @[900px]:gap-hs-24');
+  }
+  return cn(base, '@[700px]:grid-cols-2 @[700px]:gap-hs-24 @[950px]:grid-cols-4 @[950px]:gap-hs-16');
 }
 
+const MetricsWrapper = createComponent('div');
 const MetricsContainer = createComponent('div');
 const Metric = createComponent('div');
 const MetricNumber = createComponent('div');
@@ -86,27 +95,26 @@ export const Component = (props: MetricProps) => {
     ...generateMetricCssVars(headingStyleVariant),
   };
 
-  const metricCountClass = getMetricCountClass(groupMetrics.length);
-
-  const layoutClass = renderedWithGrids ? 'hs-fidelidade-metrics--grids' : 'hs-fidelidade-metrics--bootstrap';
+  const metricsContainerClass = getMetricsContainerClassName(groupMetrics.length, renderedWithGrids);
 
   return (
-    <MetricsWrapper className={cx(swm('hs-fidelidade-metrics'), styles[layoutClass])}>
-      <MetricsContainer
-        className={cx('hs-fidelidade-metrics-container', styles['hs-fidelidade-metrics__container'], metricCountClass && styles[metricCountClass])}
-        style={cssVarsMap}
-      >
+    <MetricsWrapper className={cn('hs-fidelidade-metrics', !renderedWithGrids && '@container')}>
+      <MetricsContainer className={metricsContainerClass} style={cssVarsMap}>
         {groupMetrics.map((metric, index) => {
           return (
-            <Metric className={cx('hs-fidelidade-metrics-container__metric', styles['hs-fidelidade-metrics__metric'])} key={index}>
+            <Metric className="hs-fidelidade-metrics-container__metric flex min-w-0 flex-col items-center" key={index}>
               <MetricNumber
-                className={cx('hs-fidelidade-metrics-container__metric-number', styles['hs-fidelidade-metrics__metric-number'])}
+                className={cn(
+                  'hs-fidelidade-metrics-container__metric-number max-w-full text-center leading-hs-heading',
+                  'text-[length:clamp(var(--hsFidelidade--metrics__minFontSize),calc(1vw+var(--hsFidelidade--metrics__minFontSize)),var(--hsFidelidade--metrics__maxFontSize))]',
+                  'text-[var(--hsFidelidade--metrics__accentColor)]',
+                )}
                 data-hs-token={getDataHSToken(moduleName, `groupMetrics[${index}].metric`)}
               >
                 {metric.metric}
               </MetricNumber>
               <MetricDescription
-                className={cx('hs-fidelidade-metrics-container__metric-description', styles['hs-fidelidade-metrics__metric-description'])}
+                className="hs-fidelidade-metrics-container__metric-description max-w-full text-center text-[var(--hsFidelidade--metrics__textColor)]"
                 data-hs-token={getDataHSToken(moduleName, `groupMetrics[${index}].description`)}
               >
                 {metric.description}

@@ -1,12 +1,10 @@
 import { useSharedIslandState } from '@hubspot/cms-components';
 import ArrowComponent from '../../../MenuComponent/ArrowComponent.js';
 import { LogoFieldType } from '@hubspot/cms-components/fields';
-import styles from '../mobile-logo-back-button.module.css';
-import cx, { staticWithModule } from '../../../utils/classnames.js';
+import { cn } from '../../../utils/cn.js';
 import { createComponent } from '../../../utils/create-component.js';
 import { PlaceholderEmptyContent } from '../../../PlaceholderComponent/PlaceholderEmptyContent.js';
-
-const swm = staticWithModule(styles);
+import '../../../styles/tailwind.css';
 
 // Types
 
@@ -46,12 +44,6 @@ export default function MobileLogoBackButton(props: MobileLogoBackButtonProps) {
   };
   const isFileTypeSvg = logoSrc ? logoSrc.endsWith('.svg') : false;
 
-  const backButtonContainerClasses = cx(swm('hs-fidelidade-site-header__back-button-container'), {
-    [styles['hs-fidelidade-site-header__back-button-container--show-back-button']]: showBackButton,
-  });
-
-  const logoImageClasses = cx(swm('hs-fidelidade-site-header__logo'), { [styles['hs-fidelidade-site-header__logo--is-svg']]: isFileTypeSvg });
-
   const showCompanyName = !suppress_company_name;
 
   // when logo is not set and user is in editor:
@@ -63,21 +55,53 @@ export default function MobileLogoBackButton(props: MobileLogoBackButtonProps) {
   };
 
   return (
-    <BackButtonContainer className={backButtonContainerClasses}>
+    <BackButtonContainer>
       {showBackButton && (
-        <BackButton className={swm('hs-fidelidade-site-header__back-button')} onClick={goBackOneLevel}>
+        <BackButton
+          className={cn(
+            'group absolute left-hs-48 top-1/2 z-50 -translate-y-1/2 cursor-pointer appearance-none border-0 bg-transparent text-[var(--hsFidelidade--link--primary__fontColor)]',
+            'hover:text-[var(--hsFidelidade--link--primary__hover--fontColor)]',
+            '[&_svg]:me-hs-8 [&_svg]:rotate-180',
+            '[&_svg_path]:fill-[var(--hsFidelidade--link--primary__fontColor)]',
+            'group-hover:[&_svg_path]:fill-[var(--hsFidelidade--link--primary__hover--fontColor)]',
+          )}
+          onClick={goBackOneLevel}
+        >
           <ArrowComponent additionalClassArray={['hs-fidelidade-site-header__back-button-icon']} />
           Back
         </BackButton>
       )}
       {logoSrc && (
-        <LogoLink className={swm('hs-fidelidade-site-header__logo-link')} href={logoLink || '#'}>
-          <LogoImage className={logoImageClasses} src={logoSrc} alt={logoAlt} loading="eager" width={logoWidth} height={logoHeight} />
-          <LogoLinkScreenReader className={cx(styles['hs-fidelidade-site-header__logo-link-screen-reader'])}>{logoLinkAriaText}</LogoLinkScreenReader>
+        <LogoLink
+          className={cn(showBackButton ? 'pointer-events-none' : 'pointer-events-auto')}
+          href={logoLink || '#'}
+        >
+          <LogoImage
+            className={cn(
+              'visible block max-h-[75px] w-auto max-w-[min(250px,100%)] object-contain pointer-events-auto md:max-w-[250px]',
+              showBackButton && 'pointer-events-none invisible',
+              !isFileTypeSvg && 'h-auto',
+            )}
+            src={logoSrc}
+            alt={logoAlt}
+            loading="eager"
+            width={logoWidth}
+            height={logoHeight}
+          />
+          <LogoLinkScreenReader
+            className={cn(
+              'absolute m-[-1px] block h-px w-px overflow-hidden border-0 p-0 [clip:rect(0,0,0,0)]',
+              showBackButton && 'hidden',
+            )}
+          >
+            {logoLinkAriaText}
+          </LogoLinkScreenReader>
         </LogoLink>
       )}
       {!logoSrc && showCompanyName && companyName && (
-        <CompanyNameFallback className={swm('hs-fidelidade-site-header__company-name')}>{companyName}</CompanyNameFallback>
+        <CompanyNameFallback className="block max-w-[min(250px,45vw)] whitespace-break-spaces text-[1.3rem] [overflow-wrap:anywhere] sm:text-[1.6rem] md:text-[1.8rem]">
+          {companyName}
+        </CompanyNameFallback>
       )}
       {!logoSrc && isInEditor && renderLogoAreaPlaceholder()}
     </BackButtonContainer>
