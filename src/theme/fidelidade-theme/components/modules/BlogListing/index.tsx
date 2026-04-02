@@ -3,13 +3,15 @@ import styles from './blog-listing.module.css';
 import cx, { staticWithModule } from '../../utils/classnames.js';
 import { createComponent } from '../../utils/create-component.js';
 import blogSVG from './assets/blog.svg';
-import { withUrlPath } from '@hubspot/cms-components';
+// TODO: Re-enable when upgrading to Content Hub Pro
+// import { withUrlPath } from '@hubspot/cms-components';
 import BlogCardComponent from '../../BlogCardComponent/index.js';
 import Pagination from './pagination.js';
 import { HeadingStyleFieldLibraryType } from '../../fieldLibrary/HeadingStyle/types.js';
 import { CardStyleFieldLibraryType } from '../../fieldLibrary/CardStyle/types.js';
 import { HeadingAndTextFieldLibraryType } from '../../fieldLibrary/HeadingAndText/types.js';
-import fetchGatedPosts from '../../utils/ServerSideProps/fetchGatedBlogPosts.js';
+// TODO: Re-enable when upgrading to Content Hub Pro
+// import fetchGatedPosts from '../../utils/ServerSideProps/fetchGatedBlogPosts.js';
 
 const swm = staticWithModule(styles);
 
@@ -54,7 +56,7 @@ export const Component = (props: BlogListingProps) => {
 
   const {
     hublData: { blogPosts, currentPageNumber, nextPageNumber, totalPageCount, use_featured_image_in_summary },
-    serverSideProps: { gatedContentIds = [] }, // Provide default empty array
+    serverSideProps: { gatedContentIds = [] } = { gatedContentIds: [] },
     groupStyle: { headingStyleVariant, cardStyleVariant } = {}, // Provide default empty object
     headingAndTextHeadingLevel,
     defaultContent,
@@ -93,7 +95,8 @@ export { fields } from './fields.js';
 
 export { default as hublDataTemplate } from './hubl_data.hubl.html?raw';
 
-export const getServerSideProps = withUrlPath(fetchGatedPosts);
+// TODO: Re-enable when upgrading to Content Hub Pro (requires cms.functions scope)
+// export const getServerSideProps = withUrlPath(fetchGatedPosts);
 
 export const meta: ModuleMeta = {
   label: 'Blog listing',

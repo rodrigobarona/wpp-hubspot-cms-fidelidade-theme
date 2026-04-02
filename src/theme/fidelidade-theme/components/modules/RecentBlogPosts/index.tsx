@@ -2,10 +2,12 @@ import { ModuleMeta } from '../../types/modules.js';
 import styles from './recent-blog-posts.module.css';
 import cx, { staticWithModule } from '../../utils/classnames.js';
 import { createComponent } from '../../utils/create-component.js';
-import { withUrlPath } from '@hubspot/cms-components';
+// TODO: Re-enable when upgrading to Content Hub Pro
+// import { withUrlPath } from '@hubspot/cms-components';
 import cardIconSvg from './assets/card-icon-temp.svg';
 import BlogCardComponent from '../../BlogCardComponent/index.js';
-import fetchGatedPosts from '../../utils/ServerSideProps/fetchGatedBlogPosts.js';
+// TODO: Re-enable when upgrading to Content Hub Pro
+// import fetchGatedPosts from '../../utils/ServerSideProps/fetchGatedBlogPosts.js';
 import { HeadingLevelType } from '../../types/fields.js';
 import { CardStyleFieldLibraryType } from '../../fieldLibrary/CardStyle/types.js';
 import { HeadingStyleFieldLibraryType } from '../../fieldLibrary/HeadingStyle/types.js';
@@ -56,7 +58,7 @@ export const Component = (props: RecentBlogPostsProps) => {
       groupStyle: { cardStyleVariant, headingStyleVariant },
       groupPlaceholderText: { placeholderTitle, placeholderDescription },
     },
-    serverSideProps: { gatedContentIds },
+    serverSideProps: { gatedContentIds = [] } = { gatedContentIds: [] },
   } = props;
 
   const postsToUse = posts || [];
@@ -134,7 +136,8 @@ export const hublDataTemplate = `
   %}
 `;
 
-export const getServerSideProps = withUrlPath(fetchGatedPosts);
+// TODO: Re-enable when upgrading to Content Hub Pro (requires cms.functions scope)
+// export const getServerSideProps = withUrlPath(fetchGatedPosts);
 
 export const meta: ModuleMeta = {
   label: 'Recent blog posts',
