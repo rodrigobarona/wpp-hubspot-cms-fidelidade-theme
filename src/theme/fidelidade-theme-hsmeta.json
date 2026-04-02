@@ -1,0 +1,8 @@
+{
+  "uid": "fidelidade-theme",
+  "type": "theme",
+  "config": {
+    "themePath": "fidelidade-theme",
+    "secretNames": []
+  }
+}

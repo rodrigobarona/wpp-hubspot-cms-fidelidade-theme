@@ -65,7 +65,7 @@ export const Default: Story = {};
 
 #### Components
 ```
-src/fidelidade-theme/components/[ComponentName]/
+src/theme/fidelidade-theme/components/[ComponentName]/
 ├── stories/
 │   ├── [ComponentName].stories.tsx           # Main story file
 │   ├── [ComponentName].[category].stories.tsx # Category-specific stories
@@ -78,7 +78,7 @@ src/fidelidade-theme/components/[ComponentName]/
 
 #### Modules
 ```
-src/fidelidade-theme/components/modules/[ModuleName]/
+src/theme/fidelidade-theme/components/modules/[ModuleName]/
 ├── stories/
 │   ├── [ModuleName]Module.stories.tsx         # Main story file
 │   ├── [ModuleName]Module.[category].stories.tsx # Category-specific stories

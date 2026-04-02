@@ -10,17 +10,17 @@ export default defineConfig({
   plugins: [HublPostCSSCleaner()],
   publicDir: './dist/',
   build: {
-    outDir: './src/fidelidade-theme/assets/dist',
+    outDir: './src/theme/fidelidade-theme/assets/dist',
     minify: false,
     rollupOptions: {
       watch: {
-        include: ['./src/fidelidade-theme/assets/_hs/css/**/*'],
+        include: ['./src/theme/fidelidade-theme/assets/_hs/css/**/*'],
       },
       input: {
-        main: './src/fidelidade-theme/assets/_hs/css/main.hubl.css',
-        caseStudies: './src/fidelidade-theme/assets/_hs/css/templates/case-studies.hubl.css',
-        system: './src/fidelidade-theme/assets/_hs/css/templates/system.hubl.css',
-        blog: './src/fidelidade-theme/assets/_hs/css/templates/blog.hubl.css',
+        main: './src/theme/fidelidade-theme/assets/_hs/css/main.hubl.css',
+        caseStudies: './src/theme/fidelidade-theme/assets/_hs/css/templates/case-studies.hubl.css',
+        system: './src/theme/fidelidade-theme/assets/_hs/css/templates/system.hubl.css',
+        blog: './src/theme/fidelidade-theme/assets/_hs/css/templates/blog.hubl.css',
       },
       output: {
         assetFileNames: 'css/[name].[ext]',

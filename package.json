@@ -3,16 +3,16 @@
   "version": "1.0.0",
   "description": "Fidelidade's unified HubSpot CMS theme for websites, landing pages, microsites, emails, and more",
   "scripts": {
-    "dev": "cd src/fidelidade-theme && bun run start",
+    "dev": "cd src/theme/fidelidade-theme && bun run start",
     "build": "vite build",
     "upload": "hs project upload",
     "build-upload": "vite build && hs project upload",
-    "yarn-start": "cd src/fidelidade-theme && yarn start",
-    "npm-start": "cd src/fidelidade-theme && npm run start",
+    "yarn-start": "cd src/theme/fidelidade-theme && yarn start",
+    "npm-start": "cd src/theme/fidelidade-theme && npm run start",
     "test": "vitest",
     "test-verbose": "vitest --reporter verbose",
-    "npm-install:all": "npm install && npm install --prefix src/fidelidade-theme",
-    "yarn-install:all": "yarn && cd src/fidelidade-theme && yarn install"
+    "npm-install:all": "npm install && npm install --prefix src/theme/fidelidade-theme",
+    "yarn-install:all": "yarn && cd src/theme/fidelidade-theme && yarn install"
   },
   "author": "WPP Portugal",
   "license": "Apache-2.0",

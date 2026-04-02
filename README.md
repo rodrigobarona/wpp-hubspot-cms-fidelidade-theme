@@ -65,27 +65,29 @@ This theme is built with modern development practices:
 
 ```
 ├── src/
-│   └── fidelidade-theme/         # Main theme directory
-│       ├── _locales/             # Localization files
-│       ├── assets/               # Theme assets
-│       ├── components/           # React components
-│       │   ├── modules/          # Theme modules (Accordion, Button, Card, etc.)
-│       │   ├── fieldLibrary/     # Field components for module fields
-│       │   ├── utils/            # Utility helpers
-│       │   ├── types/            # TypeScript type definitions
-│       │   └── ButtonComponent/  # Example shared component consumed by modules
-│       ├── helpers/              # Helper functions and utilities
-│       ├── images/               # Theme images
-│       ├── sections/             # Theme sections
-│       ├── templates/            # Theme templates
-│       ├── fields.json           # Theme settings
-│       ├── theme.json            # Theme configuration
-│       ├── package.json          # Theme-specific dependencies
-│       └── tsconfig.json         # TypeScript configuration
-├── build/                        # Build configuration
-├── vite.config.ts                # Vite configuration
-├── package.json                  # Project dependencies
-└── hsproject.json                # HubSpot project configuration
+│   └── theme/                            # Theme wrapper (platform 2026.03)
+│       ├── fidelidade-theme-hsmeta.json  # Theme component config
+│       └── fidelidade-theme/             # Main theme directory
+│           ├── _locales/                 # Localization files
+│           ├── assets/                   # Theme assets
+│           ├── components/               # React components
+│           │   ├── modules/              # Theme modules (Accordion, Button, Card, etc.)
+│           │   ├── fieldLibrary/         # Field components for module fields
+│           │   ├── utils/                # Utility helpers
+│           │   ├── types/                # TypeScript type definitions
+│           │   └── ButtonComponent/      # Example shared component consumed by modules
+│           ├── helpers/                  # Helper functions and utilities
+│           ├── images/                   # Theme images
+│           ├── sections/                 # Theme sections
+│           ├── templates/                # Theme templates
+│           ├── fields.json               # Theme settings
+│           ├── theme.json                # Theme configuration
+│           ├── package.json              # Theme-specific dependencies
+│           └── tsconfig.json             # TypeScript configuration
+├── build/                                # Build configuration
+├── vite.config.ts                        # Vite configuration
+├── package.json                          # Project dependencies
+└── hsproject.json                        # HubSpot project configuration
 ```
 
 ## Development
@@ -101,7 +103,7 @@ Building a child theme lets you extend this theme without modifying its core fil
 1. Create a new theme in Design Manager.
 2. Select "Use blank theme as starting point."
 3. In your `theme.json`, add `"extends": "@fidelidade/cms-theme"`.
-4. Copy `src/fidelidade-theme/fields.json` into the root of your new theme.
+4. Copy `src/theme/fidelidade-theme/fields.json` into the root of your new theme.
 5. Add your custom code from there.
 
 ### Using the Unified Theme Framework
@@ -109,7 +111,7 @@ Building a child theme lets you extend this theme without modifying its core fil
 1. Run `npx @hubspot/create-cms-theme` from your CLI.
 2. Follow the prompts to create a blank unified theme project.
 3. In your `theme.json`, add `"extends": "@fidelidade/cms-theme"`.
-4. Copy `src/fidelidade-theme/fields.json` into the root of your new theme.
+4. Copy `src/theme/fidelidade-theme/fields.json` into the root of your new theme.
 
 ### Grids
 
