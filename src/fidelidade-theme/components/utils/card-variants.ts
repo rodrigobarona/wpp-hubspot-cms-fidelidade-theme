@@ -15,19 +15,19 @@ export const CARD_VARIANT_CONFIGS: {
 } = {
   card_variant_1: {
     label: 'Card variant 1',
-    className: 'hs-elevate-card--variant-1',
+    className: 'hs-fidelidade-card--variant-1',
   },
   card_variant_2: {
     label: 'Card variant 2',
-    className: 'hs-elevate-card--variant-2',
+    className: 'hs-fidelidade-card--variant-2',
   },
   card_variant_3: {
     label: 'Card variant 3',
-    className: 'hs-elevate-card--variant-3',
+    className: 'hs-fidelidade-card--variant-3',
   },
   card_variant_4: {
     label: 'Card variant 4',
-    className: 'hs-elevate-card--variant-4',
+    className: 'hs-fidelidade-card--variant-4',
   },
 };
 

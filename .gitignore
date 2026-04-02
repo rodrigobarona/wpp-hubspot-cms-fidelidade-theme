@@ -136,7 +136,7 @@ src/images/img-src/**/*.*
 /fields.json
 
 # Css Dist Directory
-src/unified-theme/assets/dist/
+src/fidelidade-theme/assets/dist/
 
 # Storybook build output
-cms-elevate-theme-static-assets/dist/
+cms-fidelidade-theme-static-assets/dist/

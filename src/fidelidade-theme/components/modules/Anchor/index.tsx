@@ -27,8 +27,8 @@ export const Component = (props: AnchorProps) => {
   const showAnchorVisual = hublData.isInEditor ? true : false;
 
   return (
-    <Anchor className={swm('hs-elevate-anchor')} id={anchor}>
-      {showAnchorVisual && <AnchorVisual className={swm('hs-elevate-anchor__visual')}></AnchorVisual>}
+    <Anchor className={swm('hs-fidelidade-anchor')} id={anchor}>
+      {showAnchorVisual && <AnchorVisual className={swm('hs-fidelidade-anchor__visual')}></AnchorVisual>}
     </Anchor>
   );
 };
@@ -50,7 +50,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/anchor',
+  moduleName: 'fidelidade/components/modules/anchor',
   version: 0,
   themeModule: true,
 };

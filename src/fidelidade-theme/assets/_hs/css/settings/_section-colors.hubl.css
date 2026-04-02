@@ -17,13 +17,13 @@
 :root {
 
   /* Light section 1 */
-  --hsElevate--section--lightSection--1__backgroundColor: {{ light_section_1.group_section.background_color.color }};
-  --hsElevate--section--lightSection--1__textColor: {{ light_section_1.group_fonts.text_color.color }};
-  --hsElevate--section--lightSection--1__accentColor: {{ light_section_1.group_fonts.accent_color.color }};
-  --hsElevate--section--lightSection--1__captionColor: {{ light_section_1.group_fonts.caption_color.color }};
-  --hsElevate--section--lightSection--1--blockquote__textColor: {{ light_section_1.group_blockquote.text_color.color }};
-  --hsElevate--section--lightSection--1--blockquote__backgroundColor: {{ light_section_1.group_blockquote.background_color.color }};
-  --hsElevate--section--lightSection--1--blockquote__accentColor: {{ light_section_1.group_blockquote.accent_color.color }};
+  --hsFidelidade--section--lightSection--1__backgroundColor: {{ light_section_1.group_section.background_color.color }};
+  --hsFidelidade--section--lightSection--1__textColor: {{ light_section_1.group_fonts.text_color.color }};
+  --hsFidelidade--section--lightSection--1__accentColor: {{ light_section_1.group_fonts.accent_color.color }};
+  --hsFidelidade--section--lightSection--1__captionColor: {{ light_section_1.group_fonts.caption_color.color }};
+  --hsFidelidade--section--lightSection--1--blockquote__textColor: {{ light_section_1.group_blockquote.text_color.color }};
+  --hsFidelidade--section--lightSection--1--blockquote__backgroundColor: {{ light_section_1.group_blockquote.background_color.color }};
+  --hsFidelidade--section--lightSection--1--blockquote__accentColor: {{ light_section_1.group_blockquote.accent_color.color }};
 
   {% if light_section_1_link == "primary_links" %}
     {% set light_section_1_link_field = primary_links %}
@@ -31,35 +31,35 @@
     {% set light_section_1_link_field = secondary_links %}
   {% endif %}
 
-  --hsElevate--section--lightSection--1--link__fontColor: {{ light_section_1_link_field.group_default_state.text_color.color }};
+  --hsFidelidade--section--lightSection--1--link__fontColor: {{ light_section_1_link_field.group_default_state.text_color.color }};
 
   {% if light_section_1_link_field.group_default_state.show_underline %}
-    --hsElevate--section--lightSection--1--link__textDecoration: underline;
-    --hsElevate--section--lightSection--1--link__textDecorationColor: {{ light_section_1_link_field.group_default_state.underline_color.color }};
+    --hsFidelidade--section--lightSection--1--link__textDecoration: underline;
+    --hsFidelidade--section--lightSection--1--link__textDecorationColor: {{ light_section_1_link_field.group_default_state.underline_color.color }};
   {% else %}
-    --hsElevate--section--lightSection--1--link__textDecoration: none;
-    --hsElevate--section--lightSection--1--link__textDecorationColor: transparent;
+    --hsFidelidade--section--lightSection--1--link__textDecoration: none;
+    --hsFidelidade--section--lightSection--1--link__textDecorationColor: transparent;
   {% endif %}
 
   /* Hover state */
 
-  --hsElevate--section--lightSection--1--link__hover--fontColor: {{ light_section_1_link_field.group_hover_state.text_color.color }};
+  --hsFidelidade--section--lightSection--1--link__hover--fontColor: {{ light_section_1_link_field.group_hover_state.text_color.color }};
   {% if light_section_1_link_field.group_hover_state.show_underline %}
-    --hsElevate--section--lightSection--1--link__hover--textDecoration: underline;
-    --hsElevate--section--lightSection--1--link__hover--textDecorationColor: {{ light_section_1_link_field.group_hover_state.underline_color.color }};
+    --hsFidelidade--section--lightSection--1--link__hover--textDecoration: underline;
+    --hsFidelidade--section--lightSection--1--link__hover--textDecorationColor: {{ light_section_1_link_field.group_hover_state.underline_color.color }};
   {% else %}
-    --hsElevate--section--lightSection--1--link__hover--textDecoration: none;
-    --hsElevate--section--lightSection--1--link__hover--textDecorationColor: transparent;
+    --hsFidelidade--section--lightSection--1--link__hover--textDecoration: none;
+    --hsFidelidade--section--lightSection--1--link__hover--textDecorationColor: transparent;
   {% endif %}
 
   /* Light section 2 */
-  --hsElevate--section--lightSection--2__backgroundColor: {{ light_section_2.group_section.background_color.color }};
-  --hsElevate--section--lightSection--2__textColor: {{ light_section_2.group_fonts.text_color.color }};
-  --hsElevate--section--lightSection--2__accentColor: {{ light_section_2.group_fonts.accent_color.color }};
-  --hsElevate--section--lightSection--2__captionColor: {{ light_section_2.group_fonts.caption_color.color }};
-  --hsElevate--section--lightSection--2--blockquote__textColor: {{ light_section_2.group_blockquote.text_color.color }};
-  --hsElevate--section--lightSection--2--blockquote__backgroundColor: {{ light_section_2.group_blockquote.background_color.color }};
-  --hsElevate--section--lightSection--2--blockquote__accentColor: {{ light_section_2.group_blockquote.accent_color.color }};
+  --hsFidelidade--section--lightSection--2__backgroundColor: {{ light_section_2.group_section.background_color.color }};
+  --hsFidelidade--section--lightSection--2__textColor: {{ light_section_2.group_fonts.text_color.color }};
+  --hsFidelidade--section--lightSection--2__accentColor: {{ light_section_2.group_fonts.accent_color.color }};
+  --hsFidelidade--section--lightSection--2__captionColor: {{ light_section_2.group_fonts.caption_color.color }};
+  --hsFidelidade--section--lightSection--2--blockquote__textColor: {{ light_section_2.group_blockquote.text_color.color }};
+  --hsFidelidade--section--lightSection--2--blockquote__backgroundColor: {{ light_section_2.group_blockquote.background_color.color }};
+  --hsFidelidade--section--lightSection--2--blockquote__accentColor: {{ light_section_2.group_blockquote.accent_color.color }};
 
   {% if light_section_2_link == "primary_links" %}
     {% set light_section_2_link_field = primary_links %}
@@ -67,35 +67,35 @@
     {% set light_section_2_link_field = secondary_links %}
   {% endif %}
 
-  --hsElevate--section--lightSection--2--link__fontColor: {{ light_section_2_link_field.group_default_state.text_color.color }};
+  --hsFidelidade--section--lightSection--2--link__fontColor: {{ light_section_2_link_field.group_default_state.text_color.color }};
 
   {% if light_section_2_link_field.group_default_state.show_underline %}
-    --hsElevate--section--lightSection--2--link__textDecoration: underline;
-    --hsElevate--section--lightSection--2--link__textDecorationColor: {{ light_section_2_link_field.group_default_state.underline_color.color }};
+    --hsFidelidade--section--lightSection--2--link__textDecoration: underline;
+    --hsFidelidade--section--lightSection--2--link__textDecorationColor: {{ light_section_2_link_field.group_default_state.underline_color.color }};
   {% else %}
-    --hsElevate--section--lightSection--2--link__textDecoration: none;
-    --hsElevate--section--lightSection--2--link__textDecorationColor: transparent;
+    --hsFidelidade--section--lightSection--2--link__textDecoration: none;
+    --hsFidelidade--section--lightSection--2--link__textDecorationColor: transparent;
   {% endif %}
 
   /* Hover state */
 
-  --hsElevate--section--lightSection--2--link__hover--fontColor: {{ light_section_2_link_field.group_hover_state.text_color.color }};
+  --hsFidelidade--section--lightSection--2--link__hover--fontColor: {{ light_section_2_link_field.group_hover_state.text_color.color }};
   {% if light_section_2_link_field.group_hover_state.show_underline %}
-    --hsElevate--section--lightSection--2--link__hover--textDecoration: underline;
-    --hsElevate--section--lightSection--2--link__hover--textDecorationColor: {{ light_section_2_link_field.group_hover_state.underline_color.color }};
+    --hsFidelidade--section--lightSection--2--link__hover--textDecoration: underline;
+    --hsFidelidade--section--lightSection--2--link__hover--textDecorationColor: {{ light_section_2_link_field.group_hover_state.underline_color.color }};
   {% else %}
-    --hsElevate--section--lightSection--2--link__hover--textDecoration: none;
-    --hsElevate--section--lightSection--2--link__hover--textDecorationColor: transparent;
+    --hsFidelidade--section--lightSection--2--link__hover--textDecoration: none;
+    --hsFidelidade--section--lightSection--2--link__hover--textDecorationColor: transparent;
   {% endif %}
 
   /* Light section 3 */
-  --hsElevate--section--lightSection--3__backgroundColor: {{ light_section_3.group_section.background_color.color }};
-  --hsElevate--section--lightSection--3__textColor: {{ light_section_3.group_fonts.text_color.color }};
-  --hsElevate--section--lightSection--3__accentColor: {{ light_section_3.group_fonts.accent_color.color }};
-  --hsElevate--section--lightSection--3__captionColor: {{ light_section_3.group_fonts.caption_color.color }};
-  --hsElevate--section--lightSection--3--blockquote__textColor: {{ light_section_3.group_blockquote.text_color.color }};
-  --hsElevate--section--lightSection--3--blockquote__backgroundColor: {{ light_section_3.group_blockquote.background_color.color }};
-  --hsElevate--section--lightSection--3--blockquote__accentColor: {{ light_section_3.group_blockquote.accent_color.color }};
+  --hsFidelidade--section--lightSection--3__backgroundColor: {{ light_section_3.group_section.background_color.color }};
+  --hsFidelidade--section--lightSection--3__textColor: {{ light_section_3.group_fonts.text_color.color }};
+  --hsFidelidade--section--lightSection--3__accentColor: {{ light_section_3.group_fonts.accent_color.color }};
+  --hsFidelidade--section--lightSection--3__captionColor: {{ light_section_3.group_fonts.caption_color.color }};
+  --hsFidelidade--section--lightSection--3--blockquote__textColor: {{ light_section_3.group_blockquote.text_color.color }};
+  --hsFidelidade--section--lightSection--3--blockquote__backgroundColor: {{ light_section_3.group_blockquote.background_color.color }};
+  --hsFidelidade--section--lightSection--3--blockquote__accentColor: {{ light_section_3.group_blockquote.accent_color.color }};
 
   {% if light_section_3_link == "primary_links" %}
     {% set light_section_3_link_field = primary_links %}
@@ -103,36 +103,36 @@
     {% set light_section_3_link_field = secondary_links %}
   {% endif %}
 
-  --hsElevate--section--lightSection--3--link__fontColor: {{ light_section_3_link_field.group_default_state.text_color.color }};
+  --hsFidelidade--section--lightSection--3--link__fontColor: {{ light_section_3_link_field.group_default_state.text_color.color }};
 
   {% if light_section_3_link_field.group_default_state.show_underline %}
-    --hsElevate--section--lightSection--3--link__textDecoration: underline;
-    --hsElevate--section--lightSection--3--link__textDecorationColor: {{ light_section_3_link_field.group_default_state.underline_color.color }};
+    --hsFidelidade--section--lightSection--3--link__textDecoration: underline;
+    --hsFidelidade--section--lightSection--3--link__textDecorationColor: {{ light_section_3_link_field.group_default_state.underline_color.color }};
   {% else %}
-    --hsElevate--section--lightSection--3--link__textDecoration: none;
-    --hsElevate--section--lightSection--3--link__textDecorationColor: transparent;
+    --hsFidelidade--section--lightSection--3--link__textDecoration: none;
+    --hsFidelidade--section--lightSection--3--link__textDecorationColor: transparent;
   {% endif %}
 
   /* Hover state */
 
-  --hsElevate--section--lightSection--3--link__hover--fontColor: {{ light_section_3_link_field.group_hover_state.text_color.color }};
+  --hsFidelidade--section--lightSection--3--link__hover--fontColor: {{ light_section_3_link_field.group_hover_state.text_color.color }};
   {% if light_section_3_link_field.group_hover_state.show_underline %}
-    --hsElevate--section--lightSection--3--link__hover--textDecoration: underline;
-    --hsElevate--section--lightSection--3--link__hover--textDecorationColor: {{ light_section_3_link_field.group_hover_state.underline_color.color }};
+    --hsFidelidade--section--lightSection--3--link__hover--textDecoration: underline;
+    --hsFidelidade--section--lightSection--3--link__hover--textDecorationColor: {{ light_section_3_link_field.group_hover_state.underline_color.color }};
   {% else %}
-    --hsElevate--section--lightSection--3--link__hover--textDecoration: none;
-    --hsElevate--section--lightSection--3--link__hover--textDecorationColor: transparent;
+    --hsFidelidade--section--lightSection--3--link__hover--textDecoration: none;
+    --hsFidelidade--section--lightSection--3--link__hover--textDecorationColor: transparent;
   {% endif %}
 
 
   /* Dark section 1 */
-  --hsElevate--section--darkSection--1__backgroundColor: {{ dark_section_1.group_section.background_color.color }};
-  --hsElevate--section--darkSection--1__textColor: {{ dark_section_1.group_fonts.text_color.color }};
-  --hsElevate--section--darkSection--1__accentColor: {{ dark_section_1.group_fonts.accent_color.color }};
-  --hsElevate--section--darkSection--1__captionColor: {{ dark_section_1.group_fonts.caption_color.color }};
-  --hsElevate--section--darkSection--1--blockquote__textColor: {{ dark_section_1.group_blockquote.text_color.color }};
-  --hsElevate--section--darkSection--1--blockquote__backgroundColor: {{ dark_section_1.group_blockquote.background_color.color }};
-  --hsElevate--section--darkSection--1--blockquote__accentColor: {{ dark_section_1.group_blockquote.accent_color.color }};
+  --hsFidelidade--section--darkSection--1__backgroundColor: {{ dark_section_1.group_section.background_color.color }};
+  --hsFidelidade--section--darkSection--1__textColor: {{ dark_section_1.group_fonts.text_color.color }};
+  --hsFidelidade--section--darkSection--1__accentColor: {{ dark_section_1.group_fonts.accent_color.color }};
+  --hsFidelidade--section--darkSection--1__captionColor: {{ dark_section_1.group_fonts.caption_color.color }};
+  --hsFidelidade--section--darkSection--1--blockquote__textColor: {{ dark_section_1.group_blockquote.text_color.color }};
+  --hsFidelidade--section--darkSection--1--blockquote__backgroundColor: {{ dark_section_1.group_blockquote.background_color.color }};
+  --hsFidelidade--section--darkSection--1--blockquote__accentColor: {{ dark_section_1.group_blockquote.accent_color.color }};
 
   {% if dark_section_1_link == "primary_links" %}
     {% set dark_section_1_link_field = primary_links %}
@@ -140,24 +140,24 @@
     {% set dark_section_1_link_field = secondary_links %}
   {% endif %}
 
-  --hsElevate--section--darkSection--1--link__fontColor: {{ dark_section_1_link_field.group_default_state.text_color.color }};
+  --hsFidelidade--section--darkSection--1--link__fontColor: {{ dark_section_1_link_field.group_default_state.text_color.color }};
 
   {% if dark_section_1_link_field.group_default_state.show_underline %}
-    --hsElevate--section--darkSection--1--link__textDecoration: underline;
-    --hsElevate--section--darkSection--1--link__textDecorationColor: {{ dark_section_1_link_field.group_default_state.underline_color.color }};
+    --hsFidelidade--section--darkSection--1--link__textDecoration: underline;
+    --hsFidelidade--section--darkSection--1--link__textDecorationColor: {{ dark_section_1_link_field.group_default_state.underline_color.color }};
   {% else %}
-    --hsElevate--section--darkSection--1--link__textDecoration: none;
-    --hsElevate--section--darkSection--1--link__textDecorationColor: transparent;
+    --hsFidelidade--section--darkSection--1--link__textDecoration: none;
+    --hsFidelidade--section--darkSection--1--link__textDecorationColor: transparent;
   {% endif %}
 
   /* Hover state */
 
-  --hsElevate--section--darkSection--1--link__hover--fontColor: {{ dark_section_1_link_field.group_hover_state.text_color.color }};
+  --hsFidelidade--section--darkSection--1--link__hover--fontColor: {{ dark_section_1_link_field.group_hover_state.text_color.color }};
   {% if dark_section_1_link_field.group_hover_state.show_underline %}
-    --hsElevate--section--darkSection--1--link__hover--textDecoration: underline;
-    --hsElevate--section--darkSection--1--link__hover--textDecorationColor: {{ dark_section_1_link_field.group_hover_state.underline_color.color }};
+    --hsFidelidade--section--darkSection--1--link__hover--textDecoration: underline;
+    --hsFidelidade--section--darkSection--1--link__hover--textDecorationColor: {{ dark_section_1_link_field.group_hover_state.underline_color.color }};
   {% else %}
-    --hsElevate--section--darkSection--1--link__hover--textDecoration: none;
-    --hsElevate--section--darkSection--1--link__hover--textDecorationColor: transparent;
+    --hsFidelidade--section--darkSection--1--link__hover--textDecoration: none;
+    --hsFidelidade--section--darkSection--1--link__hover--textDecorationColor: transparent;
   {% endif %}
 }

@@ -24,14 +24,14 @@ type HeadingProps = HeadingInlineStyleProps &
 // Maps the heading class based on the headingStyle option
 
 const headingClasses = {
-  display_1: 'hs-elevate-display-1',
-  display_2: 'hs-elevate-display-2',
-  h1: 'hs-elevate-h1',
-  h2: 'hs-elevate-h2',
-  h3: 'hs-elevate-h3',
-  h4: 'hs-elevate-h4',
-  h5: 'hs-elevate-h5',
-  h6: 'hs-elevate-h6',
+  display_1: 'hs-fidelidade-display-1',
+  display_2: 'hs-fidelidade-display-2',
+  h1: 'hs-fidelidade-h1',
+  h2: 'hs-fidelidade-h2',
+  h3: 'hs-fidelidade-h3',
+  h4: 'hs-fidelidade-h4',
+  h5: 'hs-fidelidade-h5',
+  h6: 'hs-fidelidade-h6',
 };
 
 // Sets inline styles used for the heading

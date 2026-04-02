@@ -7,19 +7,19 @@ describe('card-variants utilities', () => {
     test('should contain all expected card variant configurations', () => {
       expect(CARD_VARIANT_CONFIGS.card_variant_1).toEqual({
         label: 'Card variant 1',
-        className: 'hs-elevate-card--variant-1',
+        className: 'hs-fidelidade-card--variant-1',
       });
       expect(CARD_VARIANT_CONFIGS.card_variant_2).toEqual({
         label: 'Card variant 2',
-        className: 'hs-elevate-card--variant-2',
+        className: 'hs-fidelidade-card--variant-2',
       });
       expect(CARD_VARIANT_CONFIGS.card_variant_3).toEqual({
         label: 'Card variant 3',
-        className: 'hs-elevate-card--variant-3',
+        className: 'hs-fidelidade-card--variant-3',
       });
       expect(CARD_VARIANT_CONFIGS.card_variant_4).toEqual({
         label: 'Card variant 4',
-        className: 'hs-elevate-card--variant-4',
+        className: 'hs-fidelidade-card--variant-4',
       });
     });
 
@@ -28,10 +28,10 @@ describe('card-variants utilities', () => {
     });
 
     test('should contain all expected class name mappings', () => {
-      expect(CARD_VARIANT_CONFIGS.card_variant_1.className).toBe('hs-elevate-card--variant-1');
-      expect(CARD_VARIANT_CONFIGS.card_variant_2.className).toBe('hs-elevate-card--variant-2');
-      expect(CARD_VARIANT_CONFIGS.card_variant_3.className).toBe('hs-elevate-card--variant-3');
-      expect(CARD_VARIANT_CONFIGS.card_variant_4.className).toBe('hs-elevate-card--variant-4');
+      expect(CARD_VARIANT_CONFIGS.card_variant_1.className).toBe('hs-fidelidade-card--variant-1');
+      expect(CARD_VARIANT_CONFIGS.card_variant_2.className).toBe('hs-fidelidade-card--variant-2');
+      expect(CARD_VARIANT_CONFIGS.card_variant_3.className).toBe('hs-fidelidade-card--variant-3');
+      expect(CARD_VARIANT_CONFIGS.card_variant_4.className).toBe('hs-fidelidade-card--variant-4');
     });
 
     test('should have consistent data structure', () => {
@@ -72,68 +72,68 @@ describe('card-variants utilities', () => {
   describe('getCardVariantClassName', () => {
     describe('with valid card variants', () => {
       test('should return correct class name for card_variant_1', () => {
-        expect(getCardVariantClassName({ cardVariant: 'card_variant_1' })).toBe('hs-elevate-card--variant-1');
+        expect(getCardVariantClassName({ cardVariant: 'card_variant_1' })).toBe('hs-fidelidade-card--variant-1');
       });
 
       test('should return correct class name for card_variant_2', () => {
-        expect(getCardVariantClassName({ cardVariant: 'card_variant_2' })).toBe('hs-elevate-card--variant-2');
+        expect(getCardVariantClassName({ cardVariant: 'card_variant_2' })).toBe('hs-fidelidade-card--variant-2');
       });
 
       test('should return correct class name for card_variant_3', () => {
-        expect(getCardVariantClassName({ cardVariant: 'card_variant_3' })).toBe('hs-elevate-card--variant-3');
+        expect(getCardVariantClassName({ cardVariant: 'card_variant_3' })).toBe('hs-fidelidade-card--variant-3');
       });
 
       test('should return correct class name for card_variant_4', () => {
-        expect(getCardVariantClassName({ cardVariant: 'card_variant_4' })).toBe('hs-elevate-card--variant-4');
+        expect(getCardVariantClassName({ cardVariant: 'card_variant_4' })).toBe('hs-fidelidade-card--variant-4');
       });
     });
 
     describe('with default variant parameter', () => {
       test('should use default variant when primary variant is invalid', () => {
         expect(getCardVariantClassName({ cardVariant: 'invalid_variant' as CardVariantType, fallbackCardVariant: 'card_variant_2' })).toBe(
-          'hs-elevate-card--variant-2'
+          'hs-fidelidade-card--variant-2'
         );
         expect(getCardVariantClassName({ cardVariant: 'card_variant_5' as CardVariantType, fallbackCardVariant: 'card_variant_3' })).toBe(
-          'hs-elevate-card--variant-3'
+          'hs-fidelidade-card--variant-3'
         );
       });
 
       test('should use card_variant_1 as fallback when default variant is also invalid', () => {
         expect(getCardVariantClassName({ cardVariant: 'invalid_variant' as CardVariantType, fallbackCardVariant: 'invalid_default' as CardVariantType })).toBe(
-          'hs-elevate-card--variant-1'
+          'hs-fidelidade-card--variant-1'
         );
       });
 
       test('should return primary variant when both primary and default are valid', () => {
-        expect(getCardVariantClassName({ cardVariant: 'card_variant_3', fallbackCardVariant: 'card_variant_2' })).toBe('hs-elevate-card--variant-3');
+        expect(getCardVariantClassName({ cardVariant: 'card_variant_3', fallbackCardVariant: 'card_variant_2' })).toBe('hs-fidelidade-card--variant-3');
       });
     });
 
     describe('without default variant parameter', () => {
       test('should default to card_variant_1 when no default is provided and primary is invalid', () => {
-        expect(getCardVariantClassName({ cardVariant: 'invalid_variant' as CardVariantType })).toBe('hs-elevate-card--variant-1');
-        expect(getCardVariantClassName({ cardVariant: 'card_variant_5' as CardVariantType })).toBe('hs-elevate-card--variant-1');
+        expect(getCardVariantClassName({ cardVariant: 'invalid_variant' as CardVariantType })).toBe('hs-fidelidade-card--variant-1');
+        expect(getCardVariantClassName({ cardVariant: 'card_variant_5' as CardVariantType })).toBe('hs-fidelidade-card--variant-1');
       });
 
       test('should return primary variant when valid and no default provided', () => {
-        expect(getCardVariantClassName({ cardVariant: 'card_variant_2' })).toBe('hs-elevate-card--variant-2');
-        expect(getCardVariantClassName({ cardVariant: 'card_variant_4' })).toBe('hs-elevate-card--variant-4');
+        expect(getCardVariantClassName({ cardVariant: 'card_variant_2' })).toBe('hs-fidelidade-card--variant-2');
+        expect(getCardVariantClassName({ cardVariant: 'card_variant_4' })).toBe('hs-fidelidade-card--variant-4');
       });
     });
 
     describe('edge cases', () => {
       test('should handle empty string as primary variant', () => {
-        expect(getCardVariantClassName({ cardVariant: '' as CardVariantType })).toBe('hs-elevate-card--variant-1');
+        expect(getCardVariantClassName({ cardVariant: '' as CardVariantType })).toBe('hs-fidelidade-card--variant-1');
       });
 
       test('should handle null/undefined-like inputs gracefully', () => {
-        expect(getCardVariantClassName({ cardVariant: null as any })).toBe('hs-elevate-card--variant-1');
-        expect(getCardVariantClassName({ cardVariant: undefined as any })).toBe('hs-elevate-card--variant-1');
+        expect(getCardVariantClassName({ cardVariant: null as any })).toBe('hs-fidelidade-card--variant-1');
+        expect(getCardVariantClassName({ cardVariant: undefined as any })).toBe('hs-fidelidade-card--variant-1');
       });
 
       test('should be case sensitive', () => {
-        expect(getCardVariantClassName({ cardVariant: 'Card_Variant_1' as CardVariantType })).toBe('hs-elevate-card--variant-1');
-        expect(getCardVariantClassName({ cardVariant: 'CARD_VARIANT_1' as CardVariantType })).toBe('hs-elevate-card--variant-1');
+        expect(getCardVariantClassName({ cardVariant: 'Card_Variant_1' as CardVariantType })).toBe('hs-fidelidade-card--variant-1');
+        expect(getCardVariantClassName({ cardVariant: 'CARD_VARIANT_1' as CardVariantType })).toBe('hs-fidelidade-card--variant-1');
       });
     });
   });
@@ -142,22 +142,22 @@ describe('card-variants utilities', () => {
     test('should return correct config for each variant', () => {
       expect(getCardVariantConfig('card_variant_1')).toEqual({
         label: 'Card variant 1',
-        className: 'hs-elevate-card--variant-1',
+        className: 'hs-fidelidade-card--variant-1',
       });
 
       expect(getCardVariantConfig('card_variant_2')).toEqual({
         label: 'Card variant 2',
-        className: 'hs-elevate-card--variant-2',
+        className: 'hs-fidelidade-card--variant-2',
       });
 
       expect(getCardVariantConfig('card_variant_3')).toEqual({
         label: 'Card variant 3',
-        className: 'hs-elevate-card--variant-3',
+        className: 'hs-fidelidade-card--variant-3',
       });
 
       expect(getCardVariantConfig('card_variant_4')).toEqual({
         label: 'Card variant 4',
-        className: 'hs-elevate-card--variant-4',
+        className: 'hs-fidelidade-card--variant-4',
       });
     });
 

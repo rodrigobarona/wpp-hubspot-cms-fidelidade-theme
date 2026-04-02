@@ -1,4 +1,4 @@
-.hs-elevate-rich-text {
+.hs-fidelidade-rich-text {
   h1,
   h2,
   h3,
@@ -9,27 +9,27 @@
   li,
   span,
   div {
-    color: var(--hsElevate--richText__textColor);
+    color: var(--hsFidelidade--richText__textColor);
   }
 
-  a:not(.hs-elevate-button) {
-    color: var(--hsElevate--richText__linkColor);
-    -webkit-text-decoration: var(--hsElevate--richText__textDecoration);
-    text-decoration: var(--hsElevate--richText__textDecoration);
-    -webkit-text-decoration-color: var(--hsElevate--richText__textDecorationColor);
-    text-decoration-color: var(--hsElevate--richText__textDecorationColor);
+  a:not(.hs-fidelidade-button) {
+    color: var(--hsFidelidade--richText__linkColor);
+    -webkit-text-decoration: var(--hsFidelidade--richText__textDecoration);
+    text-decoration: var(--hsFidelidade--richText__textDecoration);
+    -webkit-text-decoration-color: var(--hsFidelidade--richText__textDecorationColor);
+    text-decoration-color: var(--hsFidelidade--richText__textDecorationColor);
   }
 
-  a:not(.hs-elevate-button):hover,
-  a:not(.hs-elevate-button):focus {
-    color: var(--hsElevate--richText__linkHoverColor);
-    -webkit-text-decoration: var(--hsElevate--richText__linkHoverTextDecoration);
-    text-decoration: var(--hsElevate--richText__linkHoverTextDecoration);
-    -webkit-text-decoration-color: var(--hsElevate--richText__linkHoverTextDecorationColor);
-    text-decoration-color: var(--hsElevate--richText__linkHoverTextDecorationColor);
+  a:not(.hs-fidelidade-button):hover,
+  a:not(.hs-fidelidade-button):focus {
+    color: var(--hsFidelidade--richText__linkHoverColor);
+    -webkit-text-decoration: var(--hsFidelidade--richText__linkHoverTextDecoration);
+    text-decoration: var(--hsFidelidade--richText__linkHoverTextDecoration);
+    -webkit-text-decoration-color: var(--hsFidelidade--richText__linkHoverTextDecorationColor);
+    text-decoration-color: var(--hsFidelidade--richText__linkHoverTextDecorationColor);
   }
 }
 
-.hs-elevate-rich-text--grids > *:last-child {
+.hs-fidelidade-rich-text--grids > *:last-child {
   margin-block-end: 0;
 }

@@ -1,7 +1,7 @@
-.hs-elevate-button {
+.hs-fidelidade-button {
   display: inline-flex;
   min-width: 150px;
-  padding: var(--hsElevate--button__padding);
+  padding: var(--hsFidelidade--button__padding);
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -12,19 +12,19 @@
   }
 }
 
-.hs-elevate-button__icon {
+.hs-fidelidade-button__icon {
   display: block;
   height: 1.25rem;
   flex: 0 0 auto;
   fill: currentcolor;
 }
 
-.hs-elevate-button__icon--left {
+.hs-fidelidade-button__icon--left {
   margin-right: 1rem;
   order: 0;
 }
 
-.hs-elevate-button__icon--right {
+.hs-fidelidade-button__icon--right {
   margin-left: 1rem;
   order: 3;
 }

@@ -29,8 +29,8 @@ function generateColorCssVars(props: ColorProps): CSSPropertiesMap {
   const { textColor, menuBackgroundColor } = props;
 
   return {
-    '--hsElevate--languageSwitcher__textColor': textColor,
-    '--hsElevate--languageSwitcher__backgroundColor': menuBackgroundColor,
+    '--hsFidelidade--languageSwitcher__textColor': textColor,
+    '--hsFidelidade--languageSwitcher__backgroundColor': menuBackgroundColor,
   };
 }
 
@@ -60,10 +60,10 @@ const LanguageSwitcherIsland = (props: LanguageSwitcherProps) => {
   const translationsArrayAsObject = createTranslationsArrayAsObject(translations);
   const currentPageLanguageDisplayName = getLanguageDisplayName({ currentPageLanguage, translationsArrayAsObject });
   const {
-    menuBackgroundColor = 'var(--hsElevate--section--lightSection--1__backgroundColor)',
-    menuBackgroundColorHover = 'var(--hsElevate--section--lightSection--1__backgroundColor)',
-    textColor = 'var(--hsElevate--section--lightSection--1__textColor)',
-    textColorHover = 'var(--hsElevate--section--lightSection--1__textColor)',
+    menuBackgroundColor = 'var(--hsFidelidade--section--lightSection--1__backgroundColor)',
+    menuBackgroundColorHover = 'var(--hsFidelidade--section--lightSection--1__backgroundColor)',
+    textColor = 'var(--hsFidelidade--section--lightSection--1__textColor)',
+    textColorHover = 'var(--hsFidelidade--section--lightSection--1__textColor)',
     languageSwitcherSelectText = 'Select a language',
     langSwitcherIconFieldPath,
   } = props;
@@ -85,33 +85,33 @@ const LanguageSwitcherIsland = (props: LanguageSwitcherProps) => {
 
   const cssVarsMap = { ...generateColorCssVars({ textColor, menuBackgroundColor }) };
 
-  const overlayClasses = cx(swm('hs-elevate-language-switcher__overlay'), { [styles['hs-elevate-language-switcher__overlay--open']]: isOpen });
+  const overlayClasses = cx(swm('hs-fidelidade-language-switcher__overlay'), { [styles['hs-fidelidade-language-switcher__overlay--open']]: isOpen });
 
-  const sidePanelClasses = cx(swm('hs-elevate-language-switcher__side-panel'), { [styles['hs-elevate-language-switcher__side-panel--open']]: isOpen });
+  const sidePanelClasses = cx(swm('hs-fidelidade-language-switcher__side-panel'), { [styles['hs-fidelidade-language-switcher__side-panel--open']]: isOpen });
 
   return (
-    <LanguageSwitcherNav style={cssVarsMap} onClick={handleContainerClick} className={swm('hs-elevate-language-switcher')}>
+    <LanguageSwitcherNav style={cssVarsMap} onClick={handleContainerClick} className={swm('hs-fidelidade-language-switcher')}>
       <LanguageSwitcherButton
         role="button"
         aria-expanded={isOpen}
         aria-label={currentPageLanguageDisplayName}
         onClick={handleLanguageSwitcherClick}
-        className={swm('hs-elevate-language-switcher__button')}
+        className={swm('hs-fidelidade-language-switcher__button')}
       >
         {langSwitcherIcon}
-        <span className="hs-elevate-language-switcher__current-language">{currentPageLanguageDisplayName}</span>
+        <span className="hs-fidelidade-language-switcher__current-language">{currentPageLanguageDisplayName}</span>
       </LanguageSwitcherButton>
       {isOpen && <Overlay onClick={closeSidePanel} className={overlayClasses} />}
       {!isInEditor && (
         <SidePanel className={sidePanelClasses}>
-          <PanelHeader className={swm('hs-elevate-language-switcher__side-panel-header')}>
-            <PanelTitle className={swm('hs-elevate-language-switcher__side-panel-title')}>{languageSwitcherSelectText}</PanelTitle>
-            <CloseButton onClick={closeSidePanel} aria-label="Close language selector" className={swm('hs-elevate-language-switcher__side-panel-close-button')}>
+          <PanelHeader className={swm('hs-fidelidade-language-switcher__side-panel-header')}>
+            <PanelTitle className={swm('hs-fidelidade-language-switcher__side-panel-title')}>{languageSwitcherSelectText}</PanelTitle>
+            <CloseButton onClick={closeSidePanel} aria-label="Close language selector" className={swm('hs-fidelidade-language-switcher__side-panel-close-button')}>
               ✕
             </CloseButton>
           </PanelHeader>
 
-          <PanelContent className={swm('hs-elevate-language-switcher__side-panel-options-container')}>
+          <PanelContent className={swm('hs-fidelidade-language-switcher__side-panel-options-container')}>
             <LanguageOptions
               translations={translations}
               menuBackgroundColorHover={menuBackgroundColorHover}

@@ -25,10 +25,10 @@ function generateColorCssVars(props: ColorProps): CSSPropertiesMap {
   const { menuTextColor, menuTextHoverColor, menuBackgroundColor, menuAccentColor } = props;
 
   return {
-    '--hsElevate--mobileMenu__textColor': menuTextColor,
-    '--hsElevate--mobileMenu__hover--textColor': menuTextHoverColor,
-    '--hsElevate--mobileMenu__backgroundColor': menuBackgroundColor,
-    '--hsElevate--mobileMenu__accentColor': menuAccentColor,
+    '--hsFidelidade--mobileMenu__textColor': menuTextColor,
+    '--hsFidelidade--mobileMenu__hover--textColor': menuTextHoverColor,
+    '--hsFidelidade--mobileMenu__backgroundColor': menuBackgroundColor,
+    '--hsFidelidade--mobileMenu__accentColor': menuAccentColor,
   };
 }
 
@@ -42,9 +42,9 @@ function generateSizeCssVars(props: SizeProps): CSSPropertiesMap {
   const { headerHeight, mobileButtonContainerHeight, headerMobileLanguageSwitcherHeight } = props;
 
   return {
-    '--hsElevate--mobileMenu__height': `${headerHeight}px`,
-    '--hsElevate--mobileMenuButtonContainer__height': `${mobileButtonContainerHeight}px`,
-    '--hsElevate--mobileMenuLanguageSwitcher__height': `${headerMobileLanguageSwitcherHeight}px`,
+    '--hsFidelidade--mobileMenu__height': `${headerHeight}px`,
+    '--hsFidelidade--mobileMenuButtonContainer__height': `${mobileButtonContainerHeight}px`,
+    '--hsFidelidade--mobileMenuLanguageSwitcher__height': `${headerMobileLanguageSwitcherHeight}px`,
   };
 }
 
@@ -127,7 +127,7 @@ export default function MobileMenuIsland(props: MobileMenuIslandProps) {
   }, [showMenu, isClosing]);
 
   useEffect(() => {
-    const header = document.querySelector('.hs-elevate-site-header') as HTMLElement;
+    const header = document.querySelector('.hs-fidelidade-site-header') as HTMLElement;
 
     if (!header) {
       return;
@@ -153,7 +153,7 @@ export default function MobileMenuIsland(props: MobileMenuIslandProps) {
   }, []);
 
   useEffect(() => {
-    const headerMobileLanguageSwitcherButton = document.querySelector('.hs-elevate-site-header__language-switcher-button') as HTMLElement;
+    const headerMobileLanguageSwitcherButton = document.querySelector('.hs-fidelidade-site-header__language-switcher-button') as HTMLElement;
 
     if (!headerMobileLanguageSwitcherButton) {
       return;
@@ -175,7 +175,7 @@ export default function MobileMenuIsland(props: MobileMenuIslandProps) {
   }, []);
 
   useEffect(() => {
-    const buttonContainer = document.querySelector('.hs-elevate-site-header__mobile-button-container') as HTMLElement;
+    const buttonContainer = document.querySelector('.hs-fidelidade-site-header__mobile-button-container') as HTMLElement;
 
     // If the button container doesn't exist, set the height to 0
     if (!buttonContainer) {
@@ -213,7 +213,7 @@ export default function MobileMenuIsland(props: MobileMenuIslandProps) {
     setIsAnimating(!isAnimating);
   };
 
-  const topLevelMenuItemStyles = { '--hsElevate--menu--topLevel__gap': '0' } as CSSPropertiesMap;
+  const topLevelMenuItemStyles = { '--hsFidelidade--menu--topLevel__gap': '0' } as CSSPropertiesMap;
 
   // Handles smooth scrolling to an anchor link when mobile menu is closed
   const handleMobileAnchorClick = (cb: () => void) => {
@@ -226,15 +226,15 @@ export default function MobileMenuIsland(props: MobileMenuIslandProps) {
     ...generateSizeCssVars({ headerHeight, mobileButtonContainerHeight, headerMobileLanguageSwitcherHeight }),
   };
 
-  const menuContainerClassNames = cx(swm('hs-elevate-site-header__menu-container'), {
-    [styles['hs-elevate-site-header__menu-container--is-sliding']]: isMenuSliding,
-    [styles['hs-elevate-site-header__menu-container--is-hidden']]: !showMenu,
+  const menuContainerClassNames = cx(swm('hs-fidelidade-site-header__menu-container'), {
+    [styles['hs-fidelidade-site-header__menu-container--is-sliding']]: isMenuSliding,
+    [styles['hs-fidelidade-site-header__menu-container--is-hidden']]: !showMenu,
   });
 
-  const hamburgerMenuClassNames = cx(swm('hs-elevate-site-header__hamburger-menu'), { [styles['hs-elevate-site-header__hamburger-menu--active']]: showMenu });
+  const hamburgerMenuClassNames = cx(swm('hs-fidelidade-site-header__hamburger-menu'), { [styles['hs-fidelidade-site-header__hamburger-menu--active']]: showMenu });
 
   return (
-    <MobileMenu style={cssVarsMap} className={swm('hs-elevate-site-header__mobile-menu')}>
+    <MobileMenu style={cssVarsMap} className={swm('hs-fidelidade-site-header__mobile-menu')}>
       <HamburgerMenu className={hamburgerMenuClassNames} tab-index="1" onClick={handleOpenCloseMenu}>
         <div></div>
         <div></div>
@@ -250,10 +250,10 @@ export default function MobileMenuIsland(props: MobileMenuIslandProps) {
           setTriggeredMenuItems={setTriggeredMenuItems}
           topLevelMenuItemStyles={topLevelMenuItemStyles}
           mobileAnchorClickCallback={handleMobileAnchorClick}
-          additionalClassArray={['hs-elevate-site-header__menu']}
+          additionalClassArray={['hs-fidelidade-site-header__menu']}
         />
         {showButton && (
-          <MobileSlideoutButtonContainer className={swm('hs-elevate-site-header__mobile-button-container')}>
+          <MobileSlideoutButtonContainer className={swm('hs-fidelidade-site-header__mobile-button-container')}>
             <Button
               href={getLinkFieldHref(buttonLink)}
               buttonStyle={buttonStyleVariant}
@@ -263,7 +263,7 @@ export default function MobileMenuIsland(props: MobileMenuIslandProps) {
               showIcon={showIcon}
               iconFieldPath="groupButton.buttonContentIcon"
               iconPosition={iconPosition}
-              additionalClassArray={[swm('hs-elevate-site-header__mobile-button')]}
+              additionalClassArray={[swm('hs-fidelidade-site-header__mobile-button')]}
               moduleName={moduleName}
               textFieldPath="groupButton.buttonContentText"
             >

@@ -35,7 +35,7 @@ type HeadingProps = HeadingAndTextFieldLibraryType & {
 function generateColorCssVars(sectionVariantField: SectionVariantType): CSSPropertiesMap {
   const textColor = sectionColorsMap[sectionVariantField]?.textColor || sectionColorsMap['section_variant_1'].textColor;
 
-  return { '--hsElevate--heading__textColor': textColor };
+  return { '--hsFidelidade--heading__textColor': textColor };
 }
 
 // Components
@@ -53,12 +53,12 @@ export const Component = (props: HeadingProps) => {
 
   const cssVarsMap = { ...generateColorCssVars(sectionStyleVariant) };
 
-  const layoutClass = renderedWithGrids ? 'hs-elevate-heading-container--grids' : 'hs-elevate-heading-container--bootstrap';
+  const layoutClass = renderedWithGrids ? 'hs-fidelidade-heading-container--grids' : 'hs-fidelidade-heading-container--bootstrap';
 
   return (
-    <HeadingContainer className={cx(swm('hs-elevate-heading-container'), styles[layoutClass])} style={cssVarsMap}>
+    <HeadingContainer className={cx(swm('hs-fidelidade-heading-container'), styles[layoutClass])} style={cssVarsMap}>
       <HeadingComponent
-        additionalClassArray={['hs-elevate-heading-container__heading']}
+        additionalClassArray={['hs-fidelidade-heading-container__heading']}
         headingLevel={headingAndTextHeadingLevel}
         heading={headingAndTextHeading}
         alignment={alignment}
@@ -87,7 +87,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/heading',
+  moduleName: 'fidelidade/components/modules/heading',
   version: 0,
   themeModule: true,
 };

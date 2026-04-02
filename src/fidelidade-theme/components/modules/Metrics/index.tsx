@@ -33,27 +33,27 @@ type MetricProps = {
 
 function generateColorCssVars(sectionVariantField: SectionVariantType): CSSPropertiesMap {
   return {
-    '--hsElevate--metrics__textColor': sectionColorsMap[sectionVariantField].textColor,
-    '--hsElevate--metrics__accentColor': sectionColorsMap[sectionVariantField].accentColor,
+    '--hsFidelidade--metrics__textColor': sectionColorsMap[sectionVariantField].textColor,
+    '--hsFidelidade--metrics__accentColor': sectionColorsMap[sectionVariantField].accentColor,
   };
 }
 
 // Based on the heading style a user selects for the metric number, we set a maximum font size and a minimum font size which is used for a font-size clamp on the MetricNumber component
 function generateMetricCssVars(headingStyleAs: HeadingStyleVariant): CSSPropertiesMap {
   const metricCssVarsMap = {
-    display_1: 'var(--hsElevate--display1__fontSize)',
-    display_2: 'var(--hsElevate--display2__fontSize)',
-    h1: 'var(--hsElevate--h1__fontSize)',
-    h2: 'var(--hsElevate--h2__fontSize)',
-    h3: 'var(--hsElevate--h3__fontSize)',
-    h4: 'var(--hsElevate--h4__fontSize)',
-    h5: 'var(--hsElevate--h5__fontSize)',
-    h6: 'var(--hsElevate--h6__fontSize)',
+    display_1: 'var(--hsFidelidade--display1__fontSize)',
+    display_2: 'var(--hsFidelidade--display2__fontSize)',
+    h1: 'var(--hsFidelidade--h1__fontSize)',
+    h2: 'var(--hsFidelidade--h2__fontSize)',
+    h3: 'var(--hsFidelidade--h3__fontSize)',
+    h4: 'var(--hsFidelidade--h4__fontSize)',
+    h5: 'var(--hsFidelidade--h5__fontSize)',
+    h6: 'var(--hsFidelidade--h6__fontSize)',
   };
 
   return {
-    '--hsElevate--metrics__maxFontSize': metricCssVarsMap[headingStyleAs],
-    '--hsElevate--metrics__minFontSize': 'calc(var(--hsElevate--metrics__maxFontSize) * var(--hsElevate--heading__tablet-modifier))',
+    '--hsFidelidade--metrics__maxFontSize': metricCssVarsMap[headingStyleAs],
+    '--hsFidelidade--metrics__minFontSize': 'calc(var(--hsFidelidade--metrics__maxFontSize) * var(--hsFidelidade--heading__tablet-modifier))',
   };
 }
 
@@ -63,7 +63,7 @@ const MetricsWrapper = createComponent('div');
 // Helper function to get CSS class modifier based on metric count
 function getMetricCountClass(metricCount: number): string {
   if ([2, 3, 4].includes(metricCount)) {
-    return `hs-elevate-metrics__container--count-${metricCount}`;
+    return `hs-fidelidade-metrics__container--count-${metricCount}`;
   }
   return '';
 }
@@ -88,25 +88,25 @@ export const Component = (props: MetricProps) => {
 
   const metricCountClass = getMetricCountClass(groupMetrics.length);
 
-  const layoutClass = renderedWithGrids ? 'hs-elevate-metrics--grids' : 'hs-elevate-metrics--bootstrap';
+  const layoutClass = renderedWithGrids ? 'hs-fidelidade-metrics--grids' : 'hs-fidelidade-metrics--bootstrap';
 
   return (
-    <MetricsWrapper className={cx(swm('hs-elevate-metrics'), styles[layoutClass])}>
+    <MetricsWrapper className={cx(swm('hs-fidelidade-metrics'), styles[layoutClass])}>
       <MetricsContainer
-        className={cx('hs-elevate-metrics-container', styles['hs-elevate-metrics__container'], metricCountClass && styles[metricCountClass])}
+        className={cx('hs-fidelidade-metrics-container', styles['hs-fidelidade-metrics__container'], metricCountClass && styles[metricCountClass])}
         style={cssVarsMap}
       >
         {groupMetrics.map((metric, index) => {
           return (
-            <Metric className={cx('hs-elevate-metrics-container__metric', styles['hs-elevate-metrics__metric'])} key={index}>
+            <Metric className={cx('hs-fidelidade-metrics-container__metric', styles['hs-fidelidade-metrics__metric'])} key={index}>
               <MetricNumber
-                className={cx('hs-elevate-metrics-container__metric-number', styles['hs-elevate-metrics__metric-number'])}
+                className={cx('hs-fidelidade-metrics-container__metric-number', styles['hs-fidelidade-metrics__metric-number'])}
                 data-hs-token={getDataHSToken(moduleName, `groupMetrics[${index}].metric`)}
               >
                 {metric.metric}
               </MetricNumber>
               <MetricDescription
-                className={cx('hs-elevate-metrics-container__metric-description', styles['hs-elevate-metrics__metric-description'])}
+                className={cx('hs-fidelidade-metrics-container__metric-description', styles['hs-fidelidade-metrics__metric-description'])}
                 data-hs-token={getDataHSToken(moduleName, `groupMetrics[${index}].description`)}
               >
                 {metric.description}
@@ -136,7 +136,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/metrics',
+  moduleName: 'fidelidade/components/modules/metrics',
   version: 0,
   themeModule: true,
 };

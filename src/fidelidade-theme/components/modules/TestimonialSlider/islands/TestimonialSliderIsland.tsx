@@ -44,10 +44,10 @@ const NavigationArrow = (props: NavigationArrowProps) => {
       height="39"
       viewBox="0 0 24 39"
       fill="none"
-      className={swm('hs-elevate-testimonial-slider__navigation-icon')}
+      className={swm('hs-fidelidade-testimonial-slider__navigation-icon')}
     >
       {altText && (
-        <title className="hs-elevate-testimonial-slider__navigation-icon-title" id={uniqueInstanceId}>
+        <title className="hs-fidelidade-testimonial-slider__navigation-icon-title" id={uniqueInstanceId}>
           {altText}
         </title>
       )}
@@ -65,11 +65,11 @@ const NavigationButton = createComponent('button');
 
 const Navigation = ({ previousAltText, nextAltText }: NavigationProps) => {
   return (
-    <div className="splide__arrows hs-elevate-testimonial-slider__navigation">
-      <NavigationButton className={cx('splide__arrow', 'splide__arrow--prev', swm('hs-elevate-testimonial-slider__prev'))}>
+    <div className="splide__arrows hs-fidelidade-testimonial-slider__navigation">
+      <NavigationButton className={cx('splide__arrow', 'splide__arrow--prev', swm('hs-fidelidade-testimonial-slider__prev'))}>
         <NavigationArrow altText={previousAltText} />
       </NavigationButton>
-      <NavigationButton className={cx('splide__arrow', 'splide__arrow--next', swm('hs-elevate-testimonial-slider__next'))}>
+      <NavigationButton className={cx('splide__arrow', 'splide__arrow--next', swm('hs-fidelidade-testimonial-slider__next'))}>
         <NavigationArrow altText={nextAltText} />
       </NavigationButton>
     </div>
@@ -88,7 +88,7 @@ const LinkArrow = () => {
       viewBox="0 0 8 15"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={swm('hs-elevate-testimonial-slider__link-icon')}
+      className={swm('hs-fidelidade-testimonial-slider__link-icon')}
     >
       <path d="M7.70625 6.79414C8.09688 7.18477 8.09688 7.81914 7.70625 8.20977L1.70625 14.2098C1.31563 14.6004 0.681251 14.6004 0.290626 14.2098C-0.0999985 13.8191 -0.0999985 13.1848 0.290626 12.7941L5.58438 7.50039L0.293751 2.20664C-0.0968735 1.81602 -0.0968735 1.18164 0.293751 0.791016C0.684376 0.400391 1.31875 0.400391 1.70938 0.791016L7.70938 6.79102L7.70625 6.79414Z" />
     </LinkArrowImage>
@@ -106,7 +106,7 @@ const TestimonialLink = (props: TestimonialLinkProps) => {
   return (
     <>
       {linkText && (
-        <Link className={swm('hs-elevate-testimonial-slider__link')} href={linkHref} rel={linkRel} target={linkTarget}>
+        <Link className={swm('hs-fidelidade-testimonial-slider__link')} href={linkHref} rel={linkRel} target={linkTarget}>
           {linkText} <LinkArrow />
         </Link>
       )}
@@ -130,18 +130,18 @@ const TestimonialMeta = (props: TestimonialMetaProps) => {
 
   const isDefaultAuthorImage = authorImage.src && isDefaultTestimonialImage(authorImage.src);
 
-  const authorImageClasses = cx(swm('hs-elevate-testimonial-slider__author-image'), {
-    [styles['hs-elevate-testimonial-slider__author-image--use-background']]: isDefaultAuthorImage,
+  const authorImageClasses = cx(swm('hs-fidelidade-testimonial-slider__author-image'), {
+    [styles['hs-fidelidade-testimonial-slider__author-image--use-background']]: isDefaultAuthorImage,
   });
 
   return (
     <>
       {(hasAuthorElement || linkText) && (
-        <Footer className={swm('hs-elevate-testimonial-slider__footer')}>
+        <Footer className={swm('hs-fidelidade-testimonial-slider__footer')}>
           {hasAuthorElement && (
-            <AuthorContainer className={swm('hs-elevate-testimonial-slider__author-container')}>
+            <AuthorContainer className={swm('hs-fidelidade-testimonial-slider__author-container')}>
               {authorImage.src && (
-                <AuthorImageContainer className={swm('hs-elevate-testimonial-slider__author-image-container')}>
+                <AuthorImageContainer className={swm('hs-fidelidade-testimonial-slider__author-image-container')}>
                   <AuthorImage
                     data-splide-lazy={authorImage.src}
                     alt={authorImage.alt}
@@ -153,8 +153,8 @@ const TestimonialMeta = (props: TestimonialMetaProps) => {
               )}
               {(authorName || authorTitle) && (
                 <div>
-                  {authorName && <AuthorName className={swm('hs-elevate-testimonial-slider__author-name')}>{authorName}</AuthorName>}
-                  {authorTitle && <AuthorTitle className={swm('hs-elevate-testimonial-slider__author-title')}>{authorTitle}</AuthorTitle>}
+                  {authorName && <AuthorName className={swm('hs-fidelidade-testimonial-slider__author-name')}>{authorName}</AuthorName>}
+                  {authorTitle && <AuthorTitle className={swm('hs-fidelidade-testimonial-slider__author-title')}>{authorTitle}</AuthorTitle>}
                 </div>
               )}
             </AuthorContainer>
@@ -176,8 +176,8 @@ const QuoteText = createComponent('span');
 
 function generateAlignmentCSSVars(contentCentered: boolean): CSSPropertiesMap {
   return {
-    '--hsElevate--testimonial__alignment': contentCentered ? 'center' : 'flex-start',
-    '--hsElevate--testimonial__textAlign': contentCentered ? 'center' : 'left',
+    '--hsFidelidade--testimonial__alignment': contentCentered ? 'center' : 'flex-start',
+    '--hsFidelidade--testimonial__textAlign': contentCentered ? 'center' : 'left',
   };
 }
 
@@ -191,19 +191,19 @@ const Testimonial = (props: TestimonialProps) => {
 
   const isDefaultImage = image.src && isDefaultTestimonialImage(image.src);
 
-  const testimonialImageClasses = cx(swm('hs-elevate-testimonial-slider__image'), {
-    [styles['hs-elevate-testimonial-slider__image--use-background']]: isDefaultImage,
+  const testimonialImageClasses = cx(swm('hs-fidelidade-testimonial-slider__image'), {
+    [styles['hs-fidelidade-testimonial-slider__image--use-background']]: isDefaultImage,
   });
 
   return (
-    <SlideContainer style={cssVarsMap} className={swm('hs-elevate-testimonial-slider__slide')}>
+    <SlideContainer style={cssVarsMap} className={swm('hs-fidelidade-testimonial-slider__slide')}>
       {showImage && image.src && (
-        <ImageContainer className={swm('hs-elevate-testimonial-slider__image-container')}>
+        <ImageContainer className={swm('hs-fidelidade-testimonial-slider__image-container')}>
           <TestimonialImage className={cx(testimonialImageClasses)} data-splide-lazy={image.src} alt={image.alt} width={image.width} height={image.height} />
         </ImageContainer>
       )}
-      <ContentContainer className={swm('hs-elevate-testimonial-slider__content-container')}>
-        <QuoteText className={swm('hs-elevate-testimonial-slider__quote-text')}>{quote}</QuoteText>
+      <ContentContainer className={swm('hs-fidelidade-testimonial-slider__content-container')}>
+        <QuoteText className={swm('hs-fidelidade-testimonial-slider__quote-text')}>{quote}</QuoteText>
         <TestimonialMeta
           moduleName={moduleName}
           testimonialIndex={testimonialIndex}
@@ -224,38 +224,38 @@ const Testimonial = (props: TestimonialProps) => {
 
 function generateIconColorCssVar(cardVariantField: CardVariantType): CSSPropertiesMap {
   const iconColorsMap = {
-    card_variant_1: 'var(--hsElevate--card--variant1__iconColor)',
-    card_variant_2: 'var(--hsElevate--card--variant2__iconColor)',
-    card_variant_3: 'var(--hsElevate--card--variant3__iconColor)',
-    card_variant_4: 'var(--hsElevate--card--variant4__iconColor)',
+    card_variant_1: 'var(--hsFidelidade--card--variant1__iconColor)',
+    card_variant_2: 'var(--hsFidelidade--card--variant2__iconColor)',
+    card_variant_3: 'var(--hsFidelidade--card--variant3__iconColor)',
+    card_variant_4: 'var(--hsFidelidade--card--variant4__iconColor)',
   };
 
-  return { '--hsElevate--cardIcon__fillColor': iconColorsMap[cardVariantField] };
+  return { '--hsFidelidade--cardIcon__fillColor': iconColorsMap[cardVariantField] };
 }
 
 function generateLinkCssVar(cardVariantField: CardVariantType): CSSPropertiesMap {
   const linkColorsMap = {
-    card_variant_1: 'var(--hsElevate--card--variant1--link__fontColor)',
-    card_variant_2: 'var(--hsElevate--card--variant2--link__fontColor)',
-    card_variant_3: 'var(--hsElevate--card--variant3--link__fontColor)',
-    card_variant_4: 'var(--hsElevate--card--variant4--link__fontColor)',
+    card_variant_1: 'var(--hsFidelidade--card--variant1--link__fontColor)',
+    card_variant_2: 'var(--hsFidelidade--card--variant2--link__fontColor)',
+    card_variant_3: 'var(--hsFidelidade--card--variant3--link__fontColor)',
+    card_variant_4: 'var(--hsFidelidade--card--variant4--link__fontColor)',
   };
 
-  return { '--hsElevate--links__fontColor': linkColorsMap[cardVariantField] };
+  return { '--hsFidelidade--links__fontColor': linkColorsMap[cardVariantField] };
 }
 
 function generateBlockquoteCssVar(cardVariantField: CardVariantType): CSSPropertiesMap {
   const cardColorsMap = {
-    card_variant_1: 'var(--hsElevate--card--variant1__textColor)',
-    card_variant_2: 'var(--hsElevate--card--variant2__textColor)',
-    card_variant_3: 'var(--hsElevate--card--variant3__textColor)',
-    card_variant_4: 'var(--hsElevate--card--variant4__textColor)',
+    card_variant_1: 'var(--hsFidelidade--card--variant1__textColor)',
+    card_variant_2: 'var(--hsFidelidade--card--variant2__textColor)',
+    card_variant_3: 'var(--hsFidelidade--card--variant3__textColor)',
+    card_variant_4: 'var(--hsFidelidade--card--variant4__textColor)',
   };
 
   return {
-    '--hsElevate--blockquote__fontColor': cardColorsMap[cardVariantField],
-    '--hsElevate--blockquote__backgroundColor': 'transparent',
-    '--hsElevate--blockquote__accentColor': 'transparent',
+    '--hsFidelidade--blockquote__fontColor': cardColorsMap[cardVariantField],
+    '--hsFidelidade--blockquote__backgroundColor': 'transparent',
+    '--hsFidelidade--blockquote__accentColor': 'transparent',
   };
 }
 
@@ -286,9 +286,9 @@ const TestimonialSlider = (props: TestimonialSliderProps) => {
   const cardVariantClassName = getCardVariantClassName({ cardVariant: cardStyleVariant, fallbackCardVariant: 'card_variant_1' });
 
   return (
-    <TestimonialSliderContainer style={cssVarsMap} className={cx(swm('hs-elevate-testimonial-slider'), cardVariantClassName)}>
+    <TestimonialSliderContainer style={cssVarsMap} className={cx(swm('hs-fidelidade-testimonial-slider'), cardVariantClassName)}>
       <Splide
-        className={swm('hs-elevate-testimonial-slider__slider')}
+        className={swm('hs-fidelidade-testimonial-slider__slider')}
         hasTrack={false}
         options={{
           lazyLoad: true,
@@ -310,10 +310,10 @@ const TestimonialSlider = (props: TestimonialSliderProps) => {
           },
         }}
       >
-        <div className="splide__track hs-elevate-testimonial-slider__track">
-          <div className="splide__list hs-elevate-testimonial-slider__list">
+        <div className="splide__track hs-fidelidade-testimonial-slider__track">
+          <div className="splide__list hs-fidelidade-testimonial-slider__list">
             {groupTestimonial.map((testimonial, index) => (
-              <div className="splide__slide hs-elevate-testimonial-slider__slide" key={testimonial.groupQuote.quote}>
+              <div className="splide__slide hs-fidelidade-testimonial-slider__slide" key={testimonial.groupQuote.quote}>
                 <Testimonial
                   moduleName={moduleName}
                   testimonialIndex={index}

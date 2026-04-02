@@ -19,34 +19,34 @@ const swm = staticWithModule(styles);
 
 function generateCardBorderStyles(cardVariantField: CardVariantType): CSSPropertiesMap {
   const cardBorderThicknessMap = {
-    card_variant_1: 'var(--hsElevate--card--variant1__borderThickness)',
-    card_variant_2: 'var(--hsElevate--card--variant2__borderThickness)',
-    card_variant_3: 'var(--hsElevate--card--variant3__borderThickness)',
-    card_variant_4: 'var(--hsElevate--card--variant4__borderThickness)',
+    card_variant_1: 'var(--hsFidelidade--card--variant1__borderThickness)',
+    card_variant_2: 'var(--hsFidelidade--card--variant2__borderThickness)',
+    card_variant_3: 'var(--hsFidelidade--card--variant3__borderThickness)',
+    card_variant_4: 'var(--hsFidelidade--card--variant4__borderThickness)',
   };
 
   const cardBorderColorMap = {
-    card_variant_1: 'var(--hsElevate--card--variant1__borderColor)',
-    card_variant_2: 'var(--hsElevate--card--variant2__borderColor)',
-    card_variant_3: 'var(--hsElevate--card--variant3__borderColor)',
-    card_variant_4: 'var(--hsElevate--card--variant4__borderColor)',
+    card_variant_1: 'var(--hsFidelidade--card--variant1__borderColor)',
+    card_variant_2: 'var(--hsFidelidade--card--variant2__borderColor)',
+    card_variant_3: 'var(--hsFidelidade--card--variant3__borderColor)',
+    card_variant_4: 'var(--hsFidelidade--card--variant4__borderColor)',
   };
 
   return {
-    '--hsElevate--pricingCard__borderThickness': cardBorderThicknessMap[cardVariantField],
-    '--hsElevate--pricingCard__borderColor': cardBorderColorMap[cardVariantField],
+    '--hsFidelidade--pricingCard__borderThickness': cardBorderThicknessMap[cardVariantField],
+    '--hsFidelidade--pricingCard__borderColor': cardBorderColorMap[cardVariantField],
   };
 }
 
 function generateIconCssVars(cardVariantField: CardVariantType): CSSPropertiesMap {
   const iconColorsMap = {
-    card_variant_1: 'var(--hsElevate--card--variant1__iconColor)',
-    card_variant_2: 'var(--hsElevate--card--variant2__iconColor)',
-    card_variant_3: 'var(--hsElevate--card--variant3__iconColor)',
-    card_variant_4: 'var(--hsElevate--card--variant4__iconColor)',
+    card_variant_1: 'var(--hsFidelidade--card--variant1__iconColor)',
+    card_variant_2: 'var(--hsFidelidade--card--variant2__iconColor)',
+    card_variant_3: 'var(--hsFidelidade--card--variant3__iconColor)',
+    card_variant_4: 'var(--hsFidelidade--card--variant4__iconColor)',
   };
 
-  return { '--hsElevate--cardIcon__color': iconColorsMap[cardVariantField] };
+  return { '--hsFidelidade--cardIcon__color': iconColorsMap[cardVariantField] };
 }
 
 const PricingCardsWrapper = createComponent('div');
@@ -65,10 +65,10 @@ const PricingCardSummary = (props: PricingCardSummaryProps & HeadingStyleFieldLi
   } = props;
 
   return (
-    <PricingCardSummaryContainer className={swm('hs-elevate-pricing-card-container__summary')}>
+    <PricingCardSummaryContainer className={swm('hs-fidelidade-pricing-card-container__summary')}>
       {headingAndTextHeading && (
         <HeadingComponent
-          additionalClassArray={['hs-elevate-pricing-card-container__title']}
+          additionalClassArray={['hs-fidelidade-pricing-card-container__title']}
           headingLevel={headingAndTextHeadingLevel}
           heading={headingAndTextHeading}
           headingStyleVariant={headingStyleVariant}
@@ -78,21 +78,21 @@ const PricingCardSummary = (props: PricingCardSummaryProps & HeadingStyleFieldLi
       )}
       {description && (
         <PricingCardDescription
-          className={swm('hs-elevate-pricing-card-container__description')}
+          className={swm('hs-fidelidade-pricing-card-container__description')}
           data-hs-token={getDataHSToken(moduleName, `groupPricingCards[${cardIndex}].groupSummary.description`)}
         >
           {description}
         </PricingCardDescription>
       )}
-      <PricingCardPriceContainer className={swm('hs-elevate-pricing-card-container__price-container')}>
+      <PricingCardPriceContainer className={swm('hs-fidelidade-pricing-card-container__price-container')}>
         <PricingCardPrice
-          className={swm('hs-elevate-pricing-card-container__price')}
+          className={swm('hs-fidelidade-pricing-card-container__price')}
           data-hs-token={getDataHSToken(moduleName, `groupPricingCards[${cardIndex}].groupSummary.price`)}
         >
           {price}
         </PricingCardPrice>
         <PricingCardTimePeriod
-          className={swm('hs-elevate-pricing-card-container__time-period')}
+          className={swm('hs-fidelidade-pricing-card-container__time-period')}
           data-hs-token={getDataHSToken(moduleName, `groupPricingCards[${cardIndex}].groupSummary.timePeriod`)}
         >
           {timePeriod}
@@ -108,7 +108,7 @@ const PricingCardFeaturesListItem = createComponent('li');
 
 const ListArrow = () => {
   return (
-    <svg className="hs-elevate-pricing-card-container__features-list-item-icon" width="18" height="14" viewBox="0 0 18 14" xmlns="http://www.w3.org/2000/svg">
+    <svg className="hs-fidelidade-pricing-card-container__features-list-item-icon" width="18" height="14" viewBox="0 0 18 14" xmlns="http://www.w3.org/2000/svg">
       <path d="M17.6328 1.11719C18.1211 1.60547 18.1211 2.39844 17.6328 2.88672L7.63281 12.8867C7.14453 13.375 6.35156 13.375 5.86328 12.8867L0.863281 7.88672C0.375 7.39844 0.375 6.60547 0.863281 6.11719C1.35156 5.62891 2.14453 5.62891 2.63281 6.11719L6.75 10.2305L15.8672 1.11719C16.3555 0.628906 17.1484 0.628906 17.6367 1.11719H17.6328Z" />
     </svg>
   );
@@ -123,10 +123,10 @@ const PricingCardFeatures = (props: PricingCardFeaturesProps & HeadingStyleField
   } = props;
 
   return (
-    <PricingCardFeaturesContainer className={swm('hs-elevate-pricing-card-container__features')}>
+    <PricingCardFeaturesContainer className={swm('hs-fidelidade-pricing-card-container__features')}>
       {headingAndTextHeading && (
         <HeadingComponent
-          additionalClassArray={['hs-elevate-pricing-card-container__features-title']}
+          additionalClassArray={['hs-fidelidade-pricing-card-container__features-title']}
           headingLevel={headingAndTextHeadingLevel}
           heading={headingAndTextHeading}
           headingStyleVariant={headingStyleVariant}
@@ -134,11 +134,11 @@ const PricingCardFeatures = (props: PricingCardFeaturesProps & HeadingStyleField
           fieldPath={`groupPricingCards[${cardIndex}].groupPlanFeatures.headingAndTextHeading`}
         />
       )}
-      <PricingCardFeaturesList className={swm('hs-elevate-pricing-card-container__features-list')}>
+      <PricingCardFeaturesList className={swm('hs-fidelidade-pricing-card-container__features-list')}>
         {groupFeatures.map((features, index) => (
           <PricingCardFeaturesListItem
             key={index}
-            className={swm('hs-elevate-pricing-card-container__features-list-item')}
+            className={swm('hs-fidelidade-pricing-card-container__features-list-item')}
             data-hs-token={getDataHSToken(moduleName, `groupPricingCards[${cardIndex}].groupPlanFeatures.groupFeatures[${index}].feature`)}
           >
             <ListArrow />
@@ -170,9 +170,9 @@ export const Component = (props: PricingCardProps) => {
   };
 
   return (
-    <PricingCardsWrapper style={cssVarsMap} className={swm('hs-elevate-pricing-card-container')}>
+    <PricingCardsWrapper style={cssVarsMap} className={swm('hs-fidelidade-pricing-card-container')}>
       {groupPricingCards.map((pricingCard, index) => (
-        <Card key={index} additionalClassArray={[swm('hs-elevate-pricing-card-container__card')]} cardStyleVariant={cardStyleVariant} cardOrientation="column">
+        <Card key={index} additionalClassArray={[swm('hs-fidelidade-pricing-card-container__card')]} cardStyleVariant={cardStyleVariant} cardOrientation="column">
           <PricingCardSummary
             groupSummary={pricingCard.groupSummary}
             headingStyleVariant={summaryHeadingStyleVariant}
@@ -186,9 +186,9 @@ export const Component = (props: PricingCardProps) => {
             cardIndex={index}
           />
           {pricingCard.groupButton.showButton && (
-            <ButtonWrapper className={swm('hs-elevate-pricing-card-container__button-container')}>
+            <ButtonWrapper className={swm('hs-fidelidade-pricing-card-container__button-container')}>
               <Button
-                additionalClassArray={[swm('hs-elevate-pricing-card-container__button')]}
+                additionalClassArray={[swm('hs-fidelidade-pricing-card-container__button')]}
                 buttonStyle={buttonStyleVariant}
                 buttonSize={buttonStyleSize}
                 href={getLinkFieldHref(pricingCard.groupButton.buttonContentLink)}
@@ -220,7 +220,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/pricing_card',
+  moduleName: 'fidelidade/components/modules/pricing_card',
   version: 0,
   themeModule: true,
 };

@@ -26,10 +26,10 @@ function generateColorCssVars(props: ColorProps): CSSPropertiesMap {
   const { menuBackgroundColor, menuBackgroundColorHover, textColor, textColorHover } = props;
 
   return {
-    '--hsElevate--languageSwitcher__backgroundColor': menuBackgroundColor,
-    '--hsElevate--languageSwitcher__textColor': textColor,
-    '--hsElevate--languageSwitcher__hover--backgroundColor': menuBackgroundColorHover,
-    '--hsElevate--languageSwitcher__hover--textColor': textColorHover,
+    '--hsFidelidade--languageSwitcher__backgroundColor': menuBackgroundColor,
+    '--hsFidelidade--languageSwitcher__textColor': textColor,
+    '--hsFidelidade--languageSwitcher__hover--backgroundColor': menuBackgroundColorHover,
+    '--hsFidelidade--languageSwitcher__hover--textColor': textColorHover,
   };
 }
 
@@ -56,10 +56,10 @@ const MobileSiteHeaderLanguageSwitcher = (props: LanguageSwitcherProps) => {
 
   const [isOpen, setIsOpen] = useState(false);
   const {
-    menuBackgroundColor = 'var(--hsElevate--section--lightSection--1__backgroundColor)',
-    menuBackgroundColorHover = 'var(--hsElevate--section--lightSection--1__backgroundColor)',
-    textColor = 'var(--hsElevate--section--lightSection--1__textColor)',
-    textColorHover = 'var(--hsElevate--section--lightSection--1__textColor)',
+    menuBackgroundColor = 'var(--hsFidelidade--section--lightSection--1__backgroundColor)',
+    menuBackgroundColorHover = 'var(--hsFidelidade--section--lightSection--1__backgroundColor)',
+    textColor = 'var(--hsFidelidade--section--lightSection--1__textColor)',
+    textColorHover = 'var(--hsFidelidade--section--lightSection--1__textColor)',
     languageSwitcherSelectText = 'Select a language',
     langSwitcherIconFieldPath,
   } = props;
@@ -72,12 +72,12 @@ const MobileSiteHeaderLanguageSwitcher = (props: LanguageSwitcherProps) => {
     setIsOpen(!isOpen);
   };
 
-  const overlayClassNames = cx(swm('hs-elevate-site-header__language-switcher-overlay'), {
-    [styles['hs-elevate-site-header__language-switcher-overlay--open']]: isOpen,
+  const overlayClassNames = cx(swm('hs-fidelidade-site-header__language-switcher-overlay'), {
+    [styles['hs-fidelidade-site-header__language-switcher-overlay--open']]: isOpen,
   });
 
-  const languageSwitcherContainerClassNames = cx(swm('hs-elevate-site-header__language-switcher-container'), {
-    [styles['hs-elevate-site-header__language-switcher-container--open']]: isOpen,
+  const languageSwitcherContainerClassNames = cx(swm('hs-fidelidade-site-header__language-switcher-container'), {
+    [styles['hs-fidelidade-site-header__language-switcher-container--open']]: isOpen,
   });
 
   const cssVarsMap = { ...generateColorCssVars({ menuBackgroundColor, menuBackgroundColorHover, textColor, textColorHover }) };
@@ -91,22 +91,22 @@ const MobileSiteHeaderLanguageSwitcher = (props: LanguageSwitcherProps) => {
           onClick={toggleLanguageOptions}
           aria-expanded={isOpen}
           aria-controls="language-options"
-          className={swm('hs-elevate-site-header__language-switcher-button')}
+          className={swm('hs-fidelidade-site-header__language-switcher-button')}
         >
-          <LanguageButtonContent className={swm('hs-elevate-site-header__language-switcher-button-content')}>
+          <LanguageButtonContent className={swm('hs-fidelidade-site-header__language-switcher-button-content')}>
             {langSwitcherIcon}
-            <span className="hs-elevate-site-header__language-switcher-current-language">{currentPageLanguageDisplayName}</span>
+            <span className="hs-fidelidade-site-header__language-switcher-current-language">{currentPageLanguageDisplayName}</span>
           </LanguageButtonContent>
         </LanguageSwitcherButton>
-        <LanguageOptionsContainer className={swm('hs-elevate-site-header__language-switcher-options-container')}>
-          <LanguageLabel className={swm('hs-elevate-site-header__language-switcher-select-language-label')}>{languageSwitcherSelectText}</LanguageLabel>
-          <OptionsScrollWrapper className={swm('hs-elevate-site-header__language-switcher-options-scroll-wrapper')}>
+        <LanguageOptionsContainer className={swm('hs-fidelidade-site-header__language-switcher-options-container')}>
+          <LanguageLabel className={swm('hs-fidelidade-site-header__language-switcher-select-language-label')}>{languageSwitcherSelectText}</LanguageLabel>
+          <OptionsScrollWrapper className={swm('hs-fidelidade-site-header__language-switcher-options-scroll-wrapper')}>
             <LanguageOptions
               translations={translations}
               menuBackgroundColorHover={menuBackgroundColorHover}
               textColor={textColor}
               textColorHover={textColorHover}
-              fontSize="var(--hsElevate--heading--h6__fontSize, 14px)"
+              fontSize="var(--hsFidelidade--heading--h6__fontSize, 14px)"
             />
           </OptionsScrollWrapper>
         </LanguageOptionsContainer>

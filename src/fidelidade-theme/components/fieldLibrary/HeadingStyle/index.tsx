@@ -32,7 +32,7 @@ export default function HeadingStyles(props: HeadingStyles) {
           type: 'THEME_EDITOR',
           name: 'theme_link',
           params: {
-            theme_path: '@hubspot/elevate',
+            theme_path: '@fidelidade/cms-theme',
             theme_field_path: 'group_foundation.group_fonts.group_font_elements.group_headings.group_heading_1'
           }
         }

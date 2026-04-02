@@ -37,9 +37,9 @@ type ListProps = {
 
 function generateColorCssVars(sectionVariantField: SectionVariantType): CSSPropertiesMap {
   return {
-    '--hsElevate--list__textColor': sectionColorsMap[sectionVariantField].textColor,
-    '--hsElevate--list__accentColor': sectionColorsMap[sectionVariantField].accentColor,
-    '--hsElevate--list__sectionBackgroundColor': sectionColorsMap[sectionVariantField].backgroundColor,
+    '--hsFidelidade--list__textColor': sectionColorsMap[sectionVariantField].textColor,
+    '--hsFidelidade--list__accentColor': sectionColorsMap[sectionVariantField].accentColor,
+    '--hsFidelidade--list__sectionBackgroundColor': sectionColorsMap[sectionVariantField].backgroundColor,
   };
 }
 
@@ -61,16 +61,16 @@ export const Component = (props: ListProps) => {
 
   const cssColorVars = { ...generateColorCssVars(sectionStyleVariant) };
 
-  const layoutClass = renderedWithGrids ? 'hs-elevate-list-container--grids' : 'hs-elevate-list-container--bootstrap';
+  const layoutClass = renderedWithGrids ? 'hs-fidelidade-list-container--grids' : 'hs-fidelidade-list-container--bootstrap';
 
   return (
-    <ListContainer className={cx(swm('hs-elevate-list-container'), styles[layoutClass])} style={cssColorVars}>
+    <ListContainer className={cx(swm('hs-fidelidade-list-container'), styles[layoutClass])} style={cssColorVars}>
       {groupListItems.map((item, index) => {
         return (
-          <ListItem className={swm('hs-elevate-list-container__item')} key={`${index} ${item.groupListContent.listItemContent}`}>
+          <ListItem className={swm('hs-fidelidade-list-container__item')} key={`${index} ${item.groupListContent.listItemContent}`}>
             {listIcon.name && (
-              <IconContainer className={swm('hs-elevate-list-container__icon-container')}>
-                <Icon className={swm('hs-elevate-list-container__icon')} fieldPath="listIcon" purpose="DECORATIVE" />
+              <IconContainer className={swm('hs-fidelidade-list-container__icon-container')}>
+                <Icon className={swm('hs-fidelidade-list-container__icon')} fieldPath="listIcon" purpose="DECORATIVE" />
               </IconContainer>
             )}
             <ListItemText data-hs-token={getDataHSToken(moduleName, `groupListItems[${index}].groupListContent.listItemContent`)}>
@@ -100,7 +100,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/list',
+  moduleName: 'fidelidade/components/modules/list',
   version: 0,
   themeModule: true,
 };

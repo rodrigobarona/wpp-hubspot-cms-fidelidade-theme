@@ -76,17 +76,17 @@ function setAriaLabel(groupAriaLabels: GroupAriaLabels, linkType?: string) {
 
 function generateGapCssVars(gapField: StandardSizeType): CSSPropertiesMap {
   const gapMap = {
-    small: 'var(--hsElevate--spacing--8, 8px)',
-    medium: 'var(--hsElevate--spacing--16, 16px)',
-    large: 'var(--hsElevate--spacing--24, 24px)',
+    small: 'var(--hsFidelidade--spacing--8, 8px)',
+    medium: 'var(--hsFidelidade--spacing--16, 16px)',
+    large: 'var(--hsFidelidade--spacing--24, 24px)',
   };
 
-  return { '--hsElevate--buttons__gap': gapMap[gapField] };
+  return { '--hsFidelidade--buttons__gap': gapMap[gapField] };
 }
 
 function generateAlignmentCssVars(alignmentField: AlignmentFieldType['default']): CSSPropertiesMap {
   const alignment = getAlignmentFieldCss(alignmentField);
-  return { '--hsElevate--buttons__alignment': alignment.justifyContent || 'flex-start' };
+  return { '--hsFidelidade--buttons__alignment': alignment.justifyContent || 'flex-start' };
 }
 
 // Components
@@ -108,11 +108,11 @@ export const Component = (props: ButtonProps) => {
     ...generateAlignmentCssVars(alignment),
   };
 
-  const layoutClass = renderedWithGrids ? 'hs-elevate-button-wrapper--grids' : 'hs-elevate-button-wrapper--bootstrap';
+  const layoutClass = renderedWithGrids ? 'hs-fidelidade-button-wrapper--grids' : 'hs-fidelidade-button-wrapper--bootstrap';
 
   return (
-    <ButtonWrapper className={cx(swm('hs-elevate-button-wrapper'), styles[layoutClass])} style={cssVarsMap}>
-      <ButtonContainer className={swm('hs-elevate-button-container')}>
+    <ButtonWrapper className={cx(swm('hs-fidelidade-button-wrapper'), styles[layoutClass])} style={cssVarsMap}>
+      <ButtonContainer className={swm('hs-fidelidade-button-container')}>
         {groupButtons.map((button, index) => (
           <Button
             key={index}
@@ -125,7 +125,7 @@ export const Component = (props: ButtonProps) => {
             showIcon={button.buttonContentShowIcon}
             iconFieldPath={`groupButtons[${index}].buttonContentIcon`}
             iconPosition={button.buttonContentIconPosition}
-            additionalClassArray={['hs-elevate-button-container__button']}
+            additionalClassArray={['hs-fidelidade-button-container__button']}
             moduleName={moduleName}
             textFieldPath={`groupButtons[${index}].buttonContentText`}
           >
@@ -154,7 +154,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/button',
+  moduleName: 'fidelidade/components/modules/button',
   version: 0,
   themeModule: true,
 };

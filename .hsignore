@@ -5,4 +5,4 @@ src/assets/_hs/css/*
 **/**/case-studies*\.hubl.html
 
 # Static assets should only serve us internally for now
-cms-elevate-theme-static-assets/
+cms-fidelidade-theme-static-assets/

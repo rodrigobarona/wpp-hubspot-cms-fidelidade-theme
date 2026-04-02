@@ -83,39 +83,39 @@ type CardProps = {
 function generateAlignmentCssVars(alignment: AlignmentFieldType['default']): CSSPropertiesMap {
   const textAlignment = alignment.horizontal_align?.toLowerCase() as 'left' | 'right' | 'center';
   return {
-    '--hsElevate--card__alignment': getAlignmentFieldCss(alignment).justifyContent,
-    '--hsElevate--card__textAlignment': textAlignment,
+    '--hsFidelidade--card__alignment': getAlignmentFieldCss(alignment).justifyContent,
+    '--hsFidelidade--card__textAlignment': textAlignment,
   };
 }
 
 function generateColorCssVars(cardVariantField: string): CSSPropertiesMap {
   const iconColorsMap = {
     card_variant_1: {
-      borderRadius: 'var(--hsElevate--card--variant1__iconBorderRadius)',
-      fillColor: 'var(--hsElevate--card--variant1__iconColor)',
-      backgroundColor: 'var(--hsElevate--card--variant1__iconBackgroundColor)',
+      borderRadius: 'var(--hsFidelidade--card--variant1__iconBorderRadius)',
+      fillColor: 'var(--hsFidelidade--card--variant1__iconColor)',
+      backgroundColor: 'var(--hsFidelidade--card--variant1__iconBackgroundColor)',
     },
     card_variant_2: {
-      borderRadius: 'var(--hsElevate--card--variant2__iconBorderRadius)',
-      fillColor: 'var(--hsElevate--card--variant2__iconColor)',
-      backgroundColor: 'var(--hsElevate--card--variant2__iconBackgroundColor)',
+      borderRadius: 'var(--hsFidelidade--card--variant2__iconBorderRadius)',
+      fillColor: 'var(--hsFidelidade--card--variant2__iconColor)',
+      backgroundColor: 'var(--hsFidelidade--card--variant2__iconBackgroundColor)',
     },
     card_variant_3: {
-      borderRadius: 'var(--hsElevate--card--variant3__iconBorderRadius)',
-      fillColor: 'var(--hsElevate--card--variant3__iconColor)',
-      backgroundColor: 'var(--hsElevate--card--variant3__iconBackgroundColor)',
+      borderRadius: 'var(--hsFidelidade--card--variant3__iconBorderRadius)',
+      fillColor: 'var(--hsFidelidade--card--variant3__iconColor)',
+      backgroundColor: 'var(--hsFidelidade--card--variant3__iconBackgroundColor)',
     },
     card_variant_4: {
-      borderRadius: 'var(--hsElevate--card--variant4__iconBorderRadius)',
-      fillColor: 'var(--hsElevate--card--variant4__iconColor)',
-      backgroundColor: 'var(--hsElevate--card--variant4__iconBackgroundColor)',
+      borderRadius: 'var(--hsFidelidade--card--variant4__iconBorderRadius)',
+      fillColor: 'var(--hsFidelidade--card--variant4__iconColor)',
+      backgroundColor: 'var(--hsFidelidade--card--variant4__iconBackgroundColor)',
     },
   };
 
   return {
-    '--hsElevate--cardIcon__borderRadius': iconColorsMap[cardVariantField].borderRadius,
-    '--hsElevate--cardIcon__fillColor': iconColorsMap[cardVariantField].fillColor,
-    '--hsElevate--cardIcon__backgroundColor': iconColorsMap[cardVariantField].backgroundColor,
+    '--hsFidelidade--cardIcon__borderRadius': iconColorsMap[cardVariantField].borderRadius,
+    '--hsFidelidade--cardIcon__fillColor': iconColorsMap[cardVariantField].fillColor,
+    '--hsFidelidade--cardIcon__backgroundColor': iconColorsMap[cardVariantField].backgroundColor,
   };
 }
 
@@ -161,10 +161,10 @@ export const Component = (props: CardProps) => {
     ...generateAlignmentCssVars(alignment),
   };
 
-  const layoutClass = renderedWithGrids ? 'hs-elevate-card-container--grids' : 'hs-elevate-card-container--bootstrap';
+  const layoutClass = renderedWithGrids ? 'hs-fidelidade-card-container--grids' : 'hs-fidelidade-card-container--bootstrap';
 
   return (
-    <CardContainer className={cx(swm('hs-elevate-card-container'), styles[layoutClass])} style={cssVarsMap}>
+    <CardContainer className={cx(swm('hs-fidelidade-card-container'), styles[layoutClass])} style={cssVarsMap}>
       {groupCards.map((card, index) => {
         const {
           groupButton: {
@@ -182,25 +182,25 @@ export const Component = (props: CardProps) => {
         const hasValidIconName = card?.groupIcon?.icon?.name;
         const isIconVisible = isIcon && hasValidIconName;
 
-        const cardClasses = cx('hs-elevate-card-container__card', styles[`hs-elevate-card-container__card--${cardOrientation}`], {
-          [styles['hs-elevate-card-container__card--no-button']]: !showButton,
+        const cardClasses = cx('hs-fidelidade-card-container__card', styles[`hs-fidelidade-card-container__card--${cardOrientation}`], {
+          [styles['hs-fidelidade-card-container__card--no-button']]: !showButton,
         });
 
-        const imageWrapperClasses = cx(swm('hs-elevate-card-container__image-wrapper'), {
-          [styles['hs-elevate-card-container__image-wrapper--use-background']]: cardImageUsesBackground,
+        const imageWrapperClasses = cx(swm('hs-fidelidade-card-container__image-wrapper'), {
+          [styles['hs-fidelidade-card-container__image-wrapper--use-background']]: cardImageUsesBackground,
         });
 
         return (
           <Card additionalClassArray={[cardClasses]} key={index} cardStyleVariant={cardStyleVariant} cardOrientation={cardOrientation}>
             {isIconVisible && (
-              <IconWrapper className={swm('hs-elevate-card-container__icon-wrapper')}>
-                <Icon className={swm('hs-elevate-card-container__icon')} purpose="DECORATIVE" fieldPath={`groupCards[${index}].groupIcon.icon`} />
+              <IconWrapper className={swm('hs-fidelidade-card-container__icon-wrapper')}>
+                <Icon className={swm('hs-fidelidade-card-container__icon')} purpose="DECORATIVE" fieldPath={`groupCards[${index}].groupIcon.icon`} />
               </IconWrapper>
             )}
             {isImageVisible && (
               <ImageWrapper className={cx(imageWrapperClasses)}>
                 <Image
-                  className={swm('hs-elevate-card-container__image')}
+                  className={swm('hs-fidelidade-card-container__image')}
                   src={card.groupImage.image.src}
                   alt={card.groupImage.image.alt}
                   width={card.groupImage.image.width}
@@ -210,25 +210,25 @@ export const Component = (props: CardProps) => {
                 />
               </ImageWrapper>
             )}
-            <CardContent className={swm('hs-elevate-card-container__content')}>
+            <CardContent className={swm('hs-fidelidade-card-container__content')}>
               {card.groupContent.headingAndTextHeading && (
                 <HeadingComponent
                   headingLevel={card.groupContent.headingAndTextHeadingLevel}
                   heading={card.groupContent.headingAndTextHeading}
                   headingStyleVariant={headingStyleVariant}
                   inlineStyles={headingInlineStyles}
-                  additionalClassArray={['hs-elevate-card-container__title']}
+                  additionalClassArray={['hs-fidelidade-card-container__title']}
                   moduleName={moduleName}
                   fieldPath={`groupCards[${index}].groupContent.headingAndTextHeading`}
                 />
               )}
               <RichText
                 fieldPath={`groupCards[${index}].groupContent.richTextContentHTML`}
-                className={swm('hs-elevate-card-container__body')}
+                className={swm('hs-fidelidade-card-container__body')}
                 data-hs-token={getDataHSToken(moduleName, `groupCards[${index}].groupContent.richTextContentHTML`)}
               />
               {showButton && (
-                <ButtonWrapper className={swm('hs-elevate-card-container__button-wrapper')}>
+                <ButtonWrapper className={swm('hs-fidelidade-card-container__button-wrapper')}>
                   <Button
                     buttonSize={buttonStyleSize}
                     buttonStyle={buttonStyleVariant}
@@ -238,7 +238,7 @@ export const Component = (props: CardProps) => {
                     iconFieldPath={`groupCards[${index}].groupButton.buttonContentIcon`}
                     showIcon={showIcon}
                     iconPosition={iconPosition}
-                    additionalClassArray={['hs-elevate-card-container__button']}
+                    additionalClassArray={['hs-fidelidade-card-container__button']}
                     moduleName={moduleName}
                     textFieldPath={`groupCards[${index}].groupButton.buttonContentText`}
                   >
@@ -271,7 +271,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/card',
+  moduleName: 'fidelidade/components/modules/card',
   version: 0,
   themeModule: true,
 };

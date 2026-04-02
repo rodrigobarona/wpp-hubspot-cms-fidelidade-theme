@@ -15,7 +15,7 @@ When scaffolding a new React module, follow these guidelines to create a consist
 
 ## Required Files Structure
 ```
-src/unified-theme/components/modules/[ModuleName]/
+src/fidelidade-theme/components/modules/[ModuleName]/
 ├── index.tsx           # Main module component
 ├── fields.tsx          # Module field definitions
 ├── types.ts           # Type definitions
@@ -47,7 +47,7 @@ export const Component = (props: ModuleProps) => {
 
   return (
     <ModuleContainer
-      className={swm('hs-elevate-[module-name]')}
+      className={swm('hs-fidelidade-[module-name]')}
       style={cssVarsMap}
     >
       {/* TODO: Implement module content */}
@@ -64,7 +64,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/[module_name]',
+  moduleName: 'fidelidade/components/modules/[module_name]',
   version: 0,
   themeModule: true,
 };
@@ -122,7 +122,7 @@ const [Name]Island = (props: IslandProps) => {
 
   return (
     <IslandContainer
-      className={swm('hs-elevate-[island-name]')}
+      className={swm('hs-fidelidade-[island-name]')}
       style={cssVarsMap}
     >
       {/* TODO: Implement island content */}
@@ -210,7 +210,7 @@ Note that you shouldn't use this in your final output. But this example provides
 ## Step 2: File Structure
 
 ```
-src/unified-theme/components/modules/FeaturedProducts/
+src/fidelidade-theme/components/modules/FeaturedProducts/
 ├── index.tsx                    # Main module component
 ├── fields.tsx                   # Module field definitions
 ├── types.ts                     # Type definitions
@@ -260,7 +260,7 @@ export const Component = (props: ModuleProps) => {
 
   return (
     <ModuleContainer
-      className={swm('hs-elevate-featured-products')}
+      className={swm('hs-fidelidade-featured-products')}
       style={cssVarsMap}
     >
       {/*TODO: Module content will be implemented here */}
@@ -278,7 +278,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/featured_products',
+  moduleName: 'fidelidade/components/modules/featured_products',
   version: 0,
   themeModule: true,
 };
@@ -334,7 +334,7 @@ const ProductDetailsIsland = (props: ProductDetailsProps) => {
 
   return (
     <IslandContainer
-      className={swm('hs-elevate-product-details')}
+      className={swm('hs-fidelidade-product-details')}
       style={cssVarsMap}
     >
       {/* Island content will be implemented here */}

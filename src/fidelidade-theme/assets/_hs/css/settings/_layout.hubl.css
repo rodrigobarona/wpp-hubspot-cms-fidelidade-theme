@@ -1,5 +1,5 @@
 {#
-  Temporary duplication of variables defined in unified-theme/helpers until we have a fix for the issue
+  Temporary duplication of variables defined in fidelidade-theme/helpers until we have a fix for the issue
   where the variables are not readable when theme settings are adjusted
 #}
 
@@ -59,70 +59,70 @@
 :root {
 
     /* HubSpot DND layout grid */
-    --hsElevate--column__gap: 2.13%;
-    --hsElevate--column__widthMultiplier: 8.333;
+    --hsFidelidade--column__gap: 2.13%;
+    --hsFidelidade--column__widthMultiplier: 8.333;
 
     /* Sections */
-    --hsElevate--contentWrapper--narrow__maxWidth: {{ section_width_narrow ~ "px" }};
-    --hsElevate--contentWrapper--medium__maxWidth: {{ section_width_medium ~ "px" }};
-    --hsElevate--contentWrapper--wide__maxWidth: {{ section_width_wide ~ "px" }};
+    --hsFidelidade--contentWrapper--narrow__maxWidth: {{ section_width_narrow ~ "px" }};
+    --hsFidelidade--contentWrapper--medium__maxWidth: {{ section_width_medium ~ "px" }};
+    --hsFidelidade--contentWrapper--wide__maxWidth: {{ section_width_wide ~ "px" }};
 
-    --hsElevate--section--extraSmall__verticalPadding: {{ section_vertical_spacing_extra_small }};
-    --hsElevate--section--small__verticalPadding: {{ section_vertical_spacing_small }};
-    --hsElevate--section--medium__verticalPadding: {{ section_vertical_spacing_medium }};
-    --hsElevate--section--large__verticalPadding: {{ section_vertical_spacing_large }};
-    --hsElevate--section--extraLarge__verticalPadding: {{ section_vertical_spacing_extra_large }};
+    --hsFidelidade--section--extraSmall__verticalPadding: {{ section_vertical_spacing_extra_small }};
+    --hsFidelidade--section--small__verticalPadding: {{ section_vertical_spacing_small }};
+    --hsFidelidade--section--medium__verticalPadding: {{ section_vertical_spacing_medium }};
+    --hsFidelidade--section--large__verticalPadding: {{ section_vertical_spacing_large }};
+    --hsFidelidade--section--extraLarge__verticalPadding: {{ section_vertical_spacing_extra_large }};
 
     /* Default section left/right padding */
-    --hsElevate--section--horizontalPadding: {{ section_horizontal_spacing }};
+    --hsFidelidade--section--horizontalPadding: {{ section_horizontal_spacing }};
 
     /* Gap - default gaps that could be easily leveraged in module styles via class names */
-    --hsElevate--gap--extraSmall: {{ grid_gap_extra_small }};
-    --hsElevate--gap--small: {{ grid_gap_small }};
-    --hsElevate--gap--medium: {{ grid_gap_medium }};
-    --hsElevate--gap--large: {{ grid_gap_large }};
-    --hsElevate--gap--extraLarge: {{ grid_gap_extra_large }};
+    --hsFidelidade--gap--extraSmall: {{ grid_gap_extra_small }};
+    --hsFidelidade--gap--small: {{ grid_gap_small }};
+    --hsFidelidade--gap--medium: {{ grid_gap_medium }};
+    --hsFidelidade--gap--large: {{ grid_gap_large }};
+    --hsFidelidade--gap--extraLarge: {{ grid_gap_extra_large }};
 
     /* Spacing - default spacing values  */
-    --hsElevate--spacing--4: {{ spacing_4 }};
-    --hsElevate--spacing--8: {{ spacing_8 }};
-    --hsElevate--spacing--12: {{ spacing_12 }};
-    --hsElevate--spacing--16: {{ spacing_16 }};
-    --hsElevate--spacing--20: {{ spacing_20 }};
-    --hsElevate--spacing--24: {{ spacing_24 }};
-    --hsElevate--spacing--32: {{ spacing_32 }};
-    --hsElevate--spacing--40: {{ spacing_40 }};
-    --hsElevate--spacing--48: {{ spacing_48 }};
-    --hsElevate--spacing--56: {{ spacing_56 }};
-    --hsElevate--spacing--64: {{ spacing_64 }};
-    --hsElevate--spacing--72: {{ spacing_72 }};
-    --hsElevate--spacing--80: {{ spacing_80 }};
-    --hsElevate--spacing--88: {{ spacing_88 }};
-    --hsElevate--spacing--96: {{ spacing_96 }};
-    --hsElevate--spacing--104: {{ spacing_104 }};
-    --hsElevate--spacing--112: {{ spacing_112 }};
-    --hsElevate--spacing--120: {{ spacing_120 }};
-    --hsElevate--spacing--128: {{ spacing_128 }};
-    --hsElevate--spacing--136: {{ spacing_136 }};
-    --hsElevate--spacing--144: {{ spacing_144 }};
-    --hsElevate--spacing--152: {{ spacing_152 }};
-    --hsElevate--spacing--160: {{ spacing_160 }};
-    --hsElevate--spacing--168: {{ spacing_168 }};
-    --hsElevate--spacing--176: {{ spacing_176 }};
-    --hsElevate--spacing--184: {{ spacing_184 }};
-    --hsElevate--spacing--192: {{ spacing_192 }};
+    --hsFidelidade--spacing--4: {{ spacing_4 }};
+    --hsFidelidade--spacing--8: {{ spacing_8 }};
+    --hsFidelidade--spacing--12: {{ spacing_12 }};
+    --hsFidelidade--spacing--16: {{ spacing_16 }};
+    --hsFidelidade--spacing--20: {{ spacing_20 }};
+    --hsFidelidade--spacing--24: {{ spacing_24 }};
+    --hsFidelidade--spacing--32: {{ spacing_32 }};
+    --hsFidelidade--spacing--40: {{ spacing_40 }};
+    --hsFidelidade--spacing--48: {{ spacing_48 }};
+    --hsFidelidade--spacing--56: {{ spacing_56 }};
+    --hsFidelidade--spacing--64: {{ spacing_64 }};
+    --hsFidelidade--spacing--72: {{ spacing_72 }};
+    --hsFidelidade--spacing--80: {{ spacing_80 }};
+    --hsFidelidade--spacing--88: {{ spacing_88 }};
+    --hsFidelidade--spacing--96: {{ spacing_96 }};
+    --hsFidelidade--spacing--104: {{ spacing_104 }};
+    --hsFidelidade--spacing--112: {{ spacing_112 }};
+    --hsFidelidade--spacing--120: {{ spacing_120 }};
+    --hsFidelidade--spacing--128: {{ spacing_128 }};
+    --hsFidelidade--spacing--136: {{ spacing_136 }};
+    --hsFidelidade--spacing--144: {{ spacing_144 }};
+    --hsFidelidade--spacing--152: {{ spacing_152 }};
+    --hsFidelidade--spacing--160: {{ spacing_160 }};
+    --hsFidelidade--spacing--168: {{ spacing_168 }};
+    --hsFidelidade--spacing--176: {{ spacing_176 }};
+    --hsFidelidade--spacing--184: {{ spacing_184 }};
+    --hsFidelidade--spacing--192: {{ spacing_192 }};
 
     /* Grids */
-    --default-section-padding: var(--hsElevate--section--medium__verticalPadding) var(--hsElevate--section--horizontalPadding);
+    --default-section-padding: var(--hsFidelidade--section--medium__verticalPadding) var(--hsFidelidade--section--horizontalPadding);
     --default-section-margin: 0;
-    --default-section-max-width: var(--hsElevate--contentWrapper--wide__maxWidth);
+    --default-section-max-width: var(--hsFidelidade--contentWrapper--wide__maxWidth);
     --default-container-padding: 0;
     --default-container-margin: 0;
-    --default-container-gap: var(--hsElevate--gap--medium);
-    --default-container-row-gap: var(--hsElevate--gap--medium);
-    --default-container-column-gap: var(--hsElevate--gap--medium);
+    --default-container-gap: var(--hsFidelidade--gap--medium);
+    --default-container-row-gap: var(--hsFidelidade--gap--medium);
+    --default-container-column-gap: var(--hsFidelidade--gap--medium);
     --default-table-padding: 0;
     --default-table-margin: 0;
-    --default-table-row-gap: var(--hsElevate--gap--medium);
-    --default-table-column-gap: var(--hsElevate--gap--medium);
+    --default-table-row-gap: var(--hsFidelidade--gap--medium);
+    --default-table-column-gap: var(--hsFidelidade--gap--medium);
 }

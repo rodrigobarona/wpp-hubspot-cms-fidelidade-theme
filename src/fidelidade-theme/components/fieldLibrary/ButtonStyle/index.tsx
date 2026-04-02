@@ -39,7 +39,7 @@ export default function ButtonStyle(props: ButtonStyle) {
             type: 'THEME_EDITOR',
             name: 'theme_link',
             params: {
-              theme_path: '@hubspot/elevate',
+              theme_path: '@fidelidade/cms-theme',
               theme_field_path: 'group_elements.group_button_types.group_primary_button'
             }
           }
@@ -64,7 +64,7 @@ export default function ButtonStyle(props: ButtonStyle) {
             type: 'THEME_EDITOR',
             name: 'theme_link',
             params: {
-              theme_path: '@hubspot/elevate',
+              theme_path: '@fidelidade/cms-theme',
               theme_field_path: 'group_elements.group_button_types.group_primary_button'
             }
           }

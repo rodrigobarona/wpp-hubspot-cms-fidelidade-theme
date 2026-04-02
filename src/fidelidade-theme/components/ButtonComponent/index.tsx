@@ -7,9 +7,9 @@ import { CSSPropertiesMap } from '../types/components.js';
 import { getDataHSToken } from '../utils/inline-editing.js';
 
 export const BUTTON_SIZE_PADDING_MAP: Record<StandardSizeType, string> = {
-  small: 'var(--hsElevate--spacing--12, 12px) var(--hsElevate--spacing--20, 20px)',
-  medium: 'var(--hsElevate--spacing--16, 16px) var(--hsElevate--spacing--24, 24px)',
-  large: 'var(--hsElevate--spacing--20, 20px) var(--hsElevate--spacing--32, 32px)',
+  small: 'var(--hsFidelidade--spacing--12, 12px) var(--hsFidelidade--spacing--20, 20px)',
+  medium: 'var(--hsFidelidade--spacing--16, 16px) var(--hsFidelidade--spacing--24, 24px)',
+  large: 'var(--hsFidelidade--spacing--20, 20px) var(--hsFidelidade--spacing--32, 32px)',
 };
 
 const swm = staticWithModule(styles);
@@ -36,10 +36,10 @@ type ButtonProps = {
 
 function getButtonClassName(buttonStyle: ButtonStyleType) {
   const buttonClassMap = {
-    primary: 'hs-elevate-button--primary',
-    secondary: 'hs-elevate-button--secondary',
-    tertiary: 'hs-elevate-button--tertiary',
-    accent: 'hs-elevate-button--accent',
+    primary: 'hs-fidelidade-button--primary',
+    secondary: 'hs-fidelidade-button--secondary',
+    tertiary: 'hs-fidelidade-button--tertiary',
+    accent: 'hs-fidelidade-button--accent',
   };
 
   return buttonClassMap[buttonStyle];
@@ -48,7 +48,7 @@ function getButtonClassName(buttonStyle: ButtonStyleType) {
 // Function to pull in corresponding CSS variables on component based on prop values
 
 function generatePaddingCSSVars(buttonSize: StandardSizeType): CSSPropertiesMap {
-  return { '--hsElevate--button__padding': BUTTON_SIZE_PADDING_MAP[buttonSize] };
+  return { '--hsFidelidade--button__padding': BUTTON_SIZE_PADDING_MAP[buttonSize] };
 }
 
 const DefaultContent = () => (
@@ -78,15 +78,15 @@ export const Button = (props: ButtonProps) => {
 
   const buttonClassName = getButtonClassName(buttonStyle);
   const additionalClasses = additionalClassArray ? additionalClassArray.join(' ') : '';
-  const iconClasses = cx(swm('hs-elevate-button__icon'), {
-    [styles['hs-elevate-button__icon--left']]: iconPosition === 'left',
-    [styles['hs-elevate-button__icon--right']]: iconPosition === 'right',
+  const iconClasses = cx(swm('hs-fidelidade-button__icon'), {
+    [styles['hs-fidelidade-button__icon--left']]: iconPosition === 'left',
+    [styles['hs-fidelidade-button__icon--right']]: iconPosition === 'right',
   });
 
   return (
     <a
       style={cssVarsMap}
-      className={cx(swm('hs-elevate-button'), buttonClassName, additionalClasses)}
+      className={cx(swm('hs-fidelidade-button'), buttonClassName, additionalClasses)}
       target={target}
       href={href}
       rel={rel}

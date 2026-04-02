@@ -19,8 +19,8 @@ export const PlaceholderEmptyContent = (props: PlaceholderContentsProps) => {
   const { title, description, icon } = props;
 
   return (
-    <PlaceholderWrapper className={styles['hs-elevate-placeholder']}>
-      {icon && <PlaceholderIcon className={styles['hs-elevate-placeholder__icon']} src={icon} />}
+    <PlaceholderWrapper className={styles['hs-fidelidade-placeholder']}>
+      {icon && <PlaceholderIcon className={styles['hs-fidelidade-placeholder__icon']} src={icon} />}
       <h5>{title}</h5>
       <p>{description}</p>
     </PlaceholderWrapper>

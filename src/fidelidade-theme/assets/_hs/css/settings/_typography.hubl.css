@@ -13,133 +13,133 @@
 
   /* Text spacing */
 
-  --hsElevate--text--extraSmall__margin: 0 0.75rem; /* 12px */
-  --hsElevate--text--small__margin: 0 1.25rem; /* 20px */
-  --hsElevate--text__margin: 0 2rem; /* 32px */
-  --hsElevate--text--large__margin: 0 2.5rem; /* 40px */
-  --hsElevate--text--extraLarge__margin: 0 4rem; /* 64px */
+  --hsFidelidade--text--extraSmall__margin: 0 0.75rem; /* 12px */
+  --hsFidelidade--text--small__margin: 0 1.25rem; /* 20px */
+  --hsFidelidade--text__margin: 0 2rem; /* 32px */
+  --hsFidelidade--text--large__margin: 0 2.5rem; /* 40px */
+  --hsFidelidade--text--extraLarge__margin: 0 4rem; /* 64px */
 
   /* Body */
 
-  --hsElevate--baseText__fontSize: {{ base_size ~ "px" }};
-  --hsElevate--body__font: {{ body_font_1.font.font }};
-  --hsElevate--body--small__fontSize: {{ body_font_1.font.size * 0.889 / base_size ~ "rem" }};
-  --hsElevate--body__fontSize: {{ body_font_1.font.size / base_size ~ "rem" }};
-  --hsElevate--body--large__fontSize: {{ body_font_1.font.size * 1.333 / base_size ~ "rem" }};
-  --hsElevate--body--extraLarge__fontSize: {{ body_font_1.font.size * 1.777 / base_size ~ "rem" }};
-  --hsElevate--body__fontWeight: {{ body_font_1.font.styles["font-weight"] }};
-  --hsElevate--body__fontStyle: {{ body_font_1.font.styles["font-style"] }};
-  --hsElevate--body__lineHeight: 1.55;
+  --hsFidelidade--baseText__fontSize: {{ base_size ~ "px" }};
+  --hsFidelidade--body__font: {{ body_font_1.font.font }};
+  --hsFidelidade--body--small__fontSize: {{ body_font_1.font.size * 0.889 / base_size ~ "rem" }};
+  --hsFidelidade--body__fontSize: {{ body_font_1.font.size / base_size ~ "rem" }};
+  --hsFidelidade--body--large__fontSize: {{ body_font_1.font.size * 1.333 / base_size ~ "rem" }};
+  --hsFidelidade--body--extraLarge__fontSize: {{ body_font_1.font.size * 1.777 / base_size ~ "rem" }};
+  --hsFidelidade--body__fontWeight: {{ body_font_1.font.styles["font-weight"] }};
+  --hsFidelidade--body__fontStyle: {{ body_font_1.font.styles["font-style"] }};
+  --hsFidelidade--body__lineHeight: 1.55;
 
   /* Primary links */
 
-  --hsElevate--link--primary__fontColor: {{ primary_links.group_default_state.text_color.color }};
+  --hsFidelidade--link--primary__fontColor: {{ primary_links.group_default_state.text_color.color }};
 
   {% if primary_links.group_default_state.show_underline %}
-    --hsElevate--link--primary__textDecoration: underline;
-    --hsElevate--link--primary__textDecorationColor: {{ primary_links.group_default_state.underline_color.color }};
+    --hsFidelidade--link--primary__textDecoration: underline;
+    --hsFidelidade--link--primary__textDecorationColor: {{ primary_links.group_default_state.underline_color.color }};
   {% else %}
-    --hsElevate--link--primary__textDecoration: none;
-    --hsElevate--link--primary__textDecorationColor: transparent;
+    --hsFidelidade--link--primary__textDecoration: none;
+    --hsFidelidade--link--primary__textDecorationColor: transparent;
   {% endif %}
 
   /* Hover state */
 
-  --hsElevate--link--primary__hover--fontColor: {{ primary_links.group_hover_state.text_color.color }};
+  --hsFidelidade--link--primary__hover--fontColor: {{ primary_links.group_hover_state.text_color.color }};
 
   {% if primary_links.group_hover_state.show_underline %}
-    --hsElevate--link--primary__hover--textDecoration: underline;
-    --hsElevate--link--primary__hover--textDecorationColor: {{ primary_links.group_hover_state.underline_color.color }};
+    --hsFidelidade--link--primary__hover--textDecoration: underline;
+    --hsFidelidade--link--primary__hover--textDecorationColor: {{ primary_links.group_hover_state.underline_color.color }};
   {% else %}
-    --hsElevate--link--primary__hover--textDecoration: none;
-    --hsElevate--link--primary__hover--textDecorationColor: transparent;
+    --hsFidelidade--link--primary__hover--textDecoration: none;
+    --hsFidelidade--link--primary__hover--textDecorationColor: transparent;
   {% endif %}
 
   /* Secondary links */
 
-  --hsElevate--link--secondary__fontColor: {{ secondary_links.group_default_state.text_color.color }};
+  --hsFidelidade--link--secondary__fontColor: {{ secondary_links.group_default_state.text_color.color }};
 
   {% if secondary_links.group_default_state.show_underline %}
-    --hsElevate--link--secondary__textDecoration: underline;
-    --hsElevate--link--secondary__textDecorationColor: {{ secondary_links.group_default_state.underline_color.color }};
+    --hsFidelidade--link--secondary__textDecoration: underline;
+    --hsFidelidade--link--secondary__textDecorationColor: {{ secondary_links.group_default_state.underline_color.color }};
   {% else %}
-    --hsElevate--link--secondary__textDecoration: none;
-    --hsElevate--link--secondary__textDecorationColor: transparent;
+    --hsFidelidade--link--secondary__textDecoration: none;
+    --hsFidelidade--link--secondary__textDecorationColor: transparent;
   {% endif %}
 
   /* Hover state */
 
-  --hsElevate--link--secondary__hover--fontColor: {{ secondary_links.group_hover_state.text_color.color }};
+  --hsFidelidade--link--secondary__hover--fontColor: {{ secondary_links.group_hover_state.text_color.color }};
 
   {% if secondary_links.group_hover_state.show_underline %}
-    --hsElevate--link--secondary__hover--textDecoration: underline;
-    --hsElevate--link--secondary__hover--textDecorationColor: {{ secondary_links.group_hover_state.underline_color.color }};
+    --hsFidelidade--link--secondary__hover--textDecoration: underline;
+    --hsFidelidade--link--secondary__hover--textDecorationColor: {{ secondary_links.group_hover_state.underline_color.color }};
   {% else %}
-    --hsElevate--link--secondary__hover--textDecoration: none;
-    --hsElevate--link--secondary__hover--textDecorationColor: transparent;
+    --hsFidelidade--link--secondary__hover--textDecoration: none;
+    --hsFidelidade--link--secondary__hover--textDecorationColor: transparent;
   {% endif %}
 
   /* Headings */
 
   /* Percentage change for the heading font sizes on mobile */
-  --hsElevate--heading__tablet-modifier: 0.8;
+  --hsFidelidade--heading__tablet-modifier: 0.8;
 
-  --hsElevate--heading__lineHeight: 1.2;
+  --hsFidelidade--heading__lineHeight: 1.2;
 
-  --hsElevate--display1__font: {{ base_font.font }};
-  --hsElevate--display1__fontSize: 6.313rem;
+  --hsFidelidade--display1__font: {{ base_font.font }};
+  --hsFidelidade--display1__fontSize: 6.313rem;
 
-  --hsElevate--display2__font: {{ base_font.font }};
-  --hsElevate--display2__fontSize: 4.75rem;
+  --hsFidelidade--display2__font: {{ base_font.font }};
+  --hsFidelidade--display2__fontSize: 4.75rem;
 
-  --hsElevate--h1__font: {{ headings.group_heading_1.font.font }};
-  --hsElevate--h1__fontSize: {{ headings.group_heading_1.font.size / base_size ~ "rem" }};
-  --hsElevate--h1__fontWeight: {{ headings.group_heading_1.font.styles["font-weight"] }};
-  --hsElevate--h1__fontStyle: {{ headings.group_heading_1.font.styles["font-style"] }};
+  --hsFidelidade--h1__font: {{ headings.group_heading_1.font.font }};
+  --hsFidelidade--h1__fontSize: {{ headings.group_heading_1.font.size / base_size ~ "rem" }};
+  --hsFidelidade--h1__fontWeight: {{ headings.group_heading_1.font.styles["font-weight"] }};
+  --hsFidelidade--h1__fontStyle: {{ headings.group_heading_1.font.styles["font-style"] }};
 
-  --hsElevate--h2__font: {{ headings.group_heading_2.font.font }};
-  --hsElevate--h2__fontSize: {{ headings.group_heading_2.font.size / base_size ~ "rem" }};
-  --hsElevate--h2__fontWeight: {{ headings.group_heading_2.font.styles["font-weight"] }};
-  --hsElevate--h2__fontStyle: {{ headings.group_heading_2.font.styles["font-style"] }};
+  --hsFidelidade--h2__font: {{ headings.group_heading_2.font.font }};
+  --hsFidelidade--h2__fontSize: {{ headings.group_heading_2.font.size / base_size ~ "rem" }};
+  --hsFidelidade--h2__fontWeight: {{ headings.group_heading_2.font.styles["font-weight"] }};
+  --hsFidelidade--h2__fontStyle: {{ headings.group_heading_2.font.styles["font-style"] }};
 
-  --hsElevate--h3__font: {{ headings.group_heading_3.font.font }};
-  --hsElevate--h3__fontSize: {{ headings.group_heading_3.font.size / base_size ~ "rem" }};
-  --hsElevate--h3__fontWeight: {{ headings.group_heading_3.font.styles["font-weight"] }};
-  --hsElevate--h3__fontStyle: {{ headings.group_heading_3.font.styles["font-style"] }};
+  --hsFidelidade--h3__font: {{ headings.group_heading_3.font.font }};
+  --hsFidelidade--h3__fontSize: {{ headings.group_heading_3.font.size / base_size ~ "rem" }};
+  --hsFidelidade--h3__fontWeight: {{ headings.group_heading_3.font.styles["font-weight"] }};
+  --hsFidelidade--h3__fontStyle: {{ headings.group_heading_3.font.styles["font-style"] }};
 
-  --hsElevate--h4__font: {{ headings.group_heading_4.font.font }};
-  --hsElevate--h4__fontSize: {{ headings.group_heading_4.font.size / base_size ~ "rem" }};
-  --hsElevate--h4__fontWeight: {{ headings.group_heading_4.font.styles["font-weight"] }};
-  --hsElevate--h4__fontStyle: {{ headings.group_heading_4.font.styles["font-style"] }};
+  --hsFidelidade--h4__font: {{ headings.group_heading_4.font.font }};
+  --hsFidelidade--h4__fontSize: {{ headings.group_heading_4.font.size / base_size ~ "rem" }};
+  --hsFidelidade--h4__fontWeight: {{ headings.group_heading_4.font.styles["font-weight"] }};
+  --hsFidelidade--h4__fontStyle: {{ headings.group_heading_4.font.styles["font-style"] }};
 
-  --hsElevate--h5__font: {{ headings.group_heading_5.font.font }};
-  --hsElevate--h5__fontSize: {{ headings.group_heading_5.font.size / base_size ~ "rem" }};
-  --hsElevate--h5__fontWeight: {{ headings.group_heading_5.font.styles["font-weight"] }};
-  --hsElevate--h5__fontStyle: {{ headings.group_heading_5.font.styles["font-style"] }};
+  --hsFidelidade--h5__font: {{ headings.group_heading_5.font.font }};
+  --hsFidelidade--h5__fontSize: {{ headings.group_heading_5.font.size / base_size ~ "rem" }};
+  --hsFidelidade--h5__fontWeight: {{ headings.group_heading_5.font.styles["font-weight"] }};
+  --hsFidelidade--h5__fontStyle: {{ headings.group_heading_5.font.styles["font-style"] }};
 
-  --hsElevate--h6__font: {{ headings.group_heading_6.font.font }};
-  --hsElevate--h6__fontSize: {{ headings.group_heading_6.font.size / base_size ~ "rem" }};
-  --hsElevate--h6__fontWeight: {{ headings.group_heading_6.font.styles["font-weight"] }};
-  --hsElevate--h6__fontStyle: {{ headings.group_heading_6.font.styles["font-style"] }};
+  --hsFidelidade--h6__font: {{ headings.group_heading_6.font.font }};
+  --hsFidelidade--h6__fontSize: {{ headings.group_heading_6.font.size / base_size ~ "rem" }};
+  --hsFidelidade--h6__fontWeight: {{ headings.group_heading_6.font.styles["font-weight"] }};
+  --hsFidelidade--h6__fontStyle: {{ headings.group_heading_6.font.styles["font-style"] }};
 
 
   /* Quotes */
 
-  --hsElevate--quotes__font: {{ quotes.font.font }};
-  --hsElevate--quotes__fontColor: {{ quotes.text_color.color }};
-  --hsElevate--quotes__fontSize: {{ quotes.font.size / base_size ~ "rem" }};
-  --hsElevate--quotes__fontWeight: {{ quotes.font.styles["font-weight"] }};
-  --hsElevate--quotes__fontStyle: {{ quotes.font.styles["font-style"] }};
+  --hsFidelidade--quotes__font: {{ quotes.font.font }};
+  --hsFidelidade--quotes__fontColor: {{ quotes.text_color.color }};
+  --hsFidelidade--quotes__fontSize: {{ quotes.font.size / base_size ~ "rem" }};
+  --hsFidelidade--quotes__fontWeight: {{ quotes.font.styles["font-weight"] }};
+  --hsFidelidade--quotes__fontStyle: {{ quotes.font.styles["font-style"] }};
 
     /* Captions */
 
-  --hsElevate--captions__font: {{ captions.font.font }};
-  --hsElevate--captions__fontSize: {{ captions.font.size / base_size ~ "rem" }};
-  --hsElevate--captions__fontWeight: {{ captions.font.styles["font-weight"] }};
-  --hsElevate--captions__fontStyle: {{ captions.font.styles["font-style"] }};
-  --hsElevate--captions__case: {{ captions.case }};
+  --hsFidelidade--captions__font: {{ captions.font.font }};
+  --hsFidelidade--captions__fontSize: {{ captions.font.size / base_size ~ "rem" }};
+  --hsFidelidade--captions__fontWeight: {{ captions.font.styles["font-weight"] }};
+  --hsFidelidade--captions__fontStyle: {{ captions.font.styles["font-style"] }};
+  --hsFidelidade--captions__case: {{ captions.case }};
 
   /* Images */
 
-  --hsElevate--rteImages__margin: 2rem; /* 32px */
+  --hsFidelidade--rteImages__margin: 2rem; /* 32px */
 }

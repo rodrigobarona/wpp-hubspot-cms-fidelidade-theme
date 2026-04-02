@@ -60,13 +60,13 @@ export const Component = (props: BlogListingProps) => {
     defaultContent,
   } = props;
 
-  const blogListingClasses = cx(swm('hs-elevate-blog-listing'), {
-    [styles['hs-elevate-blog-listing--has-featured-post']]: (currentPageNumber === 1 || currentPageNumber === undefined) && use_featured_image_in_summary,
+  const blogListingClasses = cx(swm('hs-fidelidade-blog-listing'), {
+    [styles['hs-fidelidade-blog-listing--has-featured-post']]: (currentPageNumber === 1 || currentPageNumber === undefined) && use_featured_image_in_summary,
   });
 
   return (
     <BlogListing className={blogListingClasses}>
-      <BlogCardsContainer className={swm('hs-elevate-blog-listing__blog-card-container')}>
+      <BlogCardsContainer className={swm('hs-fidelidade-blog-listing__blog-card-container')}>
         {blogPosts.map(post => {
           return (
             <BlogCardComponent
@@ -79,7 +79,7 @@ export const Component = (props: BlogListingProps) => {
               headingStyleVariant={headingStyleVariant}
               cardStyleVariant={cardStyleVariant}
               gatedContentIds={gatedContentIds.map(id => id.toString())}
-              additionalClassArray={[swm('hs-elevate-blog-listing__blog-card')]}
+              additionalClassArray={[swm('hs-fidelidade-blog-listing__blog-card')]}
             />
           );
         })}
@@ -103,7 +103,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/blog_listing',
+  moduleName: 'fidelidade/components/modules/blog_listing',
   version: 0,
   themeModule: true,
 };

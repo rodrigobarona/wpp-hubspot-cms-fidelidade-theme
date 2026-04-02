@@ -1,17 +1,17 @@
 <!--
   templateType: email_backup_unsubscribe_page
   isAvailableForNewContent: true
-  label: Elevate - email backup unsubscribe
+  label: Fidelidade - email backup unsubscribe
   screenshotPath: ../../images/template-previews/email-backup-unsubscribe.png
 -->
 {% set template_css = "../../assets/dist/css/system.hubl.css" %}
 {% extends "../layouts/base.hubl.html" %}
 
 {% block body %}
-  <section class="hs-elevate-content-wrapper hs-elevate-content-wrapper--sm hs-elevate-content-padding">
+  <section class="hs-fidelidade-content-wrapper hs-fidelidade-content-wrapper--sm hs-fidelidade-content-padding">
     {% module_block module "email_simple_subscription"
       path="@hubspot/email_simple_subscription"
-      extra_classes="hs-elevate-backup-unsubscribe",
+      extra_classes="hs-fidelidade-backup-unsubscribe",
       header={{ template_translations.backup_unsubscribe_header.message }}
     %}
       {% module_attribute "subheader" %}

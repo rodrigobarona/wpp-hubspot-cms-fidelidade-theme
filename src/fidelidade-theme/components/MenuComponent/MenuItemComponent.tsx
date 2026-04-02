@@ -127,7 +127,7 @@ export const MenuItemComponent = (props: MenuItemComponentProps) => {
   }
 
   function addMenuItemClasses(linkStyleVariant: LinkStyleType) {
-    const linkClassName = linkStyleVariant === 'secondary_links' ? 'hs-elevate-link--secondary' : 'hs-elevate-link--primary';
+    const linkClassName = linkStyleVariant === 'secondary_links' ? 'hs-fidelidade-link--secondary' : 'hs-fidelidade-link--primary';
 
     return currentLevel === 1 ? `${linkClassName} ${topLevelMenuItemClasses || ''}` : `${linkClassName} ${subMenuItemClasses || ''}`;
   }
@@ -141,10 +141,10 @@ export const MenuItemComponent = (props: MenuItemComponentProps) => {
 
   function getMenuItemClass() {
     if (hasChildren) {
-      const menuItemClass = 'hs-elevate-menu--has-children';
+      const menuItemClass = 'hs-fidelidade-menu--has-children';
 
       if (isMobileMenu && triggeredMenuItems.includes(idString)) {
-        return `${menuItemClass} hs-elevate-menu__menu-item--triggered`;
+        return `${menuItemClass} hs-fidelidade-menu__menu-item--triggered`;
       }
 
       return menuItemClass;
@@ -160,9 +160,9 @@ export const MenuItemComponent = (props: MenuItemComponentProps) => {
   }
 
   function getSubmenuClasses() {
-    const baseClass = 'hs-elevate-menu__submenu';
-    const flyoutClass = flyouts ? 'hs-elevate-menu__flyout-submenu' : '';
-    const mobileClass = isMobileMenu ? 'hs-elevate-menu__flyout-submenu--mobile' : '';
+    const baseClass = 'hs-fidelidade-menu__submenu';
+    const flyoutClass = flyouts ? 'hs-fidelidade-menu__flyout-submenu' : '';
+    const mobileClass = isMobileMenu ? 'hs-fidelidade-menu__flyout-submenu--mobile' : '';
 
     const moduleClasses = cx(styles.submenu, {
       [styles['submenu--flyout']]: flyouts,
@@ -218,7 +218,7 @@ export const MenuItemComponent = (props: MenuItemComponentProps) => {
   // Define shared props used for the menu item link
   const sharedMenuItemLinkProps = {
     style: addSubMenuItemStyles(),
-    className: `${addMenuItemClasses(linkStyleVariant)} ${hasUrl ? 'hs-elevate-menu__menu-item-link' : 'hs-elevate-menu__menu-item-span'}`,
+    className: `${addMenuItemClasses(linkStyleVariant)} ${hasUrl ? 'hs-fidelidade-menu__menu-item-link' : 'hs-fidelidade-menu__menu-item-span'}`,
     ref: el => (linkRefs.current[idString] = el),
     tabIndex: -1,
     'aria-expanded': menuData.children.length > 0 ? visibleMenuItems.includes(idString) : undefined,
@@ -230,7 +230,7 @@ export const MenuItemComponent = (props: MenuItemComponentProps) => {
   return (
     <MenuItemContainer
       className={getMenuItemClasses()}
-      data-hs-elevate-menuitem-depth={currentLevel}
+      data-hs-fidelidade-menuitem-depth={currentLevel}
       onFocus={event => handleFocus(event, idString)}
       onBlur={handleBlur}
       onKeyDown={event => keyboardEventCallback(event, idString)}
@@ -240,7 +240,7 @@ export const MenuItemComponent = (props: MenuItemComponentProps) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <MenuItemLinkContainer className={cx('hs-elevate-menu__menu-item-link-container', styles.menuItemLinkContainer)}>
+      <MenuItemLinkContainer className={cx('hs-fidelidade-menu__menu-item-link-container', styles.menuItemLinkContainer)}>
         {/* If the menu item has a URL, render a link. Otherwise, render a span. */}
         {hasUrl ? (
           <MenuItemLink
@@ -262,7 +262,7 @@ export const MenuItemComponent = (props: MenuItemComponentProps) => {
           </MenuItemSpan>
         )}
         {showNestedMenuIcon && (
-          <MenuArrow className={cx('hs-elevate-menu__arrow', styles.menuArrow)} onClick={() => handleTriggeredMenuItem(idString)}>
+          <MenuArrow className={cx('hs-fidelidade-menu__arrow', styles.menuArrow)} onClick={() => handleTriggeredMenuItem(idString)}>
             <ArrowComponent />
           </MenuArrow>
         )}

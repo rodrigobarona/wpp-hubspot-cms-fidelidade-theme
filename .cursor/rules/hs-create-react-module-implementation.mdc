@@ -43,9 +43,9 @@ This rule guides you through implementing a HubSpot React module after the initi
    const StyledContainer = createComponent('div');
    // inside the CSS Module file:
    // .className-one {
-   // max-width: var(--hsElevate--container--maxWidth, 1200px);
+   // max-width: var(--hsFidelidade--container--maxWidth, 1200px);
    // margin: 0 auto;
-   // padding: var(--hsElevate--spacing--48, 48px) var(--hsElevate--spacing--24, 24px);
+   // padding: var(--hsFidelidade--spacing--48, 48px) var(--hsFidelidade--spacing--24, 24px);
    // }
    ```
 
@@ -83,16 +83,16 @@ If the module requires client-side interactivity:
 2. Set module configuration:
    ```typescript
    export const defaultModuleConfig = {
-     moduleName: 'elevate/components/modules/module_name',
+     moduleName: 'fidelidade/components/modules/module_name',
      version: 0,
      themeModule: true,
    };
    ```
 
 ### 5. Styling Guidelines
-1. Use HubSpot Elevate CSS variables for:
-   - Spacing: `var(--hsElevate--spacing--{size})`
-   - Colors: `var(--hsElevate--{context}--{property})`
+1. Use Fidelidade theme CSS variables for:
+   - Spacing: `var(--hsFidelidade--spacing--{size})`
+   - Colors: `var(--hsFidelidade--{context}--{property})`
    - Typography: Apply typography classes from field definitions
 2. Ensure responsive design
 3. Follow accessibility best practices
@@ -229,19 +229,19 @@ const MenuContainer = createComponent('div');
 const HamburgerButton = createComponent('button');
 
 // CSS Modules approach - menu.module.css:
-// .hs-elevate-menu-container {
+// .hs-fidelidade-menu-container {
 //   position: absolute;
-//   background-color: var(--hsElevate--menu__backgroundColor);
-//   color: var(--hsElevate--menu__textColor);
+//   background-color: var(--hsFidelidade--menu__backgroundColor);
+//   color: var(--hsFidelidade--menu__textColor);
 //   top: 100%;
 //   width: 100%;
-//   height: var(--hsElevate--menu__height);
+//   height: var(--hsFidelidade--menu__height);
 //   transition: all 0.3s ease;
 //   left: 100%; /* Default hidden state */
 // }
-// .hs-elevate-menu-container--sliding { left: 0; }
-// .hs-elevate-menu-container--show { display: flex; }
-// .hs-elevate-menu-container--hidden { display: none; }
+// .hs-fidelidade-menu-container--sliding { left: 0; }
+// .hs-fidelidade-menu-container--show { display: flex; }
+// .hs-fidelidade-menu-container--hidden { display: none; }
 
 export default function MobileMenuIsland(props: MobileMenuIslandProps) {
   const { menuBackgroundColor, menuTextColor, menuAccentColor, headerHeight } = props;
@@ -289,20 +289,20 @@ export default function MobileMenuIsland(props: MobileMenuIslandProps) {
 
   // CSS custom properties for dynamic styling
   const menuContainerStyle: CSSProperties = {
-    '--hsElevate--menu__backgroundColor': menuBackgroundColor,
-    '--hsElevate--menu__textColor': menuTextColor,
-    '--hsElevate--menu__accentColor': menuAccentColor,
-    '--hsElevate--menu__height': `calc(100vh - ${headerHeight}px)`,
+    '--hsFidelidade--menu__backgroundColor': menuBackgroundColor,
+    '--hsFidelidade--menu__textColor': menuTextColor,
+    '--hsFidelidade--menu__accentColor': menuAccentColor,
+    '--hsFidelidade--menu__height': `calc(100vh - ${headerHeight}px)`,
   } as CSSProperties;
 
   // Generate dynamic classes based on state
   const menuContainerClasses = cx(
-    'hs-elevate-menu-container',
-    styles['hs-elevate-menu-container'],
+    'hs-fidelidade-menu-container',
+    styles['hs-fidelidade-menu-container'],
     {
-      [styles['hs-elevate-menu-container--show']]: showMenu,
-      [styles['hs-elevate-menu-container--sliding']]: isMenuSliding,
-      [styles['hs-elevate-menu-container--hidden']]: !showMenu,
+      [styles['hs-fidelidade-menu-container--show']]: showMenu,
+      [styles['hs-fidelidade-menu-container--sliding']]: isMenuSliding,
+      [styles['hs-fidelidade-menu-container--hidden']]: !showMenu,
     }
   );
 
@@ -379,7 +379,7 @@ const Metric = createComponent('div');
 const MetricNumber = createComponent('div');
 const MetricDescription = createComponent('div');
 // inside metrics.module.css file:
-// .hs-elevate-metrics {
+// .hs-fidelidade-metrics {
   // display: flex;
   // justify-content: space-around;
   // flex-direction: column;
@@ -388,7 +388,7 @@ const MetricDescription = createComponent('div');
   //   flex-direction: row;
   // }
 // }
-// same for .hs-elevate-metrics__number
+// same for .hs-fidelidade-metrics__number
 
 export const Component = (props: MetricProps) => {
   const {
@@ -397,23 +397,23 @@ export const Component = (props: MetricProps) => {
   } = props;
 
   const cssVarsMap: CSSPropertiesMap = {
-    '--hsElevate--metrics__accentColor': 'var(--theme-color-primary)',
+    '--hsFidelidade--metrics__accentColor': 'var(--theme-color-primary)',
   };
 
   return (
     <MetricsContainer
-      className={swm('hs-elevate-metrics')}
+      className={swm('hs-fidelidade-metrics')}
       style={cssVarsMap}
     >
       {groupMetrics.map((metric, index) => (
         <Metric
           key={index}
-          className={swm('hs-elevate-metrics__metric')}
+          className={swm('hs-fidelidade-metrics__metric')}
         >
-          <MetricNumber className={swm('hs-elevate-metrics__number')}>
+          <MetricNumber className={swm('hs-fidelidade-metrics__number')}>
             {metric.metric}
           </MetricNumber>
-          <MetricDescription className={swm('hs-elevate-metrics__description')}>
+          <MetricDescription className={swm('hs-fidelidade-metrics__description')}>
             {metric.description}
           </MetricDescription>
         </Metric>
@@ -454,18 +454,18 @@ import { CSSPropertiesMap } from '../../types/components.ts;
 function generateColorCssVars(sectionVariantField: SectionVariantType): CSSPropertiesMap {
   const sectionColorsMap = {
     section_variant_1: {
-      textColor: 'var(--hsElevate--section--lightSection--1__textColor)',
-      accentColor: 'var(--hsElevate--section--lightSection--1__accentColor)',
+      textColor: 'var(--hsFidelidade--section--lightSection--1__textColor)',
+      accentColor: 'var(--hsFidelidade--section--lightSection--1__accentColor)',
     },
     section_variant_2: {
-      textColor: 'var(--hsElevate--section--lightSection--2__textColor)',
-      accentColor: 'var(--hsElevate--section--lightSection--2__accentColor)',
+      textColor: 'var(--hsFidelidade--section--lightSection--2__textColor)',
+      accentColor: 'var(--hsFidelidade--section--lightSection--2__accentColor)',
     }
   };
 
   return {
-    '--hsElevate--metrics__textColor': sectionColorsMap[sectionVariantField].textColor,
-    '--hsElevate--metrics__accentColor': sectionColorsMap[sectionVariantField].accentColor,
+    '--hsFidelidade--metrics__textColor': sectionColorsMap[sectionVariantField].textColor,
+    '--hsFidelidade--metrics__accentColor': sectionColorsMap[sectionVariantField].accentColor,
   };
 }
 ```

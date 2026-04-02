@@ -17,16 +17,16 @@ const CompletedMessage = createComponent('p');
 // Functions to generate CSS variables
 function generateCounterCssVars(counter: CounterStyles): CSSPropertiesMap {
   return {
-    '--hsElevate--countdownTimer__borderThickness': `${counter?.borderThickness ?? 1}px`,
-    '--hsElevate--countdownTimer__borderColor': counter?.borderColor?.color || '#000',
-    '--hsElevate--countdownTimer__textColor': counter?.textColor?.color || '#000',
-    '--hsElevate--countdownTimer__fillColor': counter?.fillColor?.color || 'transparent',
+    '--hsFidelidade--countdownTimer__borderThickness': `${counter?.borderThickness ?? 1}px`,
+    '--hsFidelidade--countdownTimer__borderColor': counter?.borderColor?.color || '#000',
+    '--hsFidelidade--countdownTimer__textColor': counter?.textColor?.color || '#000',
+    '--hsFidelidade--countdownTimer__fillColor': counter?.fillColor?.color || 'transparent',
   };
 }
 
 function generateCounterLabelsCssVars(counterLabels: CounterLabelsStyles): CSSPropertiesMap {
   return {
-    '--hsElevate--countdownTimer__labelTextColor': counterLabels?.textColor?.color || '#000',
+    '--hsFidelidade--countdownTimer__labelTextColor': counterLabels?.textColor?.color || '#000',
   };
 }
 
@@ -66,14 +66,14 @@ const TimeUnit = (props: TimeUnitProps) => {
     ...generateCounterLabelsCssVars(counterLabels),
   };
 
-  const valueClasses = cx(swm('hs-elevate-countdown-timer__value'), {
-    [styles['hs-elevate-countdown-timer__value--filled']]: counter?.fill === 'filled',
+  const valueClasses = cx(swm('hs-fidelidade-countdown-timer__value'), {
+    [styles['hs-fidelidade-countdown-timer__value--filled']]: counter?.fill === 'filled',
   });
 
   return (
-    <TimeUnitContainer className={swm('hs-elevate-countdown-timer__time-unit-container')} style={cssVarsMap}>
+    <TimeUnitContainer className={swm('hs-fidelidade-countdown-timer__time-unit-container')} style={cssVarsMap}>
       <Value className={valueClasses}>{formatNumber(value)}</Value>
-      <Label className={swm('hs-elevate-countdown-timer__label')}>{label}</Label>
+      <Label className={swm('hs-fidelidade-countdown-timer__label')}>{label}</Label>
     </TimeUnitContainer>
   );
 };
@@ -116,14 +116,14 @@ export default function CountdownTimerIsland(props: CountdownTimerProps) {
   // If countdown is complete, show a message
   if (endDate <= Date.now()) {
     return (
-      <CompletedMessage className={swm('hs-elevate-countdown-timer__completed-message')} style={completedMessageCssVars}>
+      <CompletedMessage className={swm('hs-fidelidade-countdown-timer__completed-message')} style={completedMessageCssVars}>
         {completedMessage}
       </CompletedMessage>
     );
   }
 
   return (
-    <CountdownTimer className={swm('hs-elevate-countdown-timer')} dateTime={dateTimeString}>
+    <CountdownTimer className={swm('hs-fidelidade-countdown-timer')} dateTime={dateTimeString}>
       <TimeUnit value={timeLeft.days} label={days} groupStyle={groupStyle} />
       <TimeUnit value={timeLeft.hours} label={hours} groupStyle={groupStyle} />
       <TimeUnit value={timeLeft.minutes} label={minutes} groupStyle={groupStyle} />

@@ -23,7 +23,7 @@ const themeLink = {
   type: 'THEME_EDITOR' as const,
   name: 'theme_link',
   params: {
-    theme_path: '@hubspot/elevate',
+    theme_path: '@fidelidade/cms-theme',
     theme_field_path: themeGroupSectionsPath,
   },
 };

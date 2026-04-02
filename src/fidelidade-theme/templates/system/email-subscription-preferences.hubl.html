@@ -1,7 +1,7 @@
 <!--
   templateType: email_subscription_preferences_page
   isAvailableForNewContent: true
-  label: Elevate - email subscription preferences
+  label: Fidelidade - email subscription preferences
   screenshotPath: ../../images/template-previews/email-subscription-preferences.png
 -->
 {% set template_css = "../../assets/dist/css/system.hubl.css" %}
@@ -9,7 +9,7 @@
 {% extends "../layouts/base.hubl.html" %}
 
 {% block body %}
-  <section class="hs-elevate-content-wrapper hs-elevate-content-wrapper--sm hs-elevate-content-padding">
+  <section class="hs-fidelidade-content-wrapper hs-fidelidade-content-wrapper--sm hs-fidelidade-content-padding">
     {% module "email_subscription_heading"
       path="../../components/modules/Heading",
       headingAndTextHeadingLevel="h1",
@@ -25,7 +25,7 @@
 
     {% module_block module "email_subscription_preferences"
       path="@hubspot/email_subscriptions",
-      extra_classes="hs-elevate-system-form hs-elevate-system-form--subscription-preferences",
+      extra_classes="hs-fidelidade-system-form hs-fidelidade-system-form--subscription-preferences",
       email_heading_level="p",
       language_dropdown_label={{ template_translations.subscription_preferences_language_input_label.message }},
       resubscribe_button_text={{ template_translations.subscription_preferences_resubscribe_button_text.message }},

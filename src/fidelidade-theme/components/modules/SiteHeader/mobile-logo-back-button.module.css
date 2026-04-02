@@ -1,44 +1,44 @@
-.hs-elevate-site-header__back-button {
+.hs-fidelidade-site-header__back-button {
   position: absolute;
   z-index: 50;
   top: 50%;
-  left: var(--hsElevate--spacing--48);
+  left: var(--hsFidelidade--spacing--48);
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background-color: transparent;
-  color: var(--hsElevate--link--primary__fontColor);
+  color: var(--hsFidelidade--link--primary__fontColor);
   cursor: pointer;
   transform: translateY(-50%);
 
   &:hover {
-    color: var(--hsElevate--link--primary__hover--fontColor);
+    color: var(--hsFidelidade--link--primary__hover--fontColor);
 
     svg path {
-      fill: var(--hsElevate--link--primary__hover--fontColor);
+      fill: var(--hsFidelidade--link--primary__hover--fontColor);
     }
   }
 
   svg {
-    margin-inline-end: var(--hsElevate--spacing--8);
+    margin-inline-end: var(--hsFidelidade--spacing--8);
     transform: rotate(180deg);
 
     path {
-      fill: var(--hsElevate--link--primary__fontColor);
+      fill: var(--hsFidelidade--link--primary__fontColor);
     }
   }
 }
 
-.hs-elevate-site-header__logo-link {
+.hs-fidelidade-site-header__logo-link {
   pointer-events: initial;
 }
 
-.hs-elevate-site-header__back-button-container--show-back-button .hs-elevate-site-header__logo-link {
+.hs-fidelidade-site-header__back-button-container--show-back-button .hs-fidelidade-site-header__logo-link {
   pointer-events: none;
 }
 
-.hs-elevate-site-header__logo {
+.hs-fidelidade-site-header__logo {
   display: block;
   max-height: 75px;
   width: auto;
@@ -53,16 +53,16 @@
   }
 }
 
-.hs-elevate-site-header__logo:not(.hs-elevate-site-header__logo--is-svg) {
+.hs-fidelidade-site-header__logo:not(.hs-fidelidade-site-header__logo--is-svg) {
   height: auto;
 }
 
-.hs-elevate-site-header__back-button-container--show-back-button .hs-elevate-site-header__logo {
+.hs-fidelidade-site-header__back-button-container--show-back-button .hs-fidelidade-site-header__logo {
   pointer-events: none;
   visibility: hidden;
 }
 
-.hs-elevate-site-header__logo-link-screen-reader {
+.hs-fidelidade-site-header__logo-link-screen-reader {
   position: absolute;
   display: block;
   overflow: hidden;
@@ -74,11 +74,11 @@
   clip: rect(0, 0, 0, 0);
 }
 
-.hs-elevate-site-header__back-button-container--show-back-button .hs-elevate-site-header__logo-link-screen-reader {
+.hs-fidelidade-site-header__back-button-container--show-back-button .hs-fidelidade-site-header__logo-link-screen-reader {
   display: none;
 }
 
-.hs-elevate-site-header__company-name {
+.hs-fidelidade-site-header__company-name {
   display: block;
   max-width: min(250px, 45vw);
   font-size: 1.3rem;

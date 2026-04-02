@@ -1,11 +1,11 @@
-.hs-elevate-blog-listing__blog-card-container {
+.hs-fidelidade-blog-listing__blog-card-container {
   display: grid;
-  margin-bottom: var(--hsElevate--spacing--48, 48px);
+  margin-bottom: var(--hsFidelidade--spacing--48, 48px);
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   gap: 32px;
 
-  :global(.hs-elevate-card--blog__card-wrapper) {
+  :global(.hs-fidelidade-card--blog__card-wrapper) {
     /* stylelint-disable-line selector-pseudo-class-no-unknown */
     grid-column: span 1;
     grid-row: span 1;
@@ -21,14 +21,14 @@
 }
 
 @media (width >= 640px) {
-  .hs-elevate-blog-listing--has-featured-post {
-    :global(.hs-elevate-card--blog__card-wrapper) {
+  .hs-fidelidade-blog-listing--has-featured-post {
+    :global(.hs-fidelidade-card--blog__card-wrapper) {
       /* stylelint-disable-line selector-pseudo-class-no-unknown */
       &:first-of-type {
         grid-column: span 2;
         grid-row: span 2;
 
-        :global(.hs-elevate-card--blog__image-container) {
+        :global(.hs-fidelidade-card--blog__image-container) {
           /* stylelint-disable-line selector-pseudo-class-no-unknown */
           position: relative;
           overflow: hidden;

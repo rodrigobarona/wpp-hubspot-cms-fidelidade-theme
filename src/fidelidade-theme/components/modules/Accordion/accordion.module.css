@@ -1,60 +1,60 @@
-.hs-elevate-accordion-container {
+.hs-fidelidade-accordion-container {
   display: flex;
   flex-direction: column;
-  gap: var(--hsElevate--accordion__gap);
+  gap: var(--hsFidelidade--accordion__gap);
 }
 
-.hs-elevate-accordion__title {
+.hs-fidelidade-accordion__title {
   display: flex;
-  padding-block: var(--hs-elevate--spacing--24, 24px);
-  padding-inline: var(--hs-elevate--spacing--32, 32px);
+  padding-block: var(--hs-fidelidade--spacing--24, 24px);
+  padding-inline: var(--hs-fidelidade--spacing--32, 32px);
 
   &:hover {
     cursor: pointer;
   }
 }
 
-.hs-elevate-accordion__title-text {
-  font-size: var(--hsElevate--body--large__fontSize);
+.hs-fidelidade-accordion__title-text {
+  font-size: var(--hsFidelidade--body--large__fontSize);
   font-weight: 600;
-  margin-inline-end: var(--hs-elevate--spacing--32, 32px);
+  margin-inline-end: var(--hs-fidelidade--spacing--32, 32px);
 }
 
-.hs-elevate-accordion__icon {
+.hs-fidelidade-accordion__icon {
   flex-shrink: 0;
   align-self: center;
-  fill: var(--hsElevate--cardIcon__fillColor);
+  fill: var(--hsFidelidade--cardIcon__fillColor);
   margin-inline-start: auto;
 }
 
-.hs-elevate-accordion__icon--arrow {
+.hs-fidelidade-accordion__icon--arrow {
   transition: transform 0.5s;
 }
 
-.hs-elevate-accordion[open] .hs-elevate-accordion__icon--arrow {
+.hs-fidelidade-accordion[open] .hs-fidelidade-accordion__icon--arrow {
   transform: rotate(180deg);
 }
 
-.hs-elevate-accordion__icon--plus {
+.hs-fidelidade-accordion__icon--plus {
   height: 27px;
 }
 
-.hs-elevate-accordion[open] .hs-elevate-accordion__icon--plus {
+.hs-fidelidade-accordion[open] .hs-fidelidade-accordion__icon--plus {
   display: none;
 }
 
-.hs-elevate-accordion__icon--minus {
+.hs-fidelidade-accordion__icon--minus {
   display: none;
   height: 27px;
 }
 
-.hs-elevate-accordion[open] .hs-elevate-accordion__icon--minus {
+.hs-fidelidade-accordion[open] .hs-fidelidade-accordion__icon--minus {
   display: block;
 }
 
-.hs-elevate-accordion__body {
-  padding-block: 0 var(--hs-elevate--spacing--24, 24px);
-  padding-inline: var(--hs-elevate--spacing--32, 32px);
+.hs-fidelidade-accordion__body {
+  padding-block: 0 var(--hs-fidelidade--spacing--24, 24px);
+  padding-inline: var(--hs-fidelidade--spacing--32, 32px);
 
   :last-child {
     margin-block-end: 0;

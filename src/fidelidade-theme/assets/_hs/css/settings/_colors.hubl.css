@@ -3,12 +3,12 @@
 
 :root {
   /* Base colors */
-  --hsElevate--color--base--1: {{ base_colors.color_1.color }};
-  --hsElevate--color--base--2: {{ base_colors.color_2.color }};
-  --hsElevate--color--base--3: {{ base_colors.color_3.color }};
+  --hsFidelidade--color--base--1: {{ base_colors.color_1.color }};
+  --hsFidelidade--color--base--2: {{ base_colors.color_2.color }};
+  --hsFidelidade--color--base--3: {{ base_colors.color_3.color }};
 
   /* Accent colors */
-  --hsElevate--color--accent--1: {{ accent_colors.color_1.color }};
-  --hsElevate--color--accent--2: {{ accent_colors.color_2.color }};
-  --hsElevate--color--accent--3: {{ accent_colors.color_3.color }};
+  --hsFidelidade--color--accent--1: {{ accent_colors.color_1.color }};
+  --hsFidelidade--color--accent--2: {{ accent_colors.color_2.color }};
+  --hsFidelidade--color--accent--3: {{ accent_colors.color_3.color }};
 }

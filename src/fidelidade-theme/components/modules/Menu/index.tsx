@@ -45,42 +45,42 @@ type MenuModulePropTypes = {
 function generateSpacingCssVars(spacingField: SizeOption): CSSPropertiesMap {
   const spacingMap = {
     none: '0',
-    small: 'var(--hsElevate--spacing--16, 16px)',
-    medium: 'var(--hsElevate--spacing--32, 32px)',
-    large: 'var(--hsElevate--spacing--56, 56px)',
+    small: 'var(--hsFidelidade--spacing--16, 16px)',
+    medium: 'var(--hsFidelidade--spacing--32, 32px)',
+    large: 'var(--hsFidelidade--spacing--56, 56px)',
   };
 
-  return { '--hsElevate--menu--topLevel__gap': spacingMap[spacingField] };
+  return { '--hsFidelidade--menu--topLevel__gap': spacingMap[spacingField] };
 }
 function generatePaddingCssVars(spacingField: SizeOption): CSSPropertiesMap {
   const verticalSpacingMap = {
     none: '0',
-    small: 'var(--hsElevate--spacing--4, 4px)',
-    medium: 'var(--hsElevate--spacing--12, 12px)',
-    large: 'var(--hsElevate--spacing--16, 16px)',
+    small: 'var(--hsFidelidade--spacing--4, 4px)',
+    medium: 'var(--hsFidelidade--spacing--12, 12px)',
+    large: 'var(--hsFidelidade--spacing--16, 16px)',
   };
   const horizontalSpacingMap = {
     none: '0',
-    small: 'var(--hsElevate--spacing--4, 4px)',
-    medium: 'var(--hsElevate--spacing--8, 8px)',
-    large: 'var(--hsElevate--spacing--16, 16px)',
+    small: 'var(--hsFidelidade--spacing--4, 4px)',
+    medium: 'var(--hsFidelidade--spacing--8, 8px)',
+    large: 'var(--hsFidelidade--spacing--16, 16px)',
   };
 
   return {
-    '--hsElevate--menuItem__paddingVertical': verticalSpacingMap[spacingField],
-    '--hsElevate--menuItem__paddingHorizontal': horizontalSpacingMap[spacingField],
+    '--hsFidelidade--menuItem__paddingVertical': verticalSpacingMap[spacingField],
+    '--hsFidelidade--menuItem__paddingHorizontal': horizontalSpacingMap[spacingField],
   };
 }
 function generateMenuItemVerticalGapCssVars(menuItemVerticalGap: SizeOption): CSSPropertiesMap {
   const verticalSpacingMap = {
     none: '0',
-    small: 'var(--hsElevate--spacing--8, 8px)',
-    medium: 'var(--hsElevate--spacing--16, 16px)',
-    large: 'var(--hsElevate--spacing--24, 24px)',
+    small: 'var(--hsFidelidade--spacing--8, 8px)',
+    medium: 'var(--hsFidelidade--spacing--16, 16px)',
+    large: 'var(--hsFidelidade--spacing--24, 24px)',
   };
 
   return {
-    '--hsElevate--menuItem__gap': verticalSpacingMap[menuItemVerticalGap],
+    '--hsFidelidade--menuItem__gap': verticalSpacingMap[menuItemVerticalGap],
   };
 }
 
@@ -103,7 +103,7 @@ export const Component = (props: MenuModulePropTypes) => {
   };
 
   return (
-    <div style={cssVarsMap} className="hs-elevate-horizontal-menu">
+    <div style={cssVarsMap} className="hs-fidelidade-horizontal-menu">
       {navDataArray.length === 0 && isEditorMode ? (
         <PlaceholderEmptyContent title={groupPlaceholderText.placeholderTitle} description={groupPlaceholderText.placeholderDescription} />
       ) : (
@@ -115,7 +115,7 @@ export const Component = (props: MenuModulePropTypes) => {
           menuAlignment={menuAlignment}
           navigationAriaLabel={menuName}
           linkStyleVariant={linkStyleVariant}
-          additionalClassArray={['hs-elevate-horizontal-menu__menu']}
+          additionalClassArray={['hs-fidelidade-horizontal-menu__menu']}
         />
       )}
     </div>
@@ -141,7 +141,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/menu',
+  moduleName: 'fidelidade/components/modules/menu',
   version: 0,
   themeModule: true,
 };

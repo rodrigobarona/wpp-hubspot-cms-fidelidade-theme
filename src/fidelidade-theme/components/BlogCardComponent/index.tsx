@@ -45,7 +45,7 @@ const TagList = ({ tags }: TagListProps) => {
   }
 
   return (
-    <CardTagContainer className={swm('hs-elevate-card--blog__tag-container')}>
+    <CardTagContainer className={swm('hs-fidelidade-card--blog__tag-container')}>
       {tags.map((tag: string, index: number) => (
         <TagComponent key={index}>
           <SanitizedContent content={tag} />
@@ -60,26 +60,26 @@ const TagList = ({ tags }: TagListProps) => {
 function generateColorCssVars(cardStyleVariant: string): CSSPropertiesMap {
   const iconColorsMap = {
     card_variant_1: {
-      textColor: 'var(--hsElevate--card--variant1__textColor)',
-      iconBackgroundColor: 'var(--hsElevate--card--variant1__iconBackgroundColor)',
+      textColor: 'var(--hsFidelidade--card--variant1__textColor)',
+      iconBackgroundColor: 'var(--hsFidelidade--card--variant1__iconBackgroundColor)',
     },
     card_variant_2: {
-      textColor: 'var(--hsElevate--card--variant2__textColor)',
-      iconBackgroundColor: 'var(--hsElevate--card--variant2__iconBackgroundColor)',
+      textColor: 'var(--hsFidelidade--card--variant2__textColor)',
+      iconBackgroundColor: 'var(--hsFidelidade--card--variant2__iconBackgroundColor)',
     },
     card_variant_3: {
-      textColor: 'var(--hsElevate--card--variant3__textColor)',
-      iconBackgroundColor: 'var(--hsElevate--card--variant3__iconBackgroundColor)',
+      textColor: 'var(--hsFidelidade--card--variant3__textColor)',
+      iconBackgroundColor: 'var(--hsFidelidade--card--variant3__iconBackgroundColor)',
     },
     card_variant_4: {
-      textColor: 'var(--hsElevate--card--variant4__textColor)',
-      iconBackgroundColor: 'var(--hsElevate--card--variant4__iconBackgroundColor)',
+      textColor: 'var(--hsFidelidade--card--variant4__textColor)',
+      iconBackgroundColor: 'var(--hsFidelidade--card--variant4__iconBackgroundColor)',
     },
   };
 
   return {
-    '--hsElevate--blogCard__textColor': iconColorsMap[cardStyleVariant].textColor,
-    '--hsElevate--blogCardIcon__backgroundColor': iconColorsMap[cardStyleVariant].iconBackgroundColor,
+    '--hsFidelidade--blogCard__textColor': iconColorsMap[cardStyleVariant].textColor,
+    '--hsFidelidade--blogCardIcon__backgroundColor': iconColorsMap[cardStyleVariant].iconBackgroundColor,
   };
 }
 
@@ -99,13 +99,13 @@ function BlogCardComponent(props: BlogCardComponentProps) {
   const cssVarsMap = { ...generateColorCssVars(cardStyleVariant) };
 
   return (
-    <CardWrapper style={cssVarsMap} className={cx(swm('hs-elevate-card--blog__card-wrapper'), additionalClasses)}>
-      <Card key={post.id} cardOrientation="column" cardStyleVariant={cardStyleVariant} additionalClassArray={[swm('hs-elevate-card--blog')]}>
-        <CardLink className={swm('hs-elevate-card--blog__link')} href={post.absoluteUrl}>
-          <ImageContainer className={swm('hs-elevate-card--blog__image-container')}>
+    <CardWrapper style={cssVarsMap} className={cx(swm('hs-fidelidade-card--blog__card-wrapper'), additionalClasses)}>
+      <Card key={post.id} cardOrientation="column" cardStyleVariant={cardStyleVariant} additionalClassArray={[swm('hs-fidelidade-card--blog')]}>
+        <CardLink className={swm('hs-fidelidade-card--blog__link')} href={post.absoluteUrl}>
+          <ImageContainer className={swm('hs-fidelidade-card--blog__image-container')}>
             {post.featuredImage && (
               <Image
-                className={swm('hs-elevate-card--blog__image')}
+                className={swm('hs-fidelidade-card--blog__image')}
                 src={post.featuredImage}
                 alt={post.featuredImageAltText || ''}
                 width={post.featuredImageWidth}
@@ -113,17 +113,17 @@ function BlogCardComponent(props: BlogCardComponentProps) {
               />
             )}
           </ImageContainer>
-          <CardContentContainer className={swm('hs-elevate-card--blog__content-container')}>
+          <CardContentContainer className={swm('hs-fidelidade-card--blog__content-container')}>
             <TagList tags={post?.topicNames || []} />
             <CardHeadingContainer>
               <HeadingComponent
                 heading={post.title}
                 headingLevel={headingAndTextHeadingLevel}
                 headingStyleVariant={headingStyleVariant}
-                additionalClassArray={[swm('hs-elevate-card--blog__heading')]}
+                additionalClassArray={[swm('hs-fidelidade-card--blog__heading')]}
               />
               {gatedContentIds.includes(post.id) && (
-                <GateIconImage className={swm('hs-elevate-card--blog__gate-icon')} aria-label="Gated content" role="presentation" />
+                <GateIconImage className={swm('hs-fidelidade-card--blog__gate-icon')} aria-label="Gated content" role="presentation" />
               )}
             </CardHeadingContainer>
           </CardContentContainer>

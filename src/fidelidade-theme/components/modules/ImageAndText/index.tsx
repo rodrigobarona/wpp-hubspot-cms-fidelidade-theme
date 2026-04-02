@@ -23,11 +23,11 @@ const swm = staticWithModule(styles);
 
 function generateColorCssVars(sectionVariantField: SectionVariantType): CSSPropertiesMap {
   return {
-    '--hsElevate--imageAndText__textColor': sectionColorsMap[sectionVariantField].textColor,
-    '--hsElevate--imageAndText__accentColor': sectionColorsMap[sectionVariantField].accentColor,
-    '--hsElevate--blockquote__textColor': sectionColorsMap[sectionVariantField].blockquoteTextColor,
-    '--hsElevate--blockquote__backgroundColor': sectionColorsMap[sectionVariantField].blockquoteBackgroundColor,
-    '--hsElevate--blockquote__accentColor': sectionColorsMap[sectionVariantField].blockquoteAccentColor,
+    '--hsFidelidade--imageAndText__textColor': sectionColorsMap[sectionVariantField].textColor,
+    '--hsFidelidade--imageAndText__accentColor': sectionColorsMap[sectionVariantField].accentColor,
+    '--hsFidelidade--blockquote__textColor': sectionColorsMap[sectionVariantField].blockquoteTextColor,
+    '--hsFidelidade--blockquote__backgroundColor': sectionColorsMap[sectionVariantField].blockquoteBackgroundColor,
+    '--hsFidelidade--blockquote__accentColor': sectionColorsMap[sectionVariantField].blockquoteAccentColor,
   };
 }
 
@@ -37,13 +37,13 @@ function generateImagePositionCssVars(imagePositionField: ElementPositionType): 
     right: '1',
   };
 
-  return { '--hsElevate--imageAndText__order': imagePositionMap[imagePositionField] };
+  return { '--hsFidelidade--imageAndText__order': imagePositionMap[imagePositionField] };
 }
 
 function generateAlignmentCssVars(alignmentField: AlignmentFieldType['default']): CSSPropertiesMap {
   const alignmentCss = getAlignmentFieldCss(alignmentField);
 
-  return { '--hsElevate--imageAndText__alignItems': alignmentCss.alignItems || 'center' };
+  return { '--hsFidelidade--imageAndText__alignItems': alignmentCss.alignItems || 'center' };
 }
 
 // Components
@@ -77,11 +77,11 @@ export const Component = (props: ImageAndTextProps) => {
   };
 
   return (
-    <ImageAndText className={swm('hs-elevate-image-and-text')} style={cssVarsMap}>
+    <ImageAndText className={swm('hs-fidelidade-image-and-text')} style={cssVarsMap}>
       {image.src && (
-        <ImageContainer className={swm('hs-elevate-image-and-text__image-container')}>
+        <ImageContainer className={swm('hs-fidelidade-image-and-text__image-container')}>
           <Image
-            className={swm('hs-elevate-image-and-text__image')}
+            className={swm('hs-fidelidade-image-and-text__image')}
             src={image.src}
             alt={image.alt}
             width={image.width}
@@ -92,10 +92,10 @@ export const Component = (props: ImageAndTextProps) => {
         </ImageContainer>
       )}
       {hasContent && (
-        <ContentContainer className={swm('hs-elevate-image-and-text__content-container')}>
+        <ContentContainer className={swm('hs-fidelidade-image-and-text__content-container')}>
           {headingAndTextHeading && (
             <HeadingComponent
-              additionalClassArray={['hs-elevate-image-and-text__title']}
+              additionalClassArray={['hs-fidelidade-image-and-text__title']}
               headingLevel={headingAndTextHeadingLevel}
               headingStyleVariant={headingStyleVariant}
               heading={headingAndTextHeading}
@@ -106,13 +106,13 @@ export const Component = (props: ImageAndTextProps) => {
           {richTextContentHTML && (
             <RichText
               fieldPath="groupContent.richTextContentHTML"
-              className="hs-elevate-image-and-text__body"
+              className="hs-fidelidade-image-and-text__body"
               data-hs-token={getDataHSToken(moduleName, 'groupContent.richTextContentHTML')}
             />
           )}
           {showButton && (
             <Button
-              additionalClassArray={['hs-elevate-image-and-text__button']}
+              additionalClassArray={['hs-fidelidade-image-and-text__button']}
               buttonSize={buttonStyleSize}
               buttonStyle={buttonStyleVariant}
               href={buttonHref}
@@ -143,7 +143,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/image_and_text',
+  moduleName: 'fidelidade/components/modules/image_and_text',
   version: 0,
   themeModule: true,
 };

@@ -1,13 +1,13 @@
 ---
-description: Storybook Story Creation Guide for CMS Elevate Theme
+description: Storybook Story Creation Guide for Fidelidade CMS Theme
 globs:
   - "**/*.stories.tsx"
   - "**/stories/**"
 ---
 
-# Storybook Story Creation Guide for CMS Elevate Theme
+# Storybook Story Creation Guide for Fidelidade CMS Theme
 
-This guide teaches Claude how to create consistent, well-structured Storybook stories following the established patterns in the cms-elevate-theme project.
+This guide teaches Claude how to create consistent, well-structured Storybook stories following the established patterns in the cms-fidelidade-theme project.
 
 ## Quick Start Checklist
 
@@ -65,7 +65,7 @@ export const Default: Story = {};
 
 #### Components
 ```
-src/unified-theme/components/[ComponentName]/
+src/fidelidade-theme/components/[ComponentName]/
 ├── stories/
 │   ├── [ComponentName].stories.tsx           # Main story file
 │   ├── [ComponentName].[category].stories.tsx # Category-specific stories
@@ -78,7 +78,7 @@ src/unified-theme/components/[ComponentName]/
 
 #### Modules
 ```
-src/unified-theme/components/modules/[ModuleName]/
+src/fidelidade-theme/components/modules/[ModuleName]/
 ├── stories/
 │   ├── [ModuleName]Module.stories.tsx         # Main story file
 │   ├── [ModuleName]Module.[category].stories.tsx # Category-specific stories

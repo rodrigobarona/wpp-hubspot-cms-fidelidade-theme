@@ -1,8 +1,8 @@
-.hs-elevate-anchor {
+.hs-fidelidade-anchor {
   position: relative;
 }
 
-.hs-elevate-anchor__visual {
+.hs-fidelidade-anchor__visual {
   display: block;
   width: 47px;
   background: url('./assets/editor-anchor.svg') no-repeat 100% 100% !important;

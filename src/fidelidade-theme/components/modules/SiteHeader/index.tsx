@@ -35,10 +35,10 @@ function generateColorCssVars(props: ColorProps): CSSPropertiesMap {
   const { menuTextColor, menuTextHoverColor, menuBackgroundColor, menuAccentColor } = props;
 
   return {
-    '--hsElevate--siteHeader__menuTextColor': menuTextColor,
-    '--hsElevate--siteHeader__hover--menuTextColor': menuTextHoverColor,
-    '--hsElevate--siteHeader__menuBackgroundColor': menuBackgroundColor,
-    '--hsElevate--siteHeader__menuAccentColor': menuAccentColor,
+    '--hsFidelidade--siteHeader__menuTextColor': menuTextColor,
+    '--hsFidelidade--siteHeader__hover--menuTextColor': menuTextHoverColor,
+    '--hsFidelidade--siteHeader__menuBackgroundColor': menuBackgroundColor,
+    '--hsFidelidade--siteHeader__menuAccentColor': menuAccentColor,
   };
 }
 
@@ -108,14 +108,14 @@ export const Component = (props: MenuModulePropTypes) => {
 
   const cssVarsMap = { ...generateColorCssVars({ menuTextColor, menuTextHoverColor, menuBackgroundColor, menuAccentColor }) };
 
-  const siteHeaderClassNames = cx(swm('hs-elevate-site-header'), { [styles['hs-elevate-site-header--has-language-switcher']]: showLanguageSwitcher });
+  const siteHeaderClassNames = cx(swm('hs-fidelidade-site-header'), { [styles['hs-fidelidade-site-header--has-language-switcher']]: showLanguageSwitcher });
 
   return (
     <SiteHeader className={siteHeaderClassNames} style={cssVarsMap}>
       <SharedIslandState value={[]}>
         {/* Controls back button when mobile nav is open */}
-        <SiteHeaderContainer className={swm('hs-elevate-site-header__header-container')}>
-          <LogoButtonContainer className={swm('hs-elevate-site-header__logo-container')}>
+        <SiteHeaderContainer className={swm('hs-fidelidade-site-header__header-container')}>
+          <LogoButtonContainer className={swm('hs-fidelidade-site-header__logo-container')}>
             <Island
               module={MobileLogoBackButton}
               logoField={logoToUse}
@@ -130,7 +130,7 @@ export const Component = (props: MenuModulePropTypes) => {
           {navDataArray.length === 0 && isEditorMode ? (
             <PlaceholderEmptyContent title={placeholderTitle} description={placeholderDescription} />
           ) : (
-            <MainNav className={swm('hs-elevate-site-header__main-nav')}>
+            <MainNav className={swm('hs-fidelidade-site-header__main-nav')}>
               <Island
                 module={MenuComponent}
                 menuDataArray={navDataArray}
@@ -140,12 +140,12 @@ export const Component = (props: MenuModulePropTypes) => {
                 navigationAriaLabel="Main navigation"
                 flyouts={true}
                 wrapperStyle={{ flex: '1 0 100%' }}
-                additionalClassArray={['hs-elevate-site-header__main-nav-menu']}
+                additionalClassArray={['hs-fidelidade-site-header__main-nav-menu']}
               />
             </MainNav>
           )}
           {showLanguageSwitcher && (
-            <LanguageSwitcherContainer className={swm('hs-elevate-site-header__language-switcher-container')}>
+            <LanguageSwitcherContainer className={swm('hs-fidelidade-site-header__language-switcher-container')}>
               <Island
                 module={LanguageSwitcherIsland}
                 menuBackgroundColor={menuBackgroundColor}
@@ -159,7 +159,7 @@ export const Component = (props: MenuModulePropTypes) => {
           )}
 
           {showButton && (
-            <ButtonContainer className={swm('hs-elevate-site-header__button-container')}>
+            <ButtonContainer className={swm('hs-fidelidade-site-header__button-container')}>
               <Button
                 href={getLinkFieldHref(buttonLink)}
                 buttonStyle={buttonStyleVariant}
@@ -169,7 +169,7 @@ export const Component = (props: MenuModulePropTypes) => {
                 showIcon={showIcon}
                 iconFieldPath="groupButton.buttonContentIcon"
                 iconPosition={iconPosition}
-                additionalClassArray={['hs-elevate-site-header__button']}
+                additionalClassArray={['hs-fidelidade-site-header__button']}
                 moduleName={moduleName}
                 textFieldPath="groupButton.buttonContentText"
               >
@@ -178,7 +178,7 @@ export const Component = (props: MenuModulePropTypes) => {
             </ButtonContainer>
           )}
 
-          <MobileMenuContainer className={swm('hs-elevate-site-header__mobile-menu-container')}>
+          <MobileMenuContainer className={swm('hs-fidelidade-site-header__mobile-menu-container')}>
             <Island
               module={MobileMenuIsland}
               moduleName={moduleName}
@@ -233,7 +233,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/site_header',
+  moduleName: 'fidelidade/components/modules/site_header',
   version: 0,
   themeModule: true,
 };

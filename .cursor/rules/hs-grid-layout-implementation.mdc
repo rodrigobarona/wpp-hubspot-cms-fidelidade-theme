@@ -28,7 +28,7 @@ Here is the doc link for RFC 0942 Grid Layouts: https://product.hubteam.com/docs
 
 ### Beta Implementation Phase
 This implementation follows **RFC 0942 Grid Layouts** adoption strategy:
-- Currently in **beta phase** with gated rollout starting in Elevate theme
+- Currently in **beta phase** with gated rollout starting in Fidelidade theme
 - Uses temporary `{% if grids %}` parameter for conditional rendering
 - Post-beta: Parameter will be removed and replaced with automatic content tree detection
 - Emergency rollback capability required during beta phase
@@ -45,7 +45,7 @@ This implementation follows **RFC 0942 Grid Layouts** adoption strategy:
 Modify existing template files to include embedded grid conditionals:
 
 ```
-src/unified-theme/templates/
+src/fidelidade-theme/templates/
 ├── contact.hubl.html          # Contains both grid and Bootstrap implementations
 ├── features.hubl.html         # Contains both grid and Bootstrap implementations
 ├── pricing.hubl.html          # Contains both grid and Bootstrap implementations

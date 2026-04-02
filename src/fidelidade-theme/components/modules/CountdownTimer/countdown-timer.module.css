@@ -1,17 +1,17 @@
-.hs-elevate-countdown-timer {
+.hs-fidelidade-countdown-timer {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: var(--hsElevate--spacing--12, 12px);
+  gap: var(--hsFidelidade--spacing--12, 12px);
 }
 
 @media (width >= 767px) {
-  .hs-elevate-countdown-timer {
-    gap: var(--hsElevate--spacing--20, 20px);
+  .hs-fidelidade-countdown-timer {
+    gap: var(--hsFidelidade--spacing--20, 20px);
   }
 }
 
-.hs-elevate-countdown-timer__time-unit-container {
+.hs-fidelidade-countdown-timer__time-unit-container {
   display: flex;
 
   /* Width logic:
@@ -23,38 +23,38 @@
   width: max(min(200px, 25%), 25%);
   flex-direction: column;
   align-items: center;
-  gap: var(--hsElevate--spacing--8, 8px);
+  gap: var(--hsFidelidade--spacing--8, 8px);
 }
 
-.hs-elevate-countdown-timer__value {
+.hs-fidelidade-countdown-timer__value {
   width: 100%;
-  padding: var(--hsElevate--spacing--16, 16px) var(--hsElevate--spacing--12, 12px);
-  border: var(--hsElevate--countdownTimer__borderThickness) solid var(--hsElevate--countdownTimer__borderColor);
-  border-radius: var(--hsElevate-rounded);
-  color: var(--hsElevate--countdownTimer__textColor);
-  font-size: clamp(1rem, 5vw + 1rem, var(--hsElevate--display1__fontSize));
+  padding: var(--hsFidelidade--spacing--16, 16px) var(--hsFidelidade--spacing--12, 12px);
+  border: var(--hsFidelidade--countdownTimer__borderThickness) solid var(--hsFidelidade--countdownTimer__borderColor);
+  border-radius: var(--hsFidelidade-rounded);
+  color: var(--hsFidelidade--countdownTimer__textColor);
+  font-size: clamp(1rem, 5vw + 1rem, var(--hsFidelidade--display1__fontSize));
   line-height: 1;
   text-align: center;
 }
 
-.hs-elevate-countdown-timer__value--filled {
-  background-color: var(--hsElevate--countdownTimer__fillColor);
+.hs-fidelidade-countdown-timer__value--filled {
+  background-color: var(--hsFidelidade--countdownTimer__fillColor);
 }
 
 @media (width >= 767px) {
-  .hs-elevate-countdown-timer__value {
-    padding: var(--hsElevate--spacing--32, 32px) var(--hsElevate--spacing--24, 24px);
+  .hs-fidelidade-countdown-timer__value {
+    padding: var(--hsFidelidade--spacing--32, 32px) var(--hsFidelidade--spacing--24, 24px);
   }
 }
 
-.hs-elevate-countdown-timer__label {
+.hs-fidelidade-countdown-timer__label {
   width: 100%;
-  color: var(--hsElevate--countdownTimer__labelTextColor);
-  font-size: clamp(0.75rem, 1vw + 0.75rem, var(--hsElevate--h4__fontSize));
+  color: var(--hsFidelidade--countdownTimer__labelTextColor);
+  font-size: clamp(0.75rem, 1vw + 0.75rem, var(--hsFidelidade--h4__fontSize));
   text-align: center;
 }
 
-.hs-elevate-countdown-timer__completed-message {
-  color: var(--hsElevate--countdownTimer__labelTextColor);
+.hs-fidelidade-countdown-timer__completed-message {
+  color: var(--hsFidelidade--countdownTimer__labelTextColor);
   text-align: center;
 }

@@ -46,11 +46,11 @@ export default function MobileLogoBackButton(props: MobileLogoBackButtonProps) {
   };
   const isFileTypeSvg = logoSrc ? logoSrc.endsWith('.svg') : false;
 
-  const backButtonContainerClasses = cx(swm('hs-elevate-site-header__back-button-container'), {
-    [styles['hs-elevate-site-header__back-button-container--show-back-button']]: showBackButton,
+  const backButtonContainerClasses = cx(swm('hs-fidelidade-site-header__back-button-container'), {
+    [styles['hs-fidelidade-site-header__back-button-container--show-back-button']]: showBackButton,
   });
 
-  const logoImageClasses = cx(swm('hs-elevate-site-header__logo'), { [styles['hs-elevate-site-header__logo--is-svg']]: isFileTypeSvg });
+  const logoImageClasses = cx(swm('hs-fidelidade-site-header__logo'), { [styles['hs-fidelidade-site-header__logo--is-svg']]: isFileTypeSvg });
 
   const showCompanyName = !suppress_company_name;
 
@@ -65,19 +65,19 @@ export default function MobileLogoBackButton(props: MobileLogoBackButtonProps) {
   return (
     <BackButtonContainer className={backButtonContainerClasses}>
       {showBackButton && (
-        <BackButton className={swm('hs-elevate-site-header__back-button')} onClick={goBackOneLevel}>
-          <ArrowComponent additionalClassArray={['hs-elevate-site-header__back-button-icon']} />
+        <BackButton className={swm('hs-fidelidade-site-header__back-button')} onClick={goBackOneLevel}>
+          <ArrowComponent additionalClassArray={['hs-fidelidade-site-header__back-button-icon']} />
           Back
         </BackButton>
       )}
       {logoSrc && (
-        <LogoLink className={swm('hs-elevate-site-header__logo-link')} href={logoLink || '#'}>
+        <LogoLink className={swm('hs-fidelidade-site-header__logo-link')} href={logoLink || '#'}>
           <LogoImage className={logoImageClasses} src={logoSrc} alt={logoAlt} loading="eager" width={logoWidth} height={logoHeight} />
-          <LogoLinkScreenReader className={cx(styles['hs-elevate-site-header__logo-link-screen-reader'])}>{logoLinkAriaText}</LogoLinkScreenReader>
+          <LogoLinkScreenReader className={cx(styles['hs-fidelidade-site-header__logo-link-screen-reader'])}>{logoLinkAriaText}</LogoLinkScreenReader>
         </LogoLink>
       )}
       {!logoSrc && showCompanyName && companyName && (
-        <CompanyNameFallback className={swm('hs-elevate-site-header__company-name')}>{companyName}</CompanyNameFallback>
+        <CompanyNameFallback className={swm('hs-fidelidade-site-header__company-name')}>{companyName}</CompanyNameFallback>
       )}
       {!logoSrc && isInEditor && renderLogoAreaPlaceholder()}
     </BackButtonContainer>

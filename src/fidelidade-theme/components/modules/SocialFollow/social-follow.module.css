@@ -1,43 +1,43 @@
-.hs-elevate-social-follow {
+.hs-fidelidade-social-follow {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: var(--hsElevate--socialFollow__justifyContent, flex-start);
-  gap: var(--hsElevate--socialFollowIcon__gap);
+  justify-content: var(--hsFidelidade--socialFollow__justifyContent, flex-start);
+  gap: var(--hsFidelidade--socialFollowIcon__gap);
 }
 
-.hs-elevate-social-follow__link {
+.hs-fidelidade-social-follow__link {
   display: flex;
-  padding: var(--hsElevate--socialFollowIcon__padding);
-  border-color: var(--hsElevate--socialFollowIcon__borderColor);
-  border-radius: var(--hsElevate--socialFollowIcon__shape);
+  padding: var(--hsFidelidade--socialFollowIcon__padding);
+  border-color: var(--hsFidelidade--socialFollowIcon__borderColor);
+  border-radius: var(--hsFidelidade--socialFollowIcon__shape);
   border-style: solid;
-  border-width: var(--hsElevate--socialFollowIcon__borderWidth);
+  border-width: var(--hsFidelidade--socialFollowIcon__borderWidth);
   align-items: center;
   justify-content: center;
-  background-color: var(--hsElevate--socialFollowIcon__backgroundColor);
+  background-color: var(--hsFidelidade--socialFollowIcon__backgroundColor);
 
   :global(svg) {
-    fill: var(--hsElevate--socialFollowIcon__color);
+    fill: var(--hsFidelidade--socialFollowIcon__color);
   }
 
   &:hover {
-    border-color: var(--hsElevate--socialFollowIcon__hover--borderColor);
-    border-width: var(--hsElevate--socialFollowIcon__hover--borderWidth);
-    background-color: var(--hsElevate--socialFollowIcon__hover--backgroundColor);
+    border-color: var(--hsFidelidade--socialFollowIcon__hover--borderColor);
+    border-width: var(--hsFidelidade--socialFollowIcon__hover--borderWidth);
+    background-color: var(--hsFidelidade--socialFollowIcon__hover--backgroundColor);
 
     :global(svg) {
-      fill: var(--hsElevate--socialFollowIcon__hover--color);
+      fill: var(--hsFidelidade--socialFollowIcon__hover--color);
     }
   }
 
   &:active {
-    border-color: var(--hsElevate--socialFollowIcon__active--borderColor);
-    border-width: var(--hsElevate--socialFollowIcon__active--borderWidth);
-    background-color: var(--hsElevate--socialFollowIcon__active--backgroundColor);
+    border-color: var(--hsFidelidade--socialFollowIcon__active--borderColor);
+    border-width: var(--hsFidelidade--socialFollowIcon__active--borderWidth);
+    background-color: var(--hsFidelidade--socialFollowIcon__active--backgroundColor);
 
     :global(svg) {
-      fill: var(--hsElevate--socialFollowIcon__active--color);
+      fill: var(--hsFidelidade--socialFollowIcon__active--color);
     }
   }
 
@@ -47,7 +47,7 @@
   }
 }
 
-.hs-elevate-social-follow__icon {
-  height: var(--hsElevate--socialFollowIcon__size);
-  width: var(--hsElevate--socialFollowIcon__size);
+.hs-fidelidade-social-follow__icon {
+  height: var(--hsFidelidade--socialFollowIcon__size);
+  width: var(--hsFidelidade--socialFollowIcon__size);
 }

@@ -18,7 +18,7 @@
 {%- endmacro %}
 
 <div class="case-studies-detail">
-  <div class="hs-elevate-content-wrapper ">
+  <div class="hs-fidelidade-content-wrapper ">
     {% set case_study = dynamic_page_hubdb_row %}
 
         {% if is_in_editor or (!is_in_editor and module_is_hidden('cs-logo') == "false" )%}
@@ -80,7 +80,7 @@
       {% endif %}
 
       {% if is_in_editor or (!is_in_editor and module_is_hidden('cs-about-company') == "false" )%}
-        <div class="hs-elevate-content-wrapper hs-elevate-content-wrapper--md" {{ hide_module('cs-about-company') }}>
+        <div class="hs-fidelidade-content-wrapper hs-fidelidade-content-wrapper--md" {{ hide_module('cs-about-company') }}>
           <div class="cs-about-company-wrapper" >
             {% module "cs-about-company" path="@hubspot/cs_about_company"
               data_tokens={
@@ -93,7 +93,7 @@
         </div>
       {% endif %}
 
-    <div class="hs-elevate-content-wrapper hs-elevate-content-wrapper--sm">
+    <div class="hs-fidelidade-content-wrapper hs-fidelidade-content-wrapper--sm">
       <div class="cs-body-wrapper">
         {% module "cs-body" path="@hubspot/cs_body"
           data_tokens={
@@ -117,7 +117,7 @@
 
   {% if is_in_editor or (!is_in_editor and module_is_hidden('cs-related-case-studies') == "false" )%}
     <div class="cs-background--off-white" {{ hide_module('cs-related-case-studies') }}>
-      <div class="hs-elevate-content-wrapper">
+      <div class="hs-fidelidade-content-wrapper">
           <div class="cs-related-articles-wrapper">
             {% module "cs-related-case-studies" path="@hubspot/cs_related_case_studies" %}
           </div>

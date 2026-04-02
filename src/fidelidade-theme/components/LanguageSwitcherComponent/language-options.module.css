@@ -1,11 +1,11 @@
-ul.hs-elevate-language-switcher__language-list {
+ul.hs-fidelidade-language-switcher__language-list {
   height: auto;
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-.hs-elevate-language-switcher__language-item {
+.hs-fidelidade-language-switcher__language-item {
   padding: 0;
   border-radius: 0;
   margin: 0;
@@ -15,18 +15,18 @@ ul.hs-elevate-language-switcher__language-list {
   }
 }
 
-.hs-elevate-language-switcher__language-item--active {
-  background-color: var(--hsElevate--languageSwitcher__hover--backgroundColor, transparent);
+.hs-fidelidade-language-switcher__language-item--active {
+  background-color: var(--hsFidelidade--languageSwitcher__hover--backgroundColor, transparent);
 }
 
-.hs-elevate-language-switcher__language-item .hs-elevate-language-switcher__language-link {
+.hs-fidelidade-language-switcher__language-item .hs-fidelidade-language-switcher__language-link {
   display: flex;
-  padding: var(--hsElevate--spacing--12, 12px) var(--hsElevate--spacing--16, 16px);
+  padding: var(--hsFidelidade--spacing--12, 12px) var(--hsFidelidade--spacing--16, 16px);
   align-items: center;
-  color: var(--hsElevate--languageSwitcher__textColor, #1e293b);
-  font-size: var(--hsElevate--languageSwitcher__fontSize, 18px);
+  color: var(--hsFidelidade--languageSwitcher__textColor, #1e293b);
+  font-size: var(--hsFidelidade--languageSwitcher__fontSize, 18px);
   font-weight: 600;
-  gap: var(--hsElevate--spacing--12, 12px);
+  gap: var(--hsFidelidade--spacing--12, 12px);
   text-decoration: none;
   transition: background-color 0.2s ease;
 
@@ -34,11 +34,11 @@ ul.hs-elevate-language-switcher__language-list {
   &:active,
   &:visited,
   &:hover {
-    color: var(--hsElevate--languageSwitcher__textColor, #1e293b);
+    color: var(--hsFidelidade--languageSwitcher__textColor, #1e293b);
     text-decoration: none;
   }
 
   &:hover {
-    background-color: var(--hsElevate--languageSwitcher__hover--backgroundColor, #f1f5f9);
+    background-color: var(--hsFidelidade--languageSwitcher__hover--backgroundColor, #f1f5f9);
   }
 }

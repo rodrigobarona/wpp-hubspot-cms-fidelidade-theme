@@ -45,8 +45,8 @@ type FeatureListProps = {
 
 function generateColorCssVars(sectionVariantField: SectionVariantType): CSSPropertiesMap {
   return {
-    '--hsElevate--featureList__textColor': sectionColorsMap[sectionVariantField].textColor,
-    '--hsElevate--featureList__accentColor': sectionColorsMap[sectionVariantField].accentColor,
+    '--hsFidelidade--featureList__textColor': sectionColorsMap[sectionVariantField].textColor,
+    '--hsFidelidade--featureList__accentColor': sectionColorsMap[sectionVariantField].accentColor,
   };
 }
 
@@ -69,21 +69,21 @@ export const Component = (props: FeatureListProps) => {
     ...generateColorCssVars(sectionStyleVariant),
   };
 
-  const featureListClasses = cx(swm('hs-elevate-feature-list'), {
-    [styles[`hs-elevate-feature-list--${columns}-columns`]]: columns,
+  const featureListClasses = cx(swm('hs-fidelidade-feature-list'), {
+    [styles[`hs-fidelidade-feature-list--${columns}-columns`]]: columns,
   });
 
   return (
     <FeatureList className={featureListClasses} style={cssVarsMap}>
       {groupFeatures.map((feature, index) => (
-        <Feature className={swm('hs-elevate-feature-list__feature')} key={index}>
+        <Feature className={swm('hs-fidelidade-feature-list__feature')} key={index}>
           {feature?.groupIcon?.showIcon && feature?.groupIcon?.icon?.name && (
-            <Icon className={swm('hs-elevate-feature-list__icon')} fieldPath={`groupFeatures[${index}].groupIcon.icon`} purpose="DECORATIVE" />
+            <Icon className={swm('hs-fidelidade-feature-list__icon')} fieldPath={`groupFeatures[${index}].groupIcon.icon`} purpose="DECORATIVE" />
           )}
-          <ContentContainer className={swm('hs-elevate-feature-list__content-container')}>
+          <ContentContainer className={swm('hs-fidelidade-feature-list__content-container')}>
             {feature.groupFeatureContent.headingAndTextHeading && (
               <HeadingComponent
-                additionalClassArray={['hs-elevate-feature-list__title']}
+                additionalClassArray={['hs-fidelidade-feature-list__title']}
                 headingLevel={feature.groupFeatureContent.headingAndTextHeadingLevel}
                 headingStyleVariant={headingStyleVariant}
                 heading={feature.groupFeatureContent.headingAndTextHeading}
@@ -93,7 +93,7 @@ export const Component = (props: FeatureListProps) => {
             )}
             {feature.groupFeatureContent.featureDescription && (
               <FeatureParagraph
-                className={swm('hs-elevate-feature-list__body')}
+                className={swm('hs-fidelidade-feature-list__body')}
                 data-hs-token={getDataHSToken(moduleName, `groupFeatures[${index}].groupFeatureContent.featureDescription`)}
               >
                 {feature.groupFeatureContent.featureDescription}
@@ -116,7 +116,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/feature_list',
+  moduleName: 'fidelidade/components/modules/feature_list',
   version: 0,
   themeModule: true,
 };

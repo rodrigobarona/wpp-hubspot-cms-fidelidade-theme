@@ -4,10 +4,10 @@ export type StandardSizeType = 'small' | 'medium' | 'large';
 export type CardVariantType = 'card_variant_1' | 'card_variant_2' | 'card_variant_3' | 'card_variant_4';
 export type CardVariantLabelType = 'Card variant 1' | 'Card variant 2' | 'Card variant 3' | 'Card variant 4';
 export type CardVariantClassNameType =
-  | 'hs-elevate-card--variant-1'
-  | 'hs-elevate-card--variant-2'
-  | 'hs-elevate-card--variant-3'
-  | 'hs-elevate-card--variant-4';
+  | 'hs-fidelidade-card--variant-1'
+  | 'hs-fidelidade-card--variant-2'
+  | 'hs-fidelidade-card--variant-3'
+  | 'hs-fidelidade-card--variant-4';
 export type CardVariantThemeFieldPathType =
   | 'group_elements.group_cards.card_variant_1'
   | 'group_elements.group_cards.card_variant_2'

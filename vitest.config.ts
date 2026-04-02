@@ -13,9 +13,9 @@ export default defineConfig({
   resolve: {
     alias: {
       // Use browser ESM version of styled-components to avoid CommonJS issues
-      'styled-components': path.resolve('./src/unified-theme/node_modules/styled-components/dist/styled-components.browser.esm.js'),
-      // Resolve React from unified-theme directory since tests run from root but dependencies are in subdirectory
-      'react': path.resolve('./src/unified-theme/node_modules/react'),
+      'styled-components': path.resolve('./src/fidelidade-theme/node_modules/styled-components/dist/styled-components.browser.esm.js'),
+      // Resolve React from fidelidade-theme directory since tests run from root but dependencies are in subdirectory
+      'react': path.resolve('./src/fidelidade-theme/node_modules/react'),
     },
   }
 });

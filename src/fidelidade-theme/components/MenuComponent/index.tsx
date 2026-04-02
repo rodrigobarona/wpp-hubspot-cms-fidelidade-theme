@@ -258,20 +258,20 @@ function MenuComponent(props: MenuComponentProps) {
   );
 
   const flowClasses = {
-    horizontal: 'hs-elevate-menu--horizontal',
-    vertical: 'hs-elevate-menu--vertical',
+    horizontal: 'hs-fidelidade-menu--horizontal',
+    vertical: 'hs-fidelidade-menu--vertical',
   };
 
   const additionalClasses = additionalClassArray ? additionalClassArray?.join(' ') : '';
 
-  const hsElevateMenuClasses = `hs-elevate-menu ${flowClasses[flow]} ${isMobileMenu ? 'hs-elevate-menu--mobile' : 'hs-elevate-menu--desktop'
+  const hsFidelidadeMenuClasses = `hs-fidelidade-menu ${flowClasses[flow]} ${isMobileMenu ? 'hs-fidelidade-menu--mobile' : 'hs-fidelidade-menu--desktop'
     } ${additionalClasses}`;
 
   const listStyles = { padding: 0 };
 
   return (
     <nav tabIndex={0} ref={navRef} onKeyDown={e => handleKeydown(e, '')} {...(navigationAriaLabel && { 'aria-label': navigationAriaLabel })}>
-      <ul role="menu" className={hsElevateMenuClasses} style={isMobileMenu ? {} : { ...getAlignmentFieldCss(menuAlignment), ...listStyles }}>
+      <ul role="menu" className={hsFidelidadeMenuClasses} style={isMobileMenu ? {} : { ...getAlignmentFieldCss(menuAlignment), ...listStyles }}>
         {menuDataArray.map((item, index: number) => {
           return (
             <MenuItemComponent

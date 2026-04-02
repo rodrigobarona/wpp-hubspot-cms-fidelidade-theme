@@ -29,7 +29,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/testimonial_slider',
+  moduleName: 'fidelidade/components/modules/testimonial_slider',
   version: 0,
   themeModule: true,
 };

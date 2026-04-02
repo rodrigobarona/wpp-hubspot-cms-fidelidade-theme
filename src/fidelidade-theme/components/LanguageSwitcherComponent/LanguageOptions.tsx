@@ -28,9 +28,9 @@ function generateColorCssVars(props: ColorProps): CSSPropertiesMap {
   const { textColor, menuBackgroundColorHover, textColorHover } = props;
 
   return {
-    '--hsElevate--languageSwitcher__textColor': textColor,
-    '--hsElevate--languageSwitcher__hover--backgroundColor': menuBackgroundColorHover,
-    '--hsElevate--languageSwitcher__hover--textColor': textColorHover,
+    '--hsFidelidade--languageSwitcher__textColor': textColor,
+    '--hsFidelidade--languageSwitcher__hover--backgroundColor': menuBackgroundColorHover,
+    '--hsFidelidade--languageSwitcher__hover--textColor': textColorHover,
   };
 }
 
@@ -41,7 +41,7 @@ type TypographyProps = {
 function generateTypographyCssVars(props: TypographyProps): CSSPropertiesMap {
   const { fontSize } = props;
 
-  return { '--hsElevate--languageSwitcher__fontSize': fontSize };
+  return { '--hsFidelidade--languageSwitcher__fontSize': fontSize };
 }
 
 // Components
@@ -52,10 +52,10 @@ const LanguageLink = createComponent('a');
 
 export const LanguageOptions = ({
   translations,
-  menuBackgroundColorHover = 'var(--hsElevate--section--lightSection--1__backgroundColor)',
-  textColor = 'var(--hsElevate--section--lightSection--1__textColor)',
-  textColorHover = 'var(--hsElevate--section--lightSection--1__textColor)',
-  fontSize = 'var(--hsElevate--heading--h5__fontSize, 18px)',
+  menuBackgroundColorHover = 'var(--hsFidelidade--section--lightSection--1__backgroundColor)',
+  textColor = 'var(--hsFidelidade--section--lightSection--1__textColor)',
+  textColorHover = 'var(--hsFidelidade--section--lightSection--1__textColor)',
+  fontSize = 'var(--hsFidelidade--heading--h5__fontSize, 18px)',
 }: LanguageOptionsProps) => {
   if (!translations || Object.keys(translations).length <= 1) {
     return null;
@@ -67,20 +67,20 @@ export const LanguageOptions = ({
   };
 
   return (
-    <LanguageList style={cssVarsMap} role="menu" className={swm('hs-elevate-language-switcher__language-list')}>
+    <LanguageList style={cssVarsMap} role="menu" className={swm('hs-fidelidade-language-switcher__language-list')}>
       {translations.map(translation => (
         <LanguageItem
           key={translation.languageCode}
           role="menuitem"
-          className={cx(swm('hs-elevate-language-switcher__language-item'), {
-            [styles['hs-elevate-language-switcher__language-item--active']]: translation.isActive,
+          className={cx(swm('hs-fidelidade-language-switcher__language-item'), {
+            [styles['hs-fidelidade-language-switcher__language-item--active']]: translation.isActive,
           })}
         >
           <LanguageLink
             href={translation.localizedUrl}
             lang={translation.languageCode}
             hrefLang={translation.languageCode}
-            className={swm('hs-elevate-language-switcher__language-link')}
+            className={swm('hs-fidelidade-language-switcher__language-link')}
           >
             {translation.languageDisplayName.LOCALIZED}
           </LanguageLink>

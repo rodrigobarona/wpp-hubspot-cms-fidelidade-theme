@@ -61,11 +61,11 @@ export const Component = (props: RecentBlogPostsProps) => {
 
   const postsToUse = posts || [];
 
-  const layoutClass = renderedWithGrids ? 'hs-elevate-recent-blog-posts--grids' : 'hs-elevate-recent-blog-posts--bootstrap';
+  const layoutClass = renderedWithGrids ? 'hs-fidelidade-recent-blog-posts--grids' : 'hs-fidelidade-recent-blog-posts--bootstrap';
 
   return (
-    <RecentBlogPosts className={cx(swm('hs-elevate-recent-blog-posts'), styles[layoutClass])}>
-      <BlogCardsContainer className={swm('hs-elevate-recent-blog-posts__blog-card-container')}>
+    <RecentBlogPosts className={cx(swm('hs-fidelidade-recent-blog-posts'), styles[layoutClass])}>
+      <BlogCardsContainer className={swm('hs-fidelidade-recent-blog-posts__blog-card-container')}>
         {postsToUse.length === 0 && isInEditor ? (
           <PlaceholderEmptyContent title={placeholderTitle} description={placeholderDescription} icon={cardIconSvg} />
         ) : (
@@ -80,7 +80,7 @@ export const Component = (props: RecentBlogPostsProps) => {
               headingStyleVariant={headingStyleVariant}
               cardStyleVariant={cardStyleVariant}
               gatedContentIds={gatedContentIds.map(id => id.toString())}
-              additionalClassArray={[swm('hs-elevate-recent-blog-posts__blog-card')]}
+              additionalClassArray={[swm('hs-fidelidade-recent-blog-posts__blog-card')]}
             />
           ))
         )}
@@ -145,7 +145,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/recent_blog_posts',
+  moduleName: 'fidelidade/components/modules/recent_blog_posts',
   version: 0,
   themeModule: true,
 };

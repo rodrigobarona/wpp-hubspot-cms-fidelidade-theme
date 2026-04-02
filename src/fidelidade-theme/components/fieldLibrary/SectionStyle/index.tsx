@@ -34,7 +34,7 @@ export default function SectionStyle(props: SectionStyle) {
           type: 'THEME_EDITOR',
           name: 'theme_link',
           params: {
-            theme_path: '@hubspot/elevate',
+            theme_path: '@fidelidade/cms-theme',
             theme_field_path: 'group_foundation.group_colors.group_more_settings.group_sections.group_light_section_1'
           }
         }

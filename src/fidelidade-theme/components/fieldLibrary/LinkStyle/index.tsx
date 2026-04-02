@@ -32,7 +32,7 @@ export default function LinkStyle(props: LinkStyle) {
           type: 'THEME_EDITOR',
           name: 'theme_link',
           params: {
-            theme_path: '@hubspot/elevate',
+            theme_path: '@fidelidade/cms-theme',
             theme_field_path: 'group_elements.group_links.group_primary_links'
           }
         }

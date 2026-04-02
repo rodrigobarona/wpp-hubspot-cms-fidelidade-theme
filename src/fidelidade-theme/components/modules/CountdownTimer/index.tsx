@@ -19,7 +19,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/countdown_timer',
+  moduleName: 'fidelidade/components/modules/countdown_timer',
   version: 0,
   themeModule: true,
 };

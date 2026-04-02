@@ -1,29 +1,29 @@
-.hs-elevate-blog-listing__pagination-container {
+.hs-fidelidade-blog-listing__pagination-container {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: var(--hsElevate--spacing--24, 24px);
+  gap: var(--hsFidelidade--spacing--24, 24px);
 }
 
-.hs-elevate-blog-listing__ellipsis {
+.hs-fidelidade-blog-listing__ellipsis {
   pointer-events: none;
 }
 
-.hs-elevate-blog-listing__pagination-link {
+.hs-fidelidade-blog-listing__pagination-link {
   position: relative;
   display: block;
-  color: var(--hsElevate--section--lightSection--1--link__fontColor);
+  color: var(--hsFidelidade--section--lightSection--1--link__fontColor);
   line-height: 1;
   text-decoration: none;
 
   &:hover {
-    color: var(--hsElevate--section--lightSection--1--link__hover--fontColor);
+    color: var(--hsFidelidade--section--lightSection--1--link__hover--fontColor);
     text-decoration: none;
   }
 }
 
-.hs-elevate-blog-listing__pagination-link--active {
+.hs-fidelidade-blog-listing__pagination-link--active {
   width: 44px;
   text-align: center;
 
@@ -33,37 +33,37 @@
     left: 50%;
     height: 44px;
     width: 44px;
-    border: 2px solid var(--hsElevate--section--lightSection--1--link__fontColor);
+    border: 2px solid var(--hsFidelidade--section--lightSection--1--link__fontColor);
     border-radius: 50%;
     content: '';
     transform: translate(-50%, -50%);
   }
 
   &:hover::before {
-    border-color: var(--hsElevate--section--lightSection--1--link__hover--fontColor);
+    border-color: var(--hsFidelidade--section--lightSection--1--link__hover--fontColor);
   }
 }
 
-.hs-elevate-blog-listing__nav-link {
-  .hs-elevate-helper--rotate-180 {
+.hs-fidelidade-blog-listing__nav-link {
+  .hs-fidelidade-helper--rotate-180 {
     transform: rotate(180deg);
   }
 
   & path {
-    fill: var(--hsElevate--section--lightSection--1--link__fontColor);
+    fill: var(--hsFidelidade--section--lightSection--1--link__fontColor);
   }
 
   &:hover path {
-    fill: var(--hsElevate--section--lightSection--1--link__hover--fontColor);
+    fill: var(--hsFidelidade--section--lightSection--1--link__hover--fontColor);
   }
 }
 
-.hs-elevate-blog-listing__nav-link--disabled {
+.hs-fidelidade-blog-listing__nav-link--disabled {
   opacity: 0.5;
   pointer-events: none;
 }
 
-.hs-elevate-blog-listing__screen-ready-only {
+.hs-fidelidade-blog-listing__screen-ready-only {
   position: absolute;
   overflow: hidden;
   height: 1px;

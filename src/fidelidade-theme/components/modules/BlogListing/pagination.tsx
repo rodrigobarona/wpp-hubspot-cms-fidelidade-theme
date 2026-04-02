@@ -118,11 +118,11 @@ type ScreenReadyOnlyProps = {
 const ScreenReadyOnly = (props: ScreenReadyOnlyProps) => {
   const { content } = props;
 
-  return <span className={styles['hs-elevate-blog-listing__screen-ready-only']}>{content}</span>;
+  return <span className={styles['hs-fidelidade-blog-listing__screen-ready-only']}>{content}</span>;
 };
 
 const Ellipsis = () => {
-  return <a className={cx(styles['hs-elevate-blog-listing__ellipsis'], styles['hs-elevate-blog-listing__pagination-link'])}>...</a>;
+  return <a className={cx(styles['hs-fidelidade-blog-listing__ellipsis'], styles['hs-fidelidade-blog-listing__pagination-link'])}>...</a>;
 };
 
 export default function Pagination(props: PaginationProps) {
@@ -141,20 +141,20 @@ export default function Pagination(props: PaginationProps) {
     totalPageCount
   );
 
-  const previousNavLinkClasses = cx(swm('hs-elevate-blog-listing__nav-link'), {
-    [styles['hs-elevate-blog-listing__nav-link--disabled']]: !enablePreviousButton,
+  const previousNavLinkClasses = cx(swm('hs-fidelidade-blog-listing__nav-link'), {
+    [styles['hs-fidelidade-blog-listing__nav-link--disabled']]: !enablePreviousButton,
   });
 
-  const chevronClasses = swm('hs-elevate-blog-listing__pagination-icon');
+  const chevronClasses = swm('hs-fidelidade-blog-listing__pagination-icon');
 
-  const paginationLinkClasses = swm('hs-elevate-blog-listing__pagination-link');
+  const paginationLinkClasses = swm('hs-fidelidade-blog-listing__pagination-link');
 
-  const nextNavLinkClasses = cx(swm('hs-elevate-blog-listing__nav-link'), { [styles['hs-elevate-blog-listing__nav-link--disabled']]: !enableNextButton });
+  const nextNavLinkClasses = cx(swm('hs-fidelidade-blog-listing__nav-link'), { [styles['hs-fidelidade-blog-listing__nav-link--disabled']]: !enableNextButton });
 
   return (
-    <PaginationContainer className={swm('hs-elevate-blog-listing__pagination-container')}>
+    <PaginationContainer className={swm('hs-fidelidade-blog-listing__pagination-container')}>
       <NavLink className={previousNavLinkClasses} href={previousPageUrl}>
-        <Chevron additionalClassArray={[chevronClasses, 'hs-elevate-helper--rotate-180', styles['hs-elevate-helper--rotate-180']]} />
+        <Chevron additionalClassArray={[chevronClasses, 'hs-fidelidade-helper--rotate-180', styles['hs-fidelidade-helper--rotate-180']]} />
         <ScreenReadyOnly content={defaultContent.previousPage} />
       </NavLink>
 
@@ -166,7 +166,7 @@ export default function Pagination(props: PaginationProps) {
       {displayPreviousEllipsis && <Ellipsis />}
       {pagesToDisplay.map(index => (
         <PaginationLink
-          className={cx(paginationLinkClasses, { [styles['hs-elevate-blog-listing__pagination-link--active']]: currentPageNumber === index })}
+          className={cx(paginationLinkClasses, { [styles['hs-fidelidade-blog-listing__pagination-link--active']]: currentPageNumber === index })}
           key={index}
           href={`${basePagePath}/${index}`}
         >

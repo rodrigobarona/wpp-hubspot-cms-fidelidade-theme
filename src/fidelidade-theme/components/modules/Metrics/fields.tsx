@@ -14,20 +14,20 @@ export const fields = (
       default={[
         {
           metric: '15k+',
-          description: 'Customers of Elevate',
+          description: 'Customers of Fidelidade',
         },
         {
           metric: '15k+',
-          description: 'Customers of Elevate',
+          description: 'Customers of Fidelidade',
         },
         {
           metric: '15k+',
-          description: 'Customers of Elevate',
+          description: 'Customers of Fidelidade',
         },
       ]}
     >
       <TextField label="Metric value" name="metric" default="15k+" inlineEditable={true} />
-      <TextField label="Description" name="description" default="Customers of Elevate" inlineEditable={true} />
+      <TextField label="Description" name="description" default="Customers of Fidelidade" inlineEditable={true} />
     </RepeatedFieldGroup>
     <FieldGroup label="Styles" name="groupStyle" tab="STYLE">
       <SectionStyle sectionStyleDefault="section_variant_1" />

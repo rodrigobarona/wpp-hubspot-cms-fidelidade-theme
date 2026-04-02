@@ -61,46 +61,46 @@ type SocialFollowProps = {
 function generateIconSizeAndPaddingCssVars(iconSizeField: StandardSizeType): CSSPropertiesMap {
   const iconSizing = {
     small: {
-      padding: 'var(--hsElevate--spacing--10, 10px)',
-      iconSize: 'var(--hsElevate--icon--small__size)',
+      padding: 'var(--hsFidelidade--spacing--10, 10px)',
+      iconSize: 'var(--hsFidelidade--icon--small__size)',
     },
     medium: {
-      padding: 'var(--hsElevate--spacing--14, 14px)',
-      iconSize: 'var(--hsElevate--icon--medium__size)',
+      padding: 'var(--hsFidelidade--spacing--14, 14px)',
+      iconSize: 'var(--hsFidelidade--icon--medium__size)',
     },
     large: {
-      padding: 'var(--hsElevate--spacing--18, 18px)',
-      iconSize: 'var(--hsElevate--icon--large__size)',
+      padding: 'var(--hsFidelidade--spacing--18, 18px)',
+      iconSize: 'var(--hsFidelidade--icon--large__size)',
     },
   };
 
   return {
-    '--hsElevate--socialFollowIcon__padding': iconSizing[iconSizeField].padding,
-    '--hsElevate--socialFollowIcon__size': iconSizing[iconSizeField].iconSize,
+    '--hsFidelidade--socialFollowIcon__padding': iconSizing[iconSizeField].padding,
+    '--hsFidelidade--socialFollowIcon__size': iconSizing[iconSizeField].iconSize,
   };
 }
 
 function generateIconShapeCssVars(iconShapeField: ShapeOption): CSSPropertiesMap {
   const iconShapeMap = {
-    square: 'var(--hsElevate-sharp)',
-    rounded: 'var(--hsElevate-rounded)',
-    circle: 'var(--hsElevate-circle)',
+    square: 'var(--hsFidelidade-sharp)',
+    rounded: 'var(--hsFidelidade-rounded)',
+    circle: 'var(--hsFidelidade-circle)',
   };
 
   return {
-    '--hsElevate--socialFollowIcon__shape': iconShapeMap[iconShapeField],
+    '--hsFidelidade--socialFollowIcon__shape': iconShapeMap[iconShapeField],
   };
 }
 
 function generateIconGapCssVars(iconGapField: SizeOption): CSSPropertiesMap {
   const iconGapMap = {
-    small: 'var(--hsElevate--spacing--12, 12px)',
-    medium: 'var(--hsElevate--spacing--24, 24px)',
-    large: 'var(--hsElevate--spacing--48, 48px)',
+    small: 'var(--hsFidelidade--spacing--12, 12px)',
+    medium: 'var(--hsFidelidade--spacing--24, 24px)',
+    large: 'var(--hsFidelidade--spacing--48, 48px)',
   };
 
   return {
-    '--hsElevate--socialFollowIcon__gap': iconGapMap[iconGapField],
+    '--hsFidelidade--socialFollowIcon__gap': iconGapMap[iconGapField],
   };
 }
 
@@ -108,83 +108,83 @@ function generateAlignmentCssVars(alignmentField: AlignmentFieldType['default'])
   const alignmentCss = getAlignmentFieldCss(alignmentField);
 
   return {
-    '--hsElevate--socialFollow__justifyContent': alignmentCss.justifyContent || 'flex-start',
+    '--hsFidelidade--socialFollow__justifyContent': alignmentCss.justifyContent || 'flex-start',
   };
 }
 
 function generateButtonStyles(buttonStyleVariant: ButtonStyleType): CSSPropertiesMap {
   const iconStyles = {
     primary: {
-      backgroundColor: 'var(--hsElevate--button--primary__backgroundColor)',
-      textColor: 'var(--hsElevate--button--primary__textColor)',
-      borderColor: 'var(--hsElevate--button--primary__borderColor)',
-      borderWidth: 'var(--hsElevate--button--primary__borderThickness)',
-      hoverBackgroundColor: 'var(--hsElevate--button--primary__hover--backgroundColor)',
-      hoverTextColor: 'var(--hsElevate--button--primary__hover--textColor)',
-      hoverBorderColor: 'var(--hsElevate--button--primary__hover--borderColor)',
-      hoverBorderWidth: 'var(--hsElevate--button--primary__hover--borderThickness)',
-      activeBackgroundColor: 'var(--hsElevate--button--primary__active--backgroundColor)',
-      activeTextColor: 'var(--hsElevate--button--primary__active--textColor)',
-      activeBorderColor: 'var(--hsElevate--button--primary__active--borderColor)',
-      activeBorderWidth: 'var(--hsElevate--button--primary__active--borderThickness)',
+      backgroundColor: 'var(--hsFidelidade--button--primary__backgroundColor)',
+      textColor: 'var(--hsFidelidade--button--primary__textColor)',
+      borderColor: 'var(--hsFidelidade--button--primary__borderColor)',
+      borderWidth: 'var(--hsFidelidade--button--primary__borderThickness)',
+      hoverBackgroundColor: 'var(--hsFidelidade--button--primary__hover--backgroundColor)',
+      hoverTextColor: 'var(--hsFidelidade--button--primary__hover--textColor)',
+      hoverBorderColor: 'var(--hsFidelidade--button--primary__hover--borderColor)',
+      hoverBorderWidth: 'var(--hsFidelidade--button--primary__hover--borderThickness)',
+      activeBackgroundColor: 'var(--hsFidelidade--button--primary__active--backgroundColor)',
+      activeTextColor: 'var(--hsFidelidade--button--primary__active--textColor)',
+      activeBorderColor: 'var(--hsFidelidade--button--primary__active--borderColor)',
+      activeBorderWidth: 'var(--hsFidelidade--button--primary__active--borderThickness)',
     },
     secondary: {
-      backgroundColor: 'var(--hsElevate--button--secondary__backgroundColor)',
-      textColor: 'var(--hsElevate--button--secondary__textColor)',
-      borderColor: 'var(--hsElevate--button--secondary__borderColor)',
-      borderWidth: 'var(--hsElevate--button--secondary__borderThickness)',
-      hoverBackgroundColor: 'var(--hsElevate--button--secondary__hover--backgroundColor)',
-      hoverTextColor: 'var(--hsElevate--button--secondary__hover--textColor)',
-      hoverBorderColor: 'var(--hsElevate--button--secondary__hover--borderColor)',
-      hoverBorderWidth: 'var(--hsElevate--button--secondary__hover--borderThickness)',
-      activeBackgroundColor: 'var(--hsElevate--button--secondary__active--backgroundColor)',
-      activeTextColor: 'var(--hsElevate--button--secondary__active--textColor)',
-      activeBorderColor: 'var(--hsElevate--button--secondary__active--borderColor)',
-      activeBorderWidth: 'var(--hsElevate--button--secondary__active--borderThickness)',
+      backgroundColor: 'var(--hsFidelidade--button--secondary__backgroundColor)',
+      textColor: 'var(--hsFidelidade--button--secondary__textColor)',
+      borderColor: 'var(--hsFidelidade--button--secondary__borderColor)',
+      borderWidth: 'var(--hsFidelidade--button--secondary__borderThickness)',
+      hoverBackgroundColor: 'var(--hsFidelidade--button--secondary__hover--backgroundColor)',
+      hoverTextColor: 'var(--hsFidelidade--button--secondary__hover--textColor)',
+      hoverBorderColor: 'var(--hsFidelidade--button--secondary__hover--borderColor)',
+      hoverBorderWidth: 'var(--hsFidelidade--button--secondary__hover--borderThickness)',
+      activeBackgroundColor: 'var(--hsFidelidade--button--secondary__active--backgroundColor)',
+      activeTextColor: 'var(--hsFidelidade--button--secondary__active--textColor)',
+      activeBorderColor: 'var(--hsFidelidade--button--secondary__active--borderColor)',
+      activeBorderWidth: 'var(--hsFidelidade--button--secondary__active--borderThickness)',
     },
     tertiary: {
-      backgroundColor: 'var(--hsElevate--button--tertiary__backgroundColor)',
-      textColor: 'var(--hsElevate--button--tertiary__textColor)',
-      borderColor: 'var(--hsElevate--button--tertiary__borderColor)',
-      borderWidth: 'var(--hsElevate--button--tertiary__borderThickness)',
-      hoverBackgroundColor: 'var(--hsElevate--button--tertiary__hover--backgroundColor)',
-      hoverTextColor: 'var(--hsElevate--button--tertiary__hover--textColor)',
-      hoverBorderColor: 'var(--hsElevate--button--tertiary__hover--borderColor)',
-      hoverBorderWidth: 'var(--hsElevate--button--tertiary__hover--borderThickness)',
-      activeBackgroundColor: 'var(--hsElevate--button--tertiary__active--backgroundColor)',
-      activeTextColor: 'var(--hsElevate--button--tertiary__active--textColor)',
-      activeBorderColor: 'var(--hsElevate--button--tertiary__active--borderColor)',
-      activeBorderWidth: 'var(--hsElevate--button--tertiary__active--borderThickness)',
+      backgroundColor: 'var(--hsFidelidade--button--tertiary__backgroundColor)',
+      textColor: 'var(--hsFidelidade--button--tertiary__textColor)',
+      borderColor: 'var(--hsFidelidade--button--tertiary__borderColor)',
+      borderWidth: 'var(--hsFidelidade--button--tertiary__borderThickness)',
+      hoverBackgroundColor: 'var(--hsFidelidade--button--tertiary__hover--backgroundColor)',
+      hoverTextColor: 'var(--hsFidelidade--button--tertiary__hover--textColor)',
+      hoverBorderColor: 'var(--hsFidelidade--button--tertiary__hover--borderColor)',
+      hoverBorderWidth: 'var(--hsFidelidade--button--tertiary__hover--borderThickness)',
+      activeBackgroundColor: 'var(--hsFidelidade--button--tertiary__active--backgroundColor)',
+      activeTextColor: 'var(--hsFidelidade--button--tertiary__active--textColor)',
+      activeBorderColor: 'var(--hsFidelidade--button--tertiary__active--borderColor)',
+      activeBorderWidth: 'var(--hsFidelidade--button--tertiary__active--borderThickness)',
     },
     accent: {
-      backgroundColor: 'var(--hsElevate--button--accent__backgroundColor)',
-      textColor: 'var(--hsElevate--button--accent__textColor)',
-      borderColor: 'var(--hsElevate--button--accent__borderColor)',
-      borderWidth: 'var(--hsElevate--button--accent__borderThickness)',
-      hoverBackgroundColor: 'var(--hsElevate--button--accent__hover--backgroundColor)',
-      hoverTextColor: 'var(--hsElevate--button--accent__hover--textColor)',
-      hoverBorderColor: 'var(--hsElevate--button--accent__hover--borderColor)',
-      hoverBorderWidth: 'var(--hsElevate--button--accent__hover--borderThickness)',
-      activeBackgroundColor: 'var(--hsElevate--button--accent__active--backgroundColor)',
-      activeTextColor: 'var(--hsElevate--button--accent__active--textColor)',
-      activeBorderColor: 'var(--hsElevate--button--accent__active--borderColor)',
-      activeBorderWidth: 'var(--hsElevate--button--accent__active--borderThickness)',
+      backgroundColor: 'var(--hsFidelidade--button--accent__backgroundColor)',
+      textColor: 'var(--hsFidelidade--button--accent__textColor)',
+      borderColor: 'var(--hsFidelidade--button--accent__borderColor)',
+      borderWidth: 'var(--hsFidelidade--button--accent__borderThickness)',
+      hoverBackgroundColor: 'var(--hsFidelidade--button--accent__hover--backgroundColor)',
+      hoverTextColor: 'var(--hsFidelidade--button--accent__hover--textColor)',
+      hoverBorderColor: 'var(--hsFidelidade--button--accent__hover--borderColor)',
+      hoverBorderWidth: 'var(--hsFidelidade--button--accent__hover--borderThickness)',
+      activeBackgroundColor: 'var(--hsFidelidade--button--accent__active--backgroundColor)',
+      activeTextColor: 'var(--hsFidelidade--button--accent__active--textColor)',
+      activeBorderColor: 'var(--hsFidelidade--button--accent__active--borderColor)',
+      activeBorderWidth: 'var(--hsFidelidade--button--accent__active--borderThickness)',
     },
   };
 
   return {
-    '--hsElevate--socialFollowIcon__backgroundColor': iconStyles[buttonStyleVariant].backgroundColor,
-    '--hsElevate--socialFollowIcon__color': iconStyles[buttonStyleVariant].textColor,
-    '--hsElevate--socialFollowIcon__borderColor': iconStyles[buttonStyleVariant].borderColor,
-    '--hsElevate--socialFollowIcon__borderWidth': iconStyles[buttonStyleVariant].borderWidth,
-    '--hsElevate--socialFollowIcon__hover--backgroundColor': iconStyles[buttonStyleVariant].hoverBackgroundColor,
-    '--hsElevate--socialFollowIcon__hover--color': iconStyles[buttonStyleVariant].hoverTextColor,
-    '--hsElevate--socialFollowIcon__hover--borderColor': iconStyles[buttonStyleVariant].hoverBorderColor,
-    '--hsElevate--socialFollowIcon__hover--borderWidth': iconStyles[buttonStyleVariant].hoverBorderWidth,
-    '--hsElevate--socialFollowIcon__active--backgroundColor': iconStyles[buttonStyleVariant].activeBackgroundColor,
-    '--hsElevate--socialFollowIcon__active--color': iconStyles[buttonStyleVariant].activeTextColor,
-    '--hsElevate--socialFollowIcon__active--borderColor': iconStyles[buttonStyleVariant].activeBorderColor,
-    '--hsElevate--socialFollowIcon__active--borderWidth': iconStyles[buttonStyleVariant].activeBorderWidth,
+    '--hsFidelidade--socialFollowIcon__backgroundColor': iconStyles[buttonStyleVariant].backgroundColor,
+    '--hsFidelidade--socialFollowIcon__color': iconStyles[buttonStyleVariant].textColor,
+    '--hsFidelidade--socialFollowIcon__borderColor': iconStyles[buttonStyleVariant].borderColor,
+    '--hsFidelidade--socialFollowIcon__borderWidth': iconStyles[buttonStyleVariant].borderWidth,
+    '--hsFidelidade--socialFollowIcon__hover--backgroundColor': iconStyles[buttonStyleVariant].hoverBackgroundColor,
+    '--hsFidelidade--socialFollowIcon__hover--color': iconStyles[buttonStyleVariant].hoverTextColor,
+    '--hsFidelidade--socialFollowIcon__hover--borderColor': iconStyles[buttonStyleVariant].hoverBorderColor,
+    '--hsFidelidade--socialFollowIcon__hover--borderWidth': iconStyles[buttonStyleVariant].hoverBorderWidth,
+    '--hsFidelidade--socialFollowIcon__active--backgroundColor': iconStyles[buttonStyleVariant].activeBackgroundColor,
+    '--hsFidelidade--socialFollowIcon__active--color': iconStyles[buttonStyleVariant].activeTextColor,
+    '--hsFidelidade--socialFollowIcon__active--borderColor': iconStyles[buttonStyleVariant].activeBorderColor,
+    '--hsFidelidade--socialFollowIcon__active--borderWidth': iconStyles[buttonStyleVariant].activeBorderWidth,
   };
 }
 
@@ -293,7 +293,7 @@ export const Component = (props: SocialFollowProps) => {
   };
 
   return (
-    <SocialFollowContainer className={swm('hs-elevate-social-follow')} style={cssVarsMap}>
+    <SocialFollowContainer className={swm('hs-fidelidade-social-follow')} style={cssVarsMap}>
       {groupSocialLinks.map((socialLink, index) => {
         const {
           groupLink: { link },
@@ -314,14 +314,14 @@ export const Component = (props: SocialFollowProps) => {
 
         return (
           <SocialLink
-            className={swm('hs-elevate-social-follow__link')}
+            className={swm('hs-fidelidade-social-follow__link')}
             key={index}
             rel={getLinkFieldRel(link)}
             target={getLinkFieldTarget(link)}
             href={link.url.href}
             aria-label={socialIcon.aria_label}
           >
-            <Icon className={swm('hs-elevate-social-follow__icon')} purpose="DECORATIVE" fieldPath={iconFieldPath} />
+            <Icon className={swm('hs-fidelidade-social-follow__icon')} purpose="DECORATIVE" fieldPath={iconFieldPath} />
           </SocialLink>
         );
       })}
@@ -339,7 +339,7 @@ export const meta: ModuleMeta = {
 };
 
 export const defaultModuleConfig = {
-  moduleName: 'elevate/components/modules/social_follow',
+  moduleName: 'fidelidade/components/modules/social_follow',
   version: 0,
   themeModule: true,
 };

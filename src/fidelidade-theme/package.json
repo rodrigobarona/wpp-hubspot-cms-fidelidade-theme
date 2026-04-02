@@ -1,7 +1,7 @@
 {
-  "name": "unified-theme",
+  "name": "fidelidade-theme",
   "version": "1.0.0",
-  "description": "Assets for the Elevate theme",
+  "description": "Core assets for the Fidelidade HubSpot CMS theme",
   "scripts": {
     "start": "hs-cms-dev-server .",
     "generate-tmp-json-for-translations": "jsx-module-fields-to-fields-json"

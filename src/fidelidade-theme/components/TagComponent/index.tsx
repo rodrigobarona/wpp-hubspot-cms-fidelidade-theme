@@ -8,5 +8,5 @@ export function TagComponent(props: TagComponentProps) {
 
   const additionalClasses = additionalClassArray ? additionalClassArray.join(' ') : '';
 
-  return <span className={`hs-elevate-tag ${additionalClasses}`}>{children}</span>;
+  return <span className={`hs-fidelidade-tag ${additionalClasses}`}>{children}</span>;
 }

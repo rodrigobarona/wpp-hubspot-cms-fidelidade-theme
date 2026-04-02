@@ -29,9 +29,9 @@ export const Card = (props: CardProps) => {
   const { cardStyleVariant, additionalClassArray, inlineStyles, cardOrientation, children } = props;
   const cardClassName = getCardVariantClassName({ cardVariant: cardStyleVariant, fallbackCardVariant: 'card_variant_1' });
   const additionalClasses = additionalClassArray ? additionalClassArray.join(' ') : '';
-  const cardClasses = cx(swm('hs-elevate-card'), cardClassName, additionalClasses, {
-    [styles['hs-elevate-card--row']]: cardOrientation === 'row',
-    [styles['hs-elevate-card--column']]: cardOrientation === 'column',
+  const cardClasses = cx(swm('hs-fidelidade-card'), cardClassName, additionalClasses, {
+    [styles['hs-fidelidade-card--row']]: cardOrientation === 'row',
+    [styles['hs-fidelidade-card--column']]: cardOrientation === 'column',
   });
 
   return (
